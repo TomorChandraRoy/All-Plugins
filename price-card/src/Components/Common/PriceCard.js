@@ -24,28 +24,36 @@ const PriceCard = ({ attributes }) => {
                     <>
                         {plan.isVisible && (
 
-                            <div key={index} className="plan">
-                                <div className="price">{plan.title}</div>
+                            <div key={index} className={`plan ${plan.title === "Pro" && plan.isPopular ? "popular" : ""}`}>
+                                {plan.title === "Pro" ?
+                                    <span  className='' >
+                                        {
+                                            plan.isPopular === true
+                                                ? "Most Popular" : ""
+                                        }
+                                    </span> : ""
+                                }
+
+                                <h2>{plan.title}</h2>
 
                                 <div className="price">{plan.price}</div>
                                 <ul className="features">
                                     {plan.features.map((feature, featureIndex) => (
                                         <li key={featureIndex}>
-                                            {console.log("Icon Class:", feature?.iconType)}
-                                            <i className={feature?.iconType} style={{ color: feature.iconType === "fa-solid fa-circle-check" ? "green" : "red",marginRight:"10px" }}></i> 
-                                             {feature.text}
+                                            <i className={feature?.iconType} style={{ color: feature.iconType === "fa-solid fa-circle-check" ? " #6ab04c" : feature.iconType === "fa fa-times-circle" ? "#eb4d4b" : "rgba(39, 154, 67, 0.86)", marginRight: "10px" }}></i>
+                                            {feature.text}
                                         </li>
                                     ))}
                                 </ul>
                                 <button>{plan.buttonLabel}</button>
-                            </div>
+                            </div >
                         )}
                     </>
                 ))};
             </div>
 
 
-        </div>
+        </div >
 
     );
 };

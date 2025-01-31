@@ -432,19 +432,19 @@ const PriceCard = ({
     className: "pricing"
   }, plans.map((plan, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, plan.isVisible && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: index,
-    className: "plan"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "price"
-  }, plan.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `plan ${plan.title === "Pro" && plan.isPopular ? "popular" : ""}`
+  }, plan.title === "Pro" ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: ""
+  }, plan.isPopular === true ? "Most Popular" : "") : "", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, plan.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "price"
   }, plan.price), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
     className: "features"
   }, plan.features.map((feature, featureIndex) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
     key: featureIndex
-  }, console.log("Icon Class:", feature?.iconType), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
     className: feature?.iconType,
     style: {
-      color: feature.iconType === "fa-solid fa-circle-check" ? "green" : "red",
+      color: feature.iconType === "fa-solid fa-circle-check" ? " #6ab04c" : feature.iconType === "fa fa-times-circle" ? "#eb4d4b" : "rgba(39, 154, 67, 0.86)",
       marginRight: "10px"
     }
   }), feature.text))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", null, plan.buttonLabel)))), ";"));
@@ -660,7 +660,7 @@ document.addEventListener('DOMContentLoaded', () => {
       id: blockNameEl.id
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_PriceCard__WEBPACK_IMPORTED_MODULE_4__["default"], {
       attributes: attributes
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "RIPON")));
+    })));
     blockNameEl?.removeAttribute('data-attributes');
   });
 });

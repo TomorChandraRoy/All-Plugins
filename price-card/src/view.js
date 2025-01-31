@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 			<PriceCard attributes={attributes}/>
-			<h2>RIPON</h2>
+			
 		</>);
 
 		blockNameEl?.removeAttribute('data-attributes');
