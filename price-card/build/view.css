@@ -1,0 +1,65 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #dff9fb;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wp-block-b-blocks-price-card {
+  box-sizing: border-box;
+}
+.wp-block-b-blocks-price-card * {
+  box-sizing: border-box;
+}
+.wp-block-b-blocks-price-card .main-card-contener {
+  background-color: #dff9fb !important;
+}
+.wp-block-b-blocks-price-card .main-card-contener .pricing {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.wp-block-b-blocks-price-card .main-card-contener .pricing .plan {
+  background-color: #fff;
+  padding: 2.5rem;
+  margin: 12px;
+  border-radius: 5px;
+  text-align: center;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.wp-block-b-blocks-price-card .main-card-contener .pricing .plan .plan h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+.wp-block-b-blocks-price-card .main-card-contener .pricing .plan .price {
+  margin-bottom: 1rem;
+  font-size: 30px;
+}
+.wp-block-b-blocks-price-card .main-card-contener .pricing .plan .features {
+  list-style-type: none;
+  text-align: left;
+}
+.wp-block-b-blocks-price-card .main-card-contener .pricing .plan .features li {
+  margin: 8px;
+}
+.wp-block-b-blocks-price-card h1 {
+  text-align: center;
+  margin-top: 2rem;
+}
+.wp-block-b-blocks-price-card p {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+/*# sourceMappingURL=view.css.map*/

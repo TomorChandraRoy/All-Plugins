@@ -1,0 +1,138 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "b-blocks/price-card",
+  "version": "1.0.0",
+  "title": " Price Card",
+  "category": "widgets",
+  "description": "Short description of the Price Card Plugins",
+  "keywords": [
+    "Price Card"
+  ],
+  "textdomain": "b-blocks",
+  "attributes": {
+    "alignment": {
+      "type": "string",
+      "default": "center"
+    },
+    "title": {
+      "type": "string",
+      "default": "Choose the plan that fits for your team"
+    },
+    "description": {
+      "type": "string",
+      "default": "Deploy your sites to global infrastructure in seconds. No credit card required"
+    },
+    "showUpdateDelete": {
+      "type": "boolean",
+      "default": true
+    },
+    "plans": {
+      "type": "array",
+      "default": [
+        {
+          "title": "Dev",
+          "price": "FREE",
+          "features": [
+            {
+              "text": "Unlimited Websites",
+              "iconType": "fa-solid fa-circle-check"
+            },
+            {
+              "text": "1 User",
+              "iconType": "fa-solid fa-circle-check"
+            },
+            {
+              "text": "100MB Space/website",
+              "iconType": "fa-solid fa-circle-check"
+            },
+            {
+              "text": "Continuous deployment",
+              "iconType": "fa-solid fa-circle-check"
+            },
+            {
+              "text": "No priority support",
+              "iconType": "fa fa-times-circle"
+            }
+          ],
+          "buttonLabel": "Signup",
+          "isPopular": false,
+          "isVisible": true
+        },
+        {
+          "title": "Pro",
+          "price": "$10/month",
+          "features": [
+            {
+              "text": "Unlimited Websites",
+              "iconType": "fa-solid fa-circle-check"
+            },
+            {
+              "text": "5 Users",
+              "iconType": "fa-solid fa-circle-check"
+            },
+            {
+              "text": "512MB Space/website",
+              "iconType": "fa-solid fa-circle-check"
+            },
+            {
+              "text": "Continuous deployment",
+              "iconType": "fa-solid fa-circle-check"
+            },
+            {
+              "text": "Email Support",
+              "iconType": "fa-solid fa-circle-check"
+            }
+          ],
+          "buttonLabel": "Buy Now",
+          "isPopular": true,
+          "isVisible": true
+        },
+        {
+          "title": "Enterprise",
+          "price": "Custom Pricing",
+          "features": [
+            {
+              "text": "Unlimited Websites",
+              "iconType": "fa-solid fa-circle-check"
+            },
+            {
+              "text": "Unlimited Users",
+              "iconType": "fa-solid fa-circle-check"
+            },
+            {
+              "text": "Unlimited Space/website",
+              "iconType": "fa-solid fa-circle-check"
+            },
+            {
+              "text": "Continuous deployment",
+              "iconType": "fa-solid fa-circle-check"
+            },
+            {
+              "text": "24/7 Email support",
+              "iconType": "fa-solid fa-circle-check"
+            }
+          ],
+          "buttonLabel": "Contact Us",
+          "isPopular": false,
+          "isVisible": true
+        }
+      ]
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "example": {
+    "attributes": {}
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./view.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
+}
