@@ -107,11 +107,16 @@
         }
       ]
     },
+
     "headerStyle": {
       "type": "object",
       "default": {
         "titleColor": "black",
-        "titleSize": "2rem",
+		"fontSize": {
+			"desktop": 22,
+			"tablet": 14,
+			"mobile": 12
+		  },
         "titleAlign": "center",
         "titleMargin": {
           "top": "2rem",
@@ -121,6 +126,7 @@
         }
       }
     },
+	
     "headerDecStyle": {
       "type": "object",
       "default": {
@@ -135,94 +141,95 @@
         }
       }
     },
+
     "planStyle": {
       "type": "object",
       "default": {
         "planBackgroundColor": "#fff",
         "planPadding": {
-			"top": "2.5rem",
-			"right": "2.5rem",
-			"bottom": "2.5rem",
-			"left": "2.5rem"
-		  } ,
-        "planMargin":  {
-			"top": "33px",
-			"right": "25px",
-			"bottom": "33px",
-			"left": "25px"
-		  },
-        "planRadius":   {
-			"top": "5px",
-			"right": "5px",
-			"bottom": "5px",
-			"left": "5px"
-		  },
+          "top": "2.5rem",
+          "right": "2.5rem",
+          "bottom": "2.5rem",
+          "left": "2.5rem"
+        },
+        "planMargin": {
+          "top": "33px",
+          "right": "25px",
+          "bottom": "33px",
+          "left": "25px"
+        },
+        "planRadius": {
+          "top": "5px",
+          "right": "5px",
+          "bottom": "5px",
+          "left": "5px"
+        },
         "planAlign": "center",
-		"planTitleStyle": {
-			"titleColor": "black",
-			"titleSize": "22px",
-			"titleAlign": "center",
-			"titleMargin": {
-			  "top": "0px",
-			  "right": "0px",
-			  "bottom": "12px",
-			  "left": "0px"
-			}
-		  },	  
-		"planPriceStyle": {
-			"priceColor": "black",
-			"priceSize": "30px",
-			"priceAlign": "center",
-			"priceMargin": {
-			  "top": "0px",
-			  "right": "0px",
-			  "bottom": "1rem",
-			  "left": "0px"
-			}
-		  },
-		"FeaturesStyle":{
-			"featureAlign": "left",
-			"featureliMagin": {
-				"top": "8px",
-				"right": "8px",
-				"bottom": "8px",
-				"left": "8px"
-			  }
-		},
-		"buttonStyle": {
-			"buttonBackgroundColor": "#6ab04c",
-			"buttonPadding": {
-			  "top": "12px",
-			  "right": "35px",
-			  "bottom": "12px",
-			  "left": "35px"
-			},
-			"buttonFontSize": "16px",
-			"buttonBorderRadius": "5px",
-			"buttonColor": "#fff",
-			"buttonMargin": {
-				"top": "1rem",
-				"right": "0px",
-				"bottom": "0px",
-				"left": "0px"
-			  }
-		  }	,
-		  "hoverEffect": {
-			"boxShadow": "5px 7px 67px -28px rgba(0, 0, 0, 0.37)"
-		  },
-		  "popularStyle": {
-			"borderColor": "#6ab04c",
-			"scale": "1.08",
-			"badgeBackgroundColor": "#6ab04c",
-			"badgeColor": "#fff",
-			"badgeFontSize": "18px",
-			"badgePadding": {
-				"top": "4px",
-				"right": "20px",
-				"bottom": "4px",
-				"left": "20px"
-			  }
-		  }  
+        "planTitleStyle": {
+          "titleColor": "black",
+          "titleSize": "22px",
+          "titleAlign": "center",
+          "titleMargin": {
+            "top": "0px",
+            "right": "0px",
+            "bottom": "12px",
+            "left": "0px"
+          }
+        },
+        "planPriceStyle": {
+          "priceColor": "black",
+          "priceSize": "30px",
+          "priceAlign": "center",
+          "priceMargin": {
+            "top": "0px",
+            "right": "0px",
+            "bottom": "1rem",
+            "left": "0px"
+          }
+        },
+        "FeaturesStyle": {
+          "featureAlign": "left",
+          "featureliMagin": {
+            "top": "8px",
+            "right": "8px",
+            "bottom": "8px",
+            "left": "8px"
+          }
+        },
+        "buttonStyle": {
+          "buttonBackgroundColor": "#6ab04c",
+          "buttonPadding": {
+            "top": "12px",
+            "right": "35px",
+            "bottom": "12px",
+            "left": "35px"
+          },
+          "buttonFontSize": "16px",
+          "buttonBorderRadius": "5px",
+          "buttonColor": "#fff",
+          "buttonMargin": {
+            "top": "1rem",
+            "right": "0px",
+            "bottom": "0px",
+            "left": "0px"
+          }
+        },
+        "hoverEffect": {
+          "boxShadow": "5px 7px 67px -28px rgba(0, 0, 0, 0.37)"
+        },
+        "popularStyle": {
+          "borderColor": "#6ab04c",
+          "scale": "1.08",
+          "badgeBackgroundColor": "#6ab04c",
+          "badgeColor": "#fff",
+          "badgeFontSize": "18px",
+          "badgePadding": {
+            "top": "4px",
+            "right": "20px",
+            "bottom": "4px",
+            "left": "20px"
+          }
+        }
       }
     }
   },

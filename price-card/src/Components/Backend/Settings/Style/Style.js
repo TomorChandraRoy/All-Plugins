@@ -4,10 +4,14 @@ import {
   PanelBody,
   __experimentalBoxControl as BoxControl,
 } from "@wordpress/components";
-import { ColorsControl } from "../../../../../../bpl-tools/Components";
+import { ColorControl, Typography } from "../../../../../../bpl-tools/Components";
 
 const Style = ({ attributes, setAttributes }) => {
-  const { colors } = attributes;
+
+  const { headerStyle,} = attributes;
+
+  console.log(headerStyle);
+
   const [values, setValues] = useState({
     top: "50px",
     left: "10px",
@@ -16,22 +20,39 @@ const Style = ({ attributes, setAttributes }) => {
   });
 
 
-
   return (
     <>
       <PanelBody
-      
+
         className="bPlPanelBody"
         title={__("Purpose styles title", "b-blocks")}
         initialOpen={false}
       >
-        <ColorsControl
-          value={colors}
-          onChange={(val) => setAttributes({ colors: val })}
-          defaults={{ color: "black", bg: "#B1C5A4" }}
+
+        <ColorControl
+          label="Title Color"
+          defaultColor="#000000"
+          value={headerStyle?.titleColor}
+          onChange={(Color) => {
+            setAttributes({
+              headerStyle: { ...headerStyle, titleColor: Color },
+            });
+          }}
         />
+
         <BoxControl values={values} onChange={setValues} />
       </PanelBody>
+
+      <PanelBody
+          className="bPlPanelBody"
+          title={__("Typography Components", "b-blocks")}
+          initialOpen={false}
+        >
+          <Typography label={__('Label', 'b-blocks')} value={headerStyle}
+           onChange={(size) => setAttributes({ headerStyle:{headerStyle:size}})}
+          />
+
+        </PanelBody>
     </>
   );
 };

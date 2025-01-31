@@ -1,16 +1,19 @@
-import { getColorsCSS } from '../../../../bpl-tools/utils/getCSS';
+// import { getColorsCSS } from '../../../../bpl-tools/utils/getCSS';
 
-const Style = ({ attributes, id }) => {
-	const { colors } = attributes;
+const Style = ({ attributes, id , device = "desktop"}) => {
+	const { headerStyle } = attributes;
+	const {titleColor,fontSize} = headerStyle;
 
 	const mainSl = `#${id}`;
-	const blockSl = `${mainSl} .bBlocksTestPurpose`;
+	const mainCardContener = `${mainSl} .main-card-contener`;
 
 	return <style dangerouslySetInnerHTML={{
 		__html: `
 		
-		${blockSl} p{
-			${getColorsCSS(colors)}
+		${mainCardContener} h1{
+			color: ${titleColor};
+            font-size:${fontSize[device]}px;
+
 		}
 
 	`}} />;
