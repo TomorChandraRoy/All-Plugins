@@ -215,7 +215,7 @@
             "bottom": "5px",
             "left": "5px"
           },
-          "buttonColor": "#fff",
+          "buttonColor": "rgba(255, 255, 255, 1)",
           "buttonMargin": {
             "top": "1rem",
             "right": "0px",
@@ -224,19 +224,29 @@
           }
         },
         "hoverEffect": {
-          "boxShadow": "5px 7px 67px -28px rgba(0, 0, 0, 0.37)"
+          "hOffset": "5px", 
+          "vOffset": "7px", 
+          "blur": "67px", 
+          "spreed": "-28px", 
+          "color": "rgba(0, 0, 0, 0.37)",
+          "isInset": false
         },
         "popularStyle": {
           "borderColor": "#6ab04c",
-          "scale": "1.08",
           "badgeBackgroundColor": "#6ab04c",
-          "badgeColor": "#fff",
-          "badgeFontSize": "18px",
+          "badgeColor": "rgba(255, 255, 255, 1)",
+          "badgeFontSize": 18,
           "badgePadding": {
             "top": "4px",
             "right": "20px",
             "bottom": "4px",
             "left": "20px"
+          },
+          "badgeRadius": {
+            "top": "5px",
+            "right": "5px",
+            "bottom": "5px",
+            "left": "5px"
           }
         }
       }

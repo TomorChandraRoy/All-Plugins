@@ -5,7 +5,7 @@ const Style = ({ attributes, id, }) => {
 	const { titleColor, fontSize, titleMargin, titleAlign } = headerStyle;
 	const { decColor, decSize, decAlign, decMargin } = headerDecStyle;
 
-	const { planBackgroundColor, planBackgroundColorOpacity, planPadding, planMargin, planRadius, planAlign, planTitleStyle, planPriceStyle, FeaturesStyle, buttonStyle } = planStyle;
+	const { planBackgroundColor, planBackgroundColorOpacity, planPadding, planMargin, planRadius, planAlign, planTitleStyle, planPriceStyle, FeaturesStyle, buttonStyle, popularStyle } = planStyle;
 
 	const { planTitleColor, planTitleSize, planTitleMargin } = planTitleStyle;
 
@@ -13,7 +13,9 @@ const Style = ({ attributes, id, }) => {
 
 	const { featureAlign, featureliMagin } = FeaturesStyle;
 
-	const { buttonBackgroundColor,buttonBackgroundColorOpacity, buttonPadding, buttonFontSize, buttonBorderRadius, buttonColor, buttonMargin } = buttonStyle;
+	const { buttonBackgroundColor, buttonBackgroundColorOpacity, buttonPadding, buttonFontSize, buttonBorderRadius, buttonColor, buttonMargin } = buttonStyle;
+
+	const {borderColor,badgeBackgroundColor,badgeColor,badgeFontSize,badgePadding,badgeRadius}= popularStyle;
 
 
 	const mainSl = `#${id}`;
@@ -22,6 +24,8 @@ const Style = ({ attributes, id, }) => {
 	const plan = `${pricing} .plan`;
 	const price = `${plan} .price`;
 	const features = `${plan} .features`;
+
+	const planPopular = `${pricing} .plan.popular `;
 
 	return <style dangerouslySetInnerHTML={{
 		__html: `
@@ -55,6 +59,7 @@ const Style = ({ attributes, id, }) => {
             border-radius: ${planRadius?.top} ${planRadius?.right} ${planRadius?.bottom} ${planRadius?.left};
 			
 		}
+
 		${plan} h2{
 			color: ${planTitleColor};
             font-size: ${planTitleSize}px;
@@ -74,6 +79,7 @@ const Style = ({ attributes, id, }) => {
 		}
 
 		${plan} button{
+		    color: ${buttonColor};
 			background: ${buttonBackgroundColor?.includes('gradient') ? buttonBackgroundColor : `${buttonBackgroundColor}`};
 			opacity: ${buttonBackgroundColorOpacity};
 			font-size: ${buttonFontSize}px;
@@ -82,6 +88,25 @@ const Style = ({ attributes, id, }) => {
 			border-radius: ${buttonBorderRadius?.top} ${buttonBorderRadius?.right} ${buttonBorderRadius?.bottom} ${buttonBorderRadius?.left};
             
 		}
+
+		${planPopular}{
+		    position: relative;
+			border: 2px solid ${borderColor};
+            transform: scale(1.08);
+		}
+
+		${planPopular} span {
+		    position: absolute;
+		    top: -20px;
+		    left: 50%;
+		    transform: translateX(-50%);
+		    background: ${badgeBackgroundColor?.includes('gradient') ? badgeBackgroundColor : `${badgeBackgroundColor}`};
+		    color: ${badgeColor};
+		    padding: ${badgePadding?.top} ${badgePadding?.right} ${badgePadding?.bottom} ${badgePadding?.left};
+		    font-size: ${badgeFontSize}px;
+		    border-radius: ${badgeRadius?.top} ${badgeRadius?.right} ${badgeRadius?.bottom} ${badgeRadius?.left};
+		}
+
 	`}} />;
 }
 export default Style;

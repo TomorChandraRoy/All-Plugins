@@ -5,7 +5,9 @@ import {
   __experimentalSpacer as Spacer,
   PanelRow,
   RangeControl,
+
 } from "@wordpress/components";
+
 import { ColorControl, Label, SolidBackground } from "../../../../../../bpl-tools/Components";
 import { AlignmentToolbar } from "@wordpress/block-editor";
 import { BDevice } from "../../../../../../bpl-tools/Components/Deprecated";
@@ -18,8 +20,9 @@ const Style = ({ attributes, setAttributes, device }) => {
 
   const [devicee, setDevice] = useState('desktop');
 
-  const { headerStyle, headerDecStyle, planStyle, columns } = attributes;
+  const { headerStyle, headerDecStyle, planStyle, columns, } = attributes;
 
+  console.log(planStyle?.popularStyle?.badgeFontSize);
 
 
   return (
@@ -395,10 +398,19 @@ const Style = ({ attributes, setAttributes, device }) => {
         title={__("Plan Button Style", "b-blocks")}
         initialOpen={false}
       >
-
+        <ColorControl
+          label="Button Text Color"
+          defaultColor="#fff"
+          value={planStyle?.buttonStyle?.buttonColor}
+          onChange={(Color) => {
+            setAttributes({
+              planStyle: { ...planStyle, buttonStyle: { ...planStyle.buttonStyle, buttonColor: Color } }
+            });
+          }}
+        />
 
         <SolidBackground
-          label="Plan Background Color"
+          label="Button Background Color"
           value={planStyle?.buttonStyle?.buttonBackgroundColor}
           onChange={(value) => {
             setAttributes({
@@ -409,7 +421,7 @@ const Style = ({ attributes, setAttributes, device }) => {
                   buttonBackgroundColor: value
                 }
               }
-            })
+            });
           }}
         />
 
@@ -445,7 +457,7 @@ const Style = ({ attributes, setAttributes, device }) => {
                 ...planStyle,
                 buttonStyle: {
                   ...planStyle.buttonStyle,
-                  buttonPadding: padding 
+                  buttonPadding: padding
                 }
               }
             });
@@ -471,7 +483,6 @@ const Style = ({ attributes, setAttributes, device }) => {
 
         <Spacer marginBottom="20px" />
 
-
         <RangeControl
           // help="Please select how transparent you would like this."
           value={planStyle?.buttonStyle?.buttonFontSize || 16}
@@ -493,17 +504,136 @@ const Style = ({ attributes, setAttributes, device }) => {
 
         <Spacer marginBottom="20px" />
 
+        <BoxControl label="Button Radius"
+          values={planStyle?.buttonStyle?.buttonBorderRadius}
+          onChange={(radius) => {
+            setAttributes({
+              planStyle: {
+                ...planStyle,
+                buttonStyle: {
+                  ...planStyle.buttonStyle,
+                  buttonBorderRadius: radius
+                }
+              }
+            });
+          }}
+        />
 
       </PanelBody>
 
 
-      {/* <PanelBody
+      <PanelBody
         className="bPlPanelBody"
-        title={__("Plan Style", "b-blocks")}
+        title={__("Plan Hover Shadow Style", "b-blocks")}
         initialOpen={false}
       >
+        {/* <ShadowControl
+          label="Shadow"
+          value={hoverEffectShadow}
+          onChange={(shado) => setAttributes({ hoverEffectShadow: shado })}
+        /> */}
+      </PanelBody>
 
-      </PanelBody> */}
+
+      <PanelBody
+        className="bPlPanelBody"
+        title={__("Plan Popular  Style", "b-blocks")}
+        initialOpen={false}
+      >
+        <ColorControl
+          label=" Popular Border  Color"
+          defaultColor="#6ab04c"
+          value={planStyle?.popularStyle?.borderColor}
+          onChange={(Color) => {
+            setAttributes({
+              planStyle: { ...planStyle, popularStyle: { ...planStyle.popularStyle, borderColor: Color } },
+            });
+          }}
+        />
+
+        <ColorControl
+          label=" Popular Button text Color"
+          defaultColor="rgba(255, 255, 255, 1)"
+          value={planStyle?.popularStyle?.badgeColor}
+          onChange={(Color) => {
+            setAttributes({
+              planStyle: { ...planStyle, popularStyle: { ...planStyle.popularStyle, badgeColor: Color } },
+            });
+          }}
+        />
+
+        <SolidBackground
+          label="Button Background Color"
+          value={planStyle?.popularStyle?.badgeBackgroundColor}
+          onChange={(value) => {
+            setAttributes({
+              planStyle: {
+                ...planStyle,
+                popularStyle: {
+                  ...planStyle.popularStyle,
+                  badgeBackgroundColor: value
+                }
+              }
+            });
+          }}
+        />
+
+        <Spacer marginBottom="20px" />
+
+        <BoxControl label="Popular Button Padding"
+          values={planStyle?.popularStyle?.badgePadding}
+          onChange={(padding) => {
+            setAttributes({
+              planStyle: {
+                ...planStyle,
+                popularStyle: {
+                  ...planStyle.popularStyle,
+                  badgePadding: padding
+                }
+              }
+            });
+          }}
+        />
+
+        <Spacer marginBottom="20px" />
+
+        <RangeControl
+          value={planStyle?.popularStyle?.badgeFontSize || 18}
+          label="Popular Button Font Size"
+          max={100}
+          min={1}
+          onChange={(v) => {
+            setAttributes({
+              planStyle: {
+                ...planStyle,
+                popularStyle: {
+                  ...planStyle.popularStyle,
+                  badgeFontSize: v
+                }
+              }
+            })
+          }}
+        />
+
+        <Spacer marginBottom="20px" />
+
+        <BoxControl label="Popular Button Radius"
+          values={planStyle?.popularStyle?.badgeRadius}
+          onChange={(radius) => {
+            setAttributes({
+              planStyle: {
+                ...planStyle,
+                popularStyle: {
+                  ...planStyle.popularStyle,
+                  badgeRadius: radius
+                }
+              }
+            });
+          }}
+        />
+
+
+      </PanelBody>
     </>
   );
 };

@@ -100,7 +100,8 @@ const Style = ({
     planTitleStyle,
     planPriceStyle,
     FeaturesStyle,
-    buttonStyle
+    buttonStyle,
+    popularStyle
   } = planStyle;
   const {
     planTitleColor,
@@ -126,12 +127,21 @@ const Style = ({
     buttonColor,
     buttonMargin
   } = buttonStyle;
+  const {
+    borderColor,
+    badgeBackgroundColor,
+    badgeColor,
+    badgeFontSize,
+    badgePadding,
+    badgeRadius
+  } = popularStyle;
   const mainSl = `#${id}`;
   const mainCardContener = `${mainSl} .main-card-contener`;
   const pricing = `${mainCardContener} .pricing`;
   const plan = `${pricing} .plan`;
   const price = `${plan} .price`;
   const features = `${plan} .features`;
+  const planPopular = `${pricing} .plan.popular `;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
@@ -165,6 +175,7 @@ const Style = ({
             border-radius: ${planRadius?.top} ${planRadius?.right} ${planRadius?.bottom} ${planRadius?.left};
 			
 		}
+
 		${plan} h2{
 			color: ${planTitleColor};
             font-size: ${planTitleSize}px;
@@ -184,6 +195,7 @@ const Style = ({
 		}
 
 		${plan} button{
+		    color: ${buttonColor};
 			background: ${buttonBackgroundColor?.includes('gradient') ? buttonBackgroundColor : `${buttonBackgroundColor}`};
 			opacity: ${buttonBackgroundColorOpacity};
 			font-size: ${buttonFontSize}px;
@@ -192,6 +204,25 @@ const Style = ({
 			border-radius: ${buttonBorderRadius?.top} ${buttonBorderRadius?.right} ${buttonBorderRadius?.bottom} ${buttonBorderRadius?.left};
             
 		}
+
+		${planPopular}{
+		    position: relative;
+			border: 2px solid ${borderColor};
+            transform: scale(1.08);
+		}
+
+		${planPopular} span {
+		    position: absolute;
+		    top: -20px;
+		    left: 50%;
+		    transform: translateX(-50%);
+		    background: ${badgeBackgroundColor?.includes('gradient') ? badgeBackgroundColor : `${badgeBackgroundColor}`};
+		    color: ${badgeColor};
+		    padding: ${badgePadding?.top} ${badgePadding?.right} ${badgePadding?.bottom} ${badgePadding?.left};
+		    font-size: ${badgeFontSize}px;
+		    border-radius: ${badgeRadius?.top} ${badgeRadius?.right} ${badgeRadius?.bottom} ${badgeRadius?.left};
+		}
+
 	`
     }
   });
