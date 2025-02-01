@@ -15,6 +15,14 @@
       "type": "string",
       "default": "center"
     },
+    "columns": {
+      "type": "object",
+      "default": {
+        "desktop": 3,
+        "tablet": 2,
+        "mobile": 1
+      }
+    },
     "title": {
       "type": "string",
       "default": "Choose the plan that fits for your team"
@@ -123,11 +131,7 @@
       "type": "object",
       "default": {
         "titleColor": "black",
-        "fontSize": {
-          "desktop": 22,
-          "tablet": 14,
-          "mobile": 12
-        },
+        "fontSize": 32,
         "titleAlign": "center",
         "titleMargin": {
           "top": "2rem",
@@ -141,7 +145,7 @@
       "type": "object",
       "default": {
         "decColor": "black",
-        "decSize": "16px",
+        "decSize": 16,
         "decAlign": "center",
         "decMargin": {
           "top": "0px",

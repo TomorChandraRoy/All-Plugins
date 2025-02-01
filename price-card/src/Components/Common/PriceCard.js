@@ -49,7 +49,7 @@ const PriceCard = ({ attributes }) => {
                             </div >
                         )}
                     </>
-                ))};
+                ))}
             </div>
 
 

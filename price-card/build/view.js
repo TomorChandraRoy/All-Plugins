@@ -48,7 +48,7 @@ const PriceCard = ({
       color: feature.iconType === "fa-solid fa-circle-check" ? " #6ab04c" : feature.iconType === "fa fa-times-circle" ? "#eb4d4b" : "rgba(39, 154, 67, 0.86)",
       marginRight: "10px"
     }
-  }), feature.text))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", null, plan.buttonLabel)))), ";"));
+  }), feature.text))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", null, plan.buttonLabel))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PriceCard);
 
@@ -71,28 +71,43 @@ __webpack_require__.r(__webpack_exports__);
 
 const Style = ({
   attributes,
-  id,
-  device = "desktop"
+  id
 }) => {
   const {
-    headerStyle
+    headerStyle,
+    headerDecStyle
   } = attributes;
   const {
     titleColor,
-    fontSize
+    fontSize,
+    titleMargin,
+    titleAlign
   } = headerStyle;
+  const {
+    decColor,
+    decSize,
+    decAlign,
+    decMargin
+  } = headerDecStyle;
   const mainSl = `#${id}`;
   const mainCardContener = `${mainSl} .main-card-contener`;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
-		
+		${mainCardContener}{
+		}
 		${mainCardContener} h1{
 			color: ${titleColor};
-            font-size:${fontSize[device]}px;
-
-		}
-
+			font-size: ${fontSize}px;
+			margin: ${titleMargin?.top} ${titleMargin?.right} ${titleMargin?.bottom} ${titleMargin?.left};
+			text-align:${titleAlign};
+			}
+		${mainCardContener} p{
+			color: ${decColor};
+            font-size: ${decSize}px;
+			margin: ${decMargin?.top} ${decMargin?.right} ${decMargin?.bottom} ${decMargin?.left};
+			text-align:${decAlign};
+			}
 	`
     }
   });
