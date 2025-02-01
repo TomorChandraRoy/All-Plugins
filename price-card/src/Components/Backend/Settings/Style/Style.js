@@ -20,8 +20,6 @@ const Style = ({ attributes, setAttributes, device }) => {
 
   const { headerStyle, headerDecStyle, planStyle, columns } = attributes;
 
- 
-
 
   return (
     <>
@@ -165,6 +163,31 @@ const Style = ({ attributes, setAttributes, device }) => {
             planStyle: { ...planStyle, planPadding: padding }
           })
         }} />
+
+        <Spacer marginBottom="20px" />
+
+        <BoxControl label="Margin" values={planStyle?.planMargin} onChange={(margin) => {
+          setAttributes({
+            planStyle: { ...planStyle, planMargin: margin }
+          })
+        }} />
+
+        <Spacer marginBottom="20px" />
+
+        {/*BorderControl  */}
+        <BoxControl label="Border" values={planStyle?.planRadius}
+          onChange={(newValues) => {
+            setAttributes({ planStyle: { ...planStyle, planRadius: newValues } });
+          }}
+        />
+
+        <Spacer marginBottom="20px" />
+
+        <AlignmentToolbar label="Plan Content" value={planStyle.planAlign} onChange={val => { setAttributes({ planStyle: { ...planStyle, planAlign: val }, }) }} describedBy={__('Block Name Alignment')} alignmentControls={[
+          { title: __(' Plan in left', 'textdomain'), align: 'left', icon: 'align-left' },
+          { title: __(' Plan in center', 'textdomain'), align: 'center', icon: 'align-center' },
+          { title: __(' Plan in right', 'textdomain'), align: 'right', icon: 'align-right' }
+        ]} />
 
       </PanelBody>
 

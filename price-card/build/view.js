@@ -93,7 +93,10 @@ const Style = ({
   const {
     planBackgroundColor,
     planBackgroundColorOpacity,
-    planPadding
+    planPadding,
+    planMargin,
+    planRadius,
+    planAlign
   } = planStyle;
   const mainSl = `#${id}`;
   const mainCardContener = `${mainSl} .main-card-contener`;
@@ -118,13 +121,19 @@ const Style = ({
 			}
 
 		${pricing}{
-
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: ${planAlign};
+			font-family: "Source Sans Pro", sans-serif;
 		}
 
 		${plan}{
 			background: ${planBackgroundColor?.includes('gradient') ? planBackgroundColor : `${planBackgroundColor}`};
 			opacity: ${planBackgroundColorOpacity};
 			padding: ${planPadding?.top} ${planPadding?.right} ${planPadding?.bottom} ${planPadding?.left};
+			margin: ${planMargin?.top} ${planMargin?.right} ${planMargin?.bottom} ${planMargin?.left};
+            border-radius: ${planRadius?.top} ${planRadius?.right} ${planRadius?.bottom} ${planRadius?.left};
+			
 		}
 	`
     }

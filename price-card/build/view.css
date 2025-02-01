@@ -38,7 +38,7 @@ body {
 .wp-block-b-blocks-price-card .main-card-contener .pricing .plan {
   background-color: #fff;
   padding: 2.5rem;
-  margin: 33px 25px !important;
+  margin: 33px 25px;
   border-radius: 5px;
   text-align: center;
   transition: 0.3s;
