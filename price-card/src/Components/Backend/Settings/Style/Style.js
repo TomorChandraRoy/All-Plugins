@@ -471,6 +471,29 @@ const Style = ({ attributes, setAttributes, device }) => {
 
         <Spacer marginBottom="20px" />
 
+
+        <RangeControl
+          // help="Please select how transparent you would like this."
+          value={planStyle?.buttonStyle?.buttonFontSize || 16}
+          label="Button Font Size"
+          max={100}
+          min={1}
+          onChange={(v) => {
+            setAttributes({
+              planStyle: {
+                ...planStyle,
+                buttonStyle: {
+                  ...planStyle.buttonStyle,
+                  buttonFontSize: v
+                }
+              }
+            })
+          }}
+        />
+
+        <Spacer marginBottom="20px" />
+
+
       </PanelBody>
 
 

@@ -186,9 +186,10 @@ const Style = ({
 		${plan} button{
 			background: ${buttonBackgroundColor?.includes('gradient') ? buttonBackgroundColor : `${buttonBackgroundColor}`};
 			opacity: ${buttonBackgroundColorOpacity};
-
+			font-size: ${buttonFontSize}px;
 		    padding: ${buttonPadding?.top} ${buttonPadding?.right} ${buttonPadding?.bottom} ${buttonPadding?.left};
 			margin: ${buttonMargin?.top} ${buttonMargin?.right} ${buttonMargin?.bottom} ${buttonMargin?.left};
+			border-radius: ${buttonBorderRadius?.top} ${buttonBorderRadius?.right} ${buttonBorderRadius?.bottom} ${buttonBorderRadius?.left};
             
 		}
 	`

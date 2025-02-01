@@ -214,8 +214,13 @@
             "bottom": "12px",
             "left": "35px"
           },
-          "buttonFontSize": "16px",
-          "buttonBorderRadius": "5px",
+          "buttonFontSize": 16,
+          "buttonBorderRadius": {
+            "top": "5px",
+            "right": "5px",
+            "bottom": "5px",
+            "left": "5px"
+          },
           "buttonColor": "#fff",
           "buttonMargin": {
             "top": "1rem",
