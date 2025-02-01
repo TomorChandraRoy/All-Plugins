@@ -21,6 +21,7 @@ const Style = ({ attributes, setAttributes, device }) => {
   const { headerStyle, headerDecStyle, planStyle, columns } = attributes;
 
 
+
   return (
     <>
       <PanelBody
@@ -69,6 +70,7 @@ const Style = ({ attributes, setAttributes, device }) => {
 
         <Spacer marginBottom="20px" />
 
+        <h3>Header Title  align Content</h3>
         <AlignmentToolbar value={headerStyle.titleAlign} onChange={val => { setAttributes({ headerStyle: { ...headerStyle, titleAlign: val }, }) }} describedBy={__('Block Name Alignment')} alignmentControls={[
           { title: __(' Name in left', 'textdomain'), align: 'left', icon: 'align-left' },
           { title: __(' Name in center', 'textdomain'), align: 'center', icon: 'align-center' },
@@ -113,7 +115,8 @@ const Style = ({ attributes, setAttributes, device }) => {
             setAttributes({ headerDecStyle: { ...headerDecStyle, decSize: v } });
           }}
         />
-
+        <Spacer marginBottom="20px" />
+        <h3>Header Dec align Content</h3>
         <AlignmentToolbar value={headerDecStyle.decAlign} onChange={val => { setAttributes({ headerDecStyle: { ...headerDecStyle, decAlign: val }, }) }} describedBy={__('Block Name Alignment')} alignmentControls={[
           { title: __(' Name in left', 'textdomain'), align: 'left', icon: 'align-left' },
           { title: __(' Name in center', 'textdomain'), align: 'center', icon: 'align-center' },
@@ -136,7 +139,7 @@ const Style = ({ attributes, setAttributes, device }) => {
         initialOpen={false}
       >
         <SolidBackground
-          label="Background Color"
+          label="Plan Background Color"
           value={planStyle?.planBackgroundColor}
           onChange={(value) => {
             setAttributes({ planStyle: { ...planStyle, planBackgroundColor: value } })
@@ -158,7 +161,7 @@ const Style = ({ attributes, setAttributes, device }) => {
         />
         <Spacer marginBottom="20px" />
 
-        <BoxControl label="Padding" values={planStyle?.planPadding} onChange={(padding) => {
+        <BoxControl label="Plan Padding" values={planStyle?.planPadding} onChange={(padding) => {
           setAttributes({
             planStyle: { ...planStyle, planPadding: padding }
           })
@@ -166,7 +169,7 @@ const Style = ({ attributes, setAttributes, device }) => {
 
         <Spacer marginBottom="20px" />
 
-        <BoxControl label="Margin" values={planStyle?.planMargin} onChange={(margin) => {
+        <BoxControl label="Plan Margin" values={planStyle?.planMargin} onChange={(margin) => {
           setAttributes({
             planStyle: { ...planStyle, planMargin: margin }
           })
@@ -175,7 +178,7 @@ const Style = ({ attributes, setAttributes, device }) => {
         <Spacer marginBottom="20px" />
 
         {/*BorderControl  */}
-        <BoxControl label="Border" values={planStyle?.planRadius}
+        <BoxControl label="Plan Border" values={planStyle?.planRadius}
           onChange={(newValues) => {
             setAttributes({ planStyle: { ...planStyle, planRadius: newValues } });
           }}
@@ -183,11 +186,162 @@ const Style = ({ attributes, setAttributes, device }) => {
 
         <Spacer marginBottom="20px" />
 
+        <h3>Plan Align Content</h3>
         <AlignmentToolbar label="Plan Content" value={planStyle.planAlign} onChange={val => { setAttributes({ planStyle: { ...planStyle, planAlign: val }, }) }} describedBy={__('Block Name Alignment')} alignmentControls={[
           { title: __(' Plan in left', 'textdomain'), align: 'left', icon: 'align-left' },
           { title: __(' Plan in center', 'textdomain'), align: 'center', icon: 'align-center' },
           { title: __(' Plan in right', 'textdomain'), align: 'right', icon: 'align-right' }
         ]} />
+
+      </PanelBody>
+
+      <PanelBody
+        className="bPlPanelBody"
+        title={__("Plan Title  Style", "b-blocks")}
+        initialOpen={false}
+      >
+        <Spacer marginBottom="20px" />
+
+        <ColorControl
+          label="Plan Title Color"
+          defaultColor="#000000"
+          value={planStyle?.planTitleStyle?.planTitleColor}
+          onChange={(Color) => {
+            {
+              setAttributes({
+                planStyle: {
+                  ...planStyle,
+                  planTitleStyle: {
+                    ...planStyle.planTitleStyle,
+                    planTitleColor: Color
+                  }
+                }
+              });
+            }
+          }}
+        />
+
+        <Spacer marginBottom="20px" />
+
+        <RangeControl
+          // help="Please select how transparent you would like this."
+          value={planStyle?.planTitleStyle?.planTitleSize || 22}
+          label="Plan Title Size"
+          max={100}
+          min={1}
+          onChange={(v) => {
+            setAttributes({
+              planStyle: {
+                ...planStyle,
+                planTitleStyle: {
+                  ...planStyle.planTitleStyle,
+                  planTitleSize: v
+                }
+              }
+            })
+          }}
+        />
+
+        <Spacer marginBottom="20px" />
+
+        <BoxControl label="Plan Title Margin" values={planStyle?.planTitleStyle?.planTitleMargin}
+          onChange={(margin) => {
+            setAttributes({
+              planStyle: {
+                ...planStyle,
+                planTitleStyle: {
+                  ...planStyle.planTitleStyle,
+                  planTitleMargin: margin
+                }
+              }
+            });
+          }}
+        />
+      </PanelBody>
+
+      <PanelBody
+        className="bPlPanelBody"
+        title={__("Plan Price Style", "b-blocks")}
+        initialOpen={false}
+      >
+
+        <Spacer marginBottom="20px" />
+
+        <ColorControl
+          label="Plan Title Color"
+          defaultColor="#000000"
+          value={planStyle?.planPriceStyle?.priceColor}
+          onChange={(Color) => {
+            {
+              setAttributes({
+                planStyle: {
+                  ...planStyle,
+                  planPriceStyle: {
+                    ...planStyle.planPriceStyle,
+                    priceColor: Color
+                  }
+                }
+              });
+            }
+          }}
+        />
+
+        <Spacer marginBottom="20px" />
+
+        <RangeControl
+          // help="Please select how transparent you would like this."
+          value={planStyle?.planPriceStyle?.priceSize || 22}
+          label="Plan Title Size"
+          max={100}
+          min={1}
+          onChange={(v) => {
+            setAttributes({
+              planStyle: {
+                ...planStyle,
+                planPriceStyle: {
+                  ...planStyle.planPriceStyle,
+                  priceSize: v
+                }
+              }
+            })
+          }}
+        />
+
+        <Spacer marginBottom="20px" />
+
+        <BoxControl label="Plan Title Margin" values={planStyle?.planPriceStyle?.priceMargin}
+          onChange={(margin) => {
+            setAttributes({
+              planStyle: {
+                ...planStyle,
+                planPriceStyle: {
+                  ...planStyle.planPriceStyle,
+                  priceMargin: margin
+                }
+              }
+            });
+          }}
+        />
+
+        <Spacer marginBottom="20px" />
+
+        <h3>Plan Price Content</h3>
+        <AlignmentToolbar  value={planStyle?.planPriceStyle?.priceAlign}
+          onChange={(val) => {
+            setAttributes({
+              planStyle: {
+                ...planStyle,
+                planPriceStyle: {
+                  ...planStyle.planPriceStyle,
+                  priceAlign: val,
+                }
+              }
+            });
+          }} describedBy={__('Block Name Alignment')} alignmentControls={[
+            { title: __(' Price in left', 'textdomain'), align: 'left', icon: 'align-left' },
+            { title: __(' Price in center', 'textdomain'), align: 'center', icon: 'align-center' },
+            { title: __(' Price in right', 'textdomain'), align: 'right', icon: 'align-right' }
+          ]} />
 
       </PanelBody>
 

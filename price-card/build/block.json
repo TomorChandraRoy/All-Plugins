@@ -11,10 +11,6 @@
   ],
   "textdomain": "b-blocks",
   "attributes": {
-    "alignment": {
-      "type": "string",
-      "default": "center"
-    },
     "columns": {
       "type": "object",
       "default": {
@@ -180,10 +176,9 @@
         },
         "planAlign": "center",
         "planTitleStyle": {
-          "titleColor": "black",
-          "titleSize": "22px",
-          "titleAlign": "center",
-          "titleMargin": {
+          "planTitleColor": "black",
+          "planTitleSize": 22,
+          "planTitleMargin": {
             "top": "0px",
             "right": "0px",
             "bottom": "12px",
@@ -192,7 +187,7 @@
         },
         "planPriceStyle": {
           "priceColor": "black",
-          "priceSize": "30px",
+          "priceSize": 30,
           "priceAlign": "center",
           "priceMargin": {
             "top": "0px",

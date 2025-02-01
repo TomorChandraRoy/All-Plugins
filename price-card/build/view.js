@@ -96,12 +96,26 @@ const Style = ({
     planPadding,
     planMargin,
     planRadius,
-    planAlign
+    planAlign,
+    planTitleStyle,
+    planPriceStyle
   } = planStyle;
+  const {
+    planTitleColor,
+    planTitleSize,
+    planTitleMargin
+  } = planTitleStyle;
+  const {
+    priceColor,
+    priceSize,
+    priceAlign,
+    priceMargin
+  } = planPriceStyle;
   const mainSl = `#${id}`;
   const mainCardContener = `${mainSl} .main-card-contener`;
   const pricing = `${mainCardContener} .pricing`;
   const plan = `${pricing} .plan`;
+  const price = `${plan} .price`;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
@@ -134,6 +148,17 @@ const Style = ({
 			margin: ${planMargin?.top} ${planMargin?.right} ${planMargin?.bottom} ${planMargin?.left};
             border-radius: ${planRadius?.top} ${planRadius?.right} ${planRadius?.bottom} ${planRadius?.left};
 			
+		}
+		${plan} h2{
+			color: ${planTitleColor};
+            font-size: ${planTitleSize}px;
+			margin: ${planTitleMargin?.top} ${planTitleMargin?.right} ${planTitleMargin?.bottom} ${planTitleMargin?.left};
+		}
+		${price} {
+			color: ${priceColor};
+            font-size: ${priceSize}px;
+			margin: ${priceMargin?.top} ${priceMargin?.right} ${priceMargin?.bottom} ${priceMargin?.left};
+			text-align:${priceAlign};
 		}
 	`
     }

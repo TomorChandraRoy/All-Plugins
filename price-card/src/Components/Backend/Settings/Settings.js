@@ -8,7 +8,7 @@ import General from './General/General';
 import Style from './Style/Style';
 
 const Settings = ({ attributes, setAttributes, device}) => {
-	const { alignment,planStyle} = attributes;
+	const {planStyle} = attributes;
 
 	return <>
 		<InspectorControls>
