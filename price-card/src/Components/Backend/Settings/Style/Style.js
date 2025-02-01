@@ -20,8 +20,7 @@ const Style = ({ attributes, setAttributes, device }) => {
 
   const { headerStyle, headerDecStyle, planStyle, columns } = attributes;
 
-  console.log(planStyle.planBackgroundColorOpacity);
-
+ 
 
 
   return (
@@ -159,6 +158,13 @@ const Style = ({ attributes, setAttributes, device }) => {
             setAttributes({ planStyle: { ...planStyle, planBackgroundColorOpacity: v } });
           }}
         />
+        <Spacer marginBottom="20px" />
+
+        <BoxControl label="Padding" values={planStyle?.planPadding} onChange={(padding) => {
+          setAttributes({
+            planStyle: { ...planStyle, planPadding: padding }
+          })
+        }} />
 
       </PanelBody>
 

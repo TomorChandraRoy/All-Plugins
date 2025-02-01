@@ -5,7 +5,7 @@ const Style = ({ attributes, id, }) => {
 	const { titleColor, fontSize, titleMargin, titleAlign } = headerStyle;
 	const { decColor, decSize, decAlign, decMargin } = headerDecStyle;
 
-	const { planBackgroundColor,planBackgroundColorOpacity } = planStyle;
+	const { planBackgroundColor,planBackgroundColorOpacity,planPadding } = planStyle;
 
 	const mainSl = `#${id}`;
 	const mainCardContener = `${mainSl} .main-card-contener`;
@@ -36,6 +36,7 @@ const Style = ({ attributes, id, }) => {
 		${plan}{
 			background: ${planBackgroundColor?.includes('gradient') ? planBackgroundColor : `${planBackgroundColor}`};
 			opacity: ${planBackgroundColorOpacity};
+			padding: ${planPadding?.top} ${planPadding?.right} ${planPadding?.bottom} ${planPadding?.left};
 		}
 	`}} />;
 }

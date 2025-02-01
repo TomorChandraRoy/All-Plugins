@@ -92,7 +92,8 @@ const Style = ({
   } = headerDecStyle;
   const {
     planBackgroundColor,
-    planBackgroundColorOpacity
+    planBackgroundColorOpacity,
+    planPadding
   } = planStyle;
   const mainSl = `#${id}`;
   const mainCardContener = `${mainSl} .main-card-contener`;
@@ -123,6 +124,7 @@ const Style = ({
 		${plan}{
 			background: ${planBackgroundColor?.includes('gradient') ? planBackgroundColor : `${planBackgroundColor}`};
 			opacity: ${planBackgroundColorOpacity};
+			padding: ${planPadding?.top} ${planPadding?.right} ${planPadding?.bottom} ${planPadding?.left};
 		}
 	`
     }
