@@ -6,7 +6,7 @@ import {
   PanelRow,
   RangeControl,
 } from "@wordpress/components";
-import { ColorControl, Label } from "../../../../../../bpl-tools/Components";
+import { ColorControl, Label, SolidBackground } from "../../../../../../bpl-tools/Components";
 import { AlignmentToolbar } from "@wordpress/block-editor";
 import { BDevice } from "../../../../../../bpl-tools/Components/Deprecated";
 import { useState } from 'react';
@@ -18,7 +18,10 @@ const Style = ({ attributes, setAttributes, device }) => {
 
   const [devicee, setDevice] = useState('desktop');
 
-  const { headerStyle, headerDecStyle, columns } = attributes;
+  const { headerStyle, headerDecStyle, planStyle, columns } = attributes;
+
+  console.log(planStyle.planBackgroundColorOpacity);
+
 
 
   return (
@@ -62,8 +65,8 @@ const Style = ({ attributes, setAttributes, device }) => {
           label="Font Size"
           max={100}
           min={1}
-          onChange={(v) =>{
-            setAttributes({headerStyle:{ ...headerStyle, fontSize:v }});
+          onChange={(v) => {
+            setAttributes({ headerStyle: { ...headerStyle, fontSize: v } });
           }}
         />
 
@@ -77,7 +80,7 @@ const Style = ({ attributes, setAttributes, device }) => {
 
         <Spacer marginBottom="20px" />
 
-        <BoxControl values={headerStyle?.titleMargin} onChange={(margin) => {
+        <BoxControl label="Margin" values={headerStyle?.titleMargin} onChange={(margin) => {
           setAttributes({
             headerStyle: { ...headerStyle, titleMargin: margin }
           })
@@ -109,8 +112,8 @@ const Style = ({ attributes, setAttributes, device }) => {
           label="Font Size"
           max={100}
           min={1}
-          onChange={(v) =>{
-            setAttributes({headerDecStyle:{ ...headerDecStyle, decSize:v }});
+          onChange={(v) => {
+            setAttributes({ headerDecStyle: { ...headerDecStyle, decSize: v } });
           }}
         />
 
@@ -122,7 +125,7 @@ const Style = ({ attributes, setAttributes, device }) => {
 
         <Spacer marginBottom="20px" />
 
-        <BoxControl values={headerDecStyle?.decMargin} onChange={(margin) => {
+        <BoxControl label="Margin" values={headerDecStyle?.decMargin} onChange={(margin) => {
           setAttributes({
             headerDecStyle: { ...headerDecStyle, decMargin: margin }
           })
@@ -130,9 +133,38 @@ const Style = ({ attributes, setAttributes, device }) => {
 
       </PanelBody>
 
+      <PanelBody
+        className="bPlPanelBody"
+        title={__("Plan Style", "b-blocks")}
+        initialOpen={false}
+      >
+        <SolidBackground
+          label="Background Color"
+          value={planStyle?.planBackgroundColor}
+          onChange={(value) => {
+            setAttributes({ planStyle: { ...planStyle, planBackgroundColor: value } })
+          }}
+        />
+
+        <Spacer marginBottom="20px" />
+
+        <RangeControl
+          // help="Please select how transparent you would like this."
+          value={planStyle?.planBackgroundColorOpacity || 1}
+          label="Background Opacity"
+          step={0.1}
+          max={1}
+          min={0.1}
+          onChange={(v) => {
+            setAttributes({ planStyle: { ...planStyle, planBackgroundColorOpacity: v } });
+          }}
+        />
+
+      </PanelBody>
+
       {/* <PanelBody
         className="bPlPanelBody"
-        title={__("Typography Components", "b-blocks")}
+        title={__("Plan Style", "b-blocks")}
         initialOpen={false}
       >
 

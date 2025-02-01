@@ -149,7 +149,8 @@
     "planStyle": {
       "type": "object",
       "default": {
-        "planBackgroundColor": "#fff",
+        "planBackgroundColor": "rgba(255, 255, 255, 1)",
+        "planBackgroundColorOpacity": 1,
         "planPadding": {
           "top": "2.5rem",
           "right": "2.5rem",

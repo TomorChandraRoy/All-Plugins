@@ -75,7 +75,8 @@ const Style = ({
 }) => {
   const {
     headerStyle,
-    headerDecStyle
+    headerDecStyle,
+    planStyle
   } = attributes;
   const {
     titleColor,
@@ -89,8 +90,14 @@ const Style = ({
     decAlign,
     decMargin
   } = headerDecStyle;
+  const {
+    planBackgroundColor,
+    planBackgroundColorOpacity
+  } = planStyle;
   const mainSl = `#${id}`;
   const mainCardContener = `${mainSl} .main-card-contener`;
+  const pricing = `${mainCardContener} .pricing`;
+  const plan = `${pricing} .plan`;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
@@ -108,6 +115,15 @@ const Style = ({
 			margin: ${decMargin?.top} ${decMargin?.right} ${decMargin?.bottom} ${decMargin?.left};
 			text-align:${decAlign};
 			}
+
+		${pricing}{
+
+		}
+
+		${plan}{
+			background: ${planBackgroundColor?.includes('gradient') ? planBackgroundColor : `${planBackgroundColor}`};
+			opacity: ${planBackgroundColorOpacity};
+		}
 	`
     }
   });
