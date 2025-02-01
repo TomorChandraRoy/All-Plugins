@@ -98,7 +98,9 @@ const Style = ({
     planRadius,
     planAlign,
     planTitleStyle,
-    planPriceStyle
+    planPriceStyle,
+    FeaturesStyle,
+    buttonStyle
   } = planStyle;
   const {
     planTitleColor,
@@ -111,11 +113,25 @@ const Style = ({
     priceAlign,
     priceMargin
   } = planPriceStyle;
+  const {
+    featureAlign,
+    featureliMagin
+  } = FeaturesStyle;
+  const {
+    buttonBackgroundColor,
+    buttonBackgroundColorOpacity,
+    buttonPadding,
+    buttonFontSize,
+    buttonBorderRadius,
+    buttonColor,
+    buttonMargin
+  } = buttonStyle;
   const mainSl = `#${id}`;
   const mainCardContener = `${mainSl} .main-card-contener`;
   const pricing = `${mainCardContener} .pricing`;
   const plan = `${pricing} .plan`;
   const price = `${plan} .price`;
+  const features = `${plan} .features`;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
@@ -159,6 +175,21 @@ const Style = ({
             font-size: ${priceSize}px;
 			margin: ${priceMargin?.top} ${priceMargin?.right} ${priceMargin?.bottom} ${priceMargin?.left};
 			text-align:${priceAlign};
+		}
+		${features} {
+			text-align:${featureAlign};
+		}
+		${features} li{
+			margin: ${featureliMagin?.top} ${featureliMagin?.right} ${featureliMagin?.bottom} ${featureliMagin?.left};
+		}
+
+		${plan} button{
+			background: ${buttonBackgroundColor?.includes('gradient') ? buttonBackgroundColor : `${buttonBackgroundColor}`};
+			opacity: ${buttonBackgroundColorOpacity};
+
+		    padding: ${buttonPadding?.top} ${buttonPadding?.right} ${buttonPadding?.bottom} ${buttonPadding?.left};
+			margin: ${buttonMargin?.top} ${buttonMargin?.right} ${buttonMargin?.bottom} ${buttonMargin?.left};
+            
 		}
 	`
     }

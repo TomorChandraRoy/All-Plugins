@@ -326,7 +326,7 @@ const Style = ({ attributes, setAttributes, device }) => {
         <Spacer marginBottom="20px" />
 
         <h3>Plan Price Content</h3>
-        <AlignmentToolbar  value={planStyle?.planPriceStyle?.priceAlign}
+        <AlignmentToolbar value={planStyle?.planPriceStyle?.priceAlign}
           onChange={(val) => {
             setAttributes({
               planStyle: {
@@ -344,6 +344,135 @@ const Style = ({ attributes, setAttributes, device }) => {
           ]} />
 
       </PanelBody>
+
+      <PanelBody
+        className="bPlPanelBody"
+        title={__("Plan Features Style", "b-blocks")}
+        initialOpen={false}
+      >
+        <Spacer marginBottom="20px" />
+
+        <BoxControl label="Plan Feature Margin" values={planStyle?.FeaturesStyle?.featureliMagin}
+          onChange={(margin) => {
+            setAttributes({
+              planStyle: {
+                ...planStyle,
+                FeaturesStyle: {
+                  ...planStyle.FeaturesStyle,
+                  featureliMagin: margin
+                }
+              }
+            });
+          }}
+        />
+
+        <Spacer marginBottom="20px" />
+
+        <h3>Plan Feature Content</h3>
+        <AlignmentToolbar value={planStyle?.FeaturesStyle?.featureAlign}
+          onChange={(val) => {
+            setAttributes({
+              planStyle: {
+                ...planStyle,
+                FeaturesStyle: {
+                  ...planStyle.FeaturesStyle,
+                  featureAlign: val,
+                }
+              }
+            });
+          }} describedBy={__('Block Name Alignment')} alignmentControls={[
+            { title: __(' Feature in left', 'textdomain'), align: 'left', icon: 'align-left' },
+            { title: __(' Feature in center', 'textdomain'), align: 'center', icon: 'align-center' },
+            { title: __(' Feature in right', 'textdomain'), align: 'right', icon: 'align-right' }
+          ]} />
+
+
+      </PanelBody>
+
+
+      <PanelBody
+        className="bPlPanelBody"
+        title={__("Plan Button Style", "b-blocks")}
+        initialOpen={false}
+      >
+
+
+        <SolidBackground
+          label="Plan Background Color"
+          value={planStyle?.buttonStyle?.buttonBackgroundColor}
+          onChange={(value) => {
+            setAttributes({
+              planStyle: {
+                ...planStyle,
+                buttonStyle: {
+                  ...planStyle.buttonStyle,
+                  buttonBackgroundColor: value
+                }
+              }
+            })
+          }}
+        />
+
+        <Spacer marginBottom="20px" />
+
+        <RangeControl
+          // help="Please select how transparent you would like this."
+          value={planStyle?.buttonStyle?.buttonBackgroundColorOpacity || 1}
+          label="Background Opacity"
+          step={0.1}
+          max={1}
+          min={0.1}
+          onChange={(v) => {
+            setAttributes({
+              planStyle: {
+                ...planStyle,
+                buttonStyle: {
+                  ...planStyle.buttonStyle,
+                  buttonBackgroundColorOpacity: v
+                }
+              }
+            });
+          }}
+        />
+        <Spacer marginBottom="20px" />
+
+        <BoxControl
+          label="Button Padding"
+          values={planStyle?.buttonStyle?.buttonPadding}
+          onChange={(padding) => {
+            setAttributes({
+              planStyle: {
+                ...planStyle,
+                buttonStyle: {
+                  ...planStyle.buttonStyle,
+                  buttonPadding: padding 
+                }
+              }
+            });
+          }}
+        />
+
+        <Spacer marginBottom="20px" />
+
+        <BoxControl label="Button Margin"
+          values={planStyle?.buttonStyle?.buttonMargin}
+          onChange={(margin) => {
+            setAttributes({
+              planStyle: {
+                ...planStyle,
+                buttonStyle: {
+                  ...planStyle.buttonStyle,
+                  buttonMargin: margin
+                }
+              }
+            });
+          }}
+        />
+
+        <Spacer marginBottom="20px" />
+
+      </PanelBody>
+
 
       {/* <PanelBody
         className="bPlPanelBody"

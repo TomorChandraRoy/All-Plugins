@@ -207,6 +207,7 @@
         },
         "buttonStyle": {
           "buttonBackgroundColor": "#6ab04c",
+          "buttonBackgroundColorOpacity": 1,
           "buttonPadding": {
             "top": "12px",
             "right": "35px",

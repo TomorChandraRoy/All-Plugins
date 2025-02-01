@@ -5,11 +5,15 @@ const Style = ({ attributes, id, }) => {
 	const { titleColor, fontSize, titleMargin, titleAlign } = headerStyle;
 	const { decColor, decSize, decAlign, decMargin } = headerDecStyle;
 
-	const { planBackgroundColor,planBackgroundColorOpacity,planPadding,planMargin,planRadius,planAlign,planTitleStyle,planPriceStyle } = planStyle;
+	const { planBackgroundColor, planBackgroundColorOpacity, planPadding, planMargin, planRadius, planAlign, planTitleStyle, planPriceStyle, FeaturesStyle, buttonStyle } = planStyle;
 
-	const { planTitleColor,planTitleSize,planTitleMargin } = planTitleStyle;
+	const { planTitleColor, planTitleSize, planTitleMargin } = planTitleStyle;
 
-	const { priceColor,priceSize,priceAlign,priceMargin } = planPriceStyle;
+	const { priceColor, priceSize, priceAlign, priceMargin } = planPriceStyle;
+
+	const { featureAlign, featureliMagin } = FeaturesStyle;
+
+	const { buttonBackgroundColor,buttonBackgroundColorOpacity, buttonPadding, buttonFontSize, buttonBorderRadius, buttonColor, buttonMargin } = buttonStyle;
 
 
 	const mainSl = `#${id}`;
@@ -17,6 +21,7 @@ const Style = ({ attributes, id, }) => {
 	const pricing = `${mainCardContener} .pricing`;
 	const plan = `${pricing} .plan`;
 	const price = `${plan} .price`;
+	const features = `${plan} .features`;
 
 	return <style dangerouslySetInnerHTML={{
 		__html: `
@@ -60,6 +65,21 @@ const Style = ({ attributes, id, }) => {
             font-size: ${priceSize}px;
 			margin: ${priceMargin?.top} ${priceMargin?.right} ${priceMargin?.bottom} ${priceMargin?.left};
 			text-align:${priceAlign};
+		}
+		${features} {
+			text-align:${featureAlign};
+		}
+		${features} li{
+			margin: ${featureliMagin?.top} ${featureliMagin?.right} ${featureliMagin?.bottom} ${featureliMagin?.left};
+		}
+
+		${plan} button{
+			background: ${buttonBackgroundColor?.includes('gradient') ? buttonBackgroundColor : `${buttonBackgroundColor}`};
+			opacity: ${buttonBackgroundColorOpacity};
+
+		    padding: ${buttonPadding?.top} ${buttonPadding?.right} ${buttonPadding?.bottom} ${buttonPadding?.left};
+			margin: ${buttonMargin?.top} ${buttonMargin?.right} ${buttonMargin?.bottom} ${buttonMargin?.left};
+            
 		}
 	`}} />;
 }
