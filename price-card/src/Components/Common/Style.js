@@ -1,11 +1,11 @@
 // import { getColorsCSS } from '../../../../bpl-tools/utils/getCSS';
 
 const Style = ({ attributes, id, }) => {
-	const { headerStyle, headerDecStyle, planStyle } = attributes;
+	const { headerStyle, headerDecStyle, planStyle,shadow } = attributes;
 	const { titleColor, fontSize, titleMargin, titleAlign } = headerStyle;
 	const { decColor, decSize, decAlign, decMargin } = headerDecStyle;
 
-	const { planBackgroundColor, planBackgroundColorOpacity, planPadding, planMargin, planRadius, planAlign, planTitleStyle, planPriceStyle, FeaturesStyle, buttonStyle, popularStyle } = planStyle;
+	const { planBackgroundColor, planBackgroundColorOpacity, planPadding, planMargin, planRadius, planAlign, planTitleStyle, planPriceStyle, FeaturesStyle, buttonStyle, popularStyle, } = planStyle;
 
 	const { planTitleColor, planTitleSize, planTitleMargin } = planTitleStyle;
 
@@ -15,7 +15,7 @@ const Style = ({ attributes, id, }) => {
 
 	const { buttonBackgroundColor, buttonBackgroundColorOpacity, buttonPadding, buttonFontSize, buttonBorderRadius, buttonColor, buttonMargin } = buttonStyle;
 
-	const {borderColor,badgeBackgroundColor,badgeColor,badgeFontSize,badgePadding,badgeRadius}= popularStyle;
+	const { borderColor, badgeBackgroundColor, badgeColor, badgeFontSize, badgePadding, badgeRadius } = popularStyle;
 
 
 	const mainSl = `#${id}`;
@@ -26,6 +26,8 @@ const Style = ({ attributes, id, }) => {
 	const features = `${plan} .features`;
 
 	const planPopular = `${pricing} .plan.popular `;
+	const planHover = `${pricing} .plan:hover `;
+
 
 	return <style dangerouslySetInnerHTML={{
 		__html: `
@@ -106,6 +108,10 @@ const Style = ({ attributes, id, }) => {
 		    font-size: ${badgeFontSize}px;
 		    border-radius: ${badgeRadius?.top} ${badgeRadius?.right} ${badgeRadius?.bottom} ${badgeRadius?.left};
 		}
+		${planHover}{
+		      box-shadow: ${shadow.map(s => `${s.hOffset} ${s.vOffset} ${s.blur} ${s.spreed} ${s.color}`).join(', ')};
+             transition: all 0.3s ease;
+			}
 
 	`}} />;
 }

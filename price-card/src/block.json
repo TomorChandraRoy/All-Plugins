@@ -165,7 +165,7 @@
           "bottom": "5px",
           "left": "5px"
         },
-        
+
         "planAlign": "center",
 
         "planTitleStyle": {
@@ -178,7 +178,7 @@
             "left": "0px"
           }
         },
-        
+
         "planPriceStyle": {
           "priceColor": "black",
           "priceSize": 30,
@@ -223,14 +223,7 @@
             "left": "0px"
           }
         },
-        "hoverEffect": {
-          "hOffset": "5px", 
-          "vOffset": "7px", 
-          "blur": "67px", 
-          "spreed": "-28px", 
-          "color": "rgba(0, 0, 0, 0.37)",
-          "isInset": false
-        },
+
         "popularStyle": {
           "borderColor": "#6ab04c",
           "badgeBackgroundColor": "#6ab04c",
@@ -250,6 +243,19 @@
           }
         }
       }
+    },
+    "shadow": {
+      "type": "array",
+      "default": [
+        {
+          "hOffset": "5px",
+          "vOffset": "7px",
+          "blur": "67px",
+          "spreed": "-28px",
+          "color": "rgba(0, 0, 0, 0.37)",
+          "isInset": false
+        }
+      ]
     }
   },
   "supports": {

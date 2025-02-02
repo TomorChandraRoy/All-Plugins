@@ -8,7 +8,7 @@ import {
 
 } from "@wordpress/components";
 
-import { ColorControl, Label, SolidBackground } from "../../../../../../bpl-tools/Components";
+import { ColorControl, Label, ShadowControl, SolidBackground } from "../../../../../../bpl-tools/Components";
 import { AlignmentToolbar } from "@wordpress/block-editor";
 import { BDevice } from "../../../../../../bpl-tools/Components/Deprecated";
 import { useState } from 'react';
@@ -20,7 +20,7 @@ const Style = ({ attributes, setAttributes, device }) => {
 
   const [devicee, setDevice] = useState('desktop');
 
-  const { headerStyle, headerDecStyle, planStyle, columns, } = attributes;
+  const { headerStyle, headerDecStyle, planStyle, columns, shadow} = attributes;
 
   console.log(planStyle?.popularStyle?.badgeFontSize);
 
@@ -527,11 +527,12 @@ const Style = ({ attributes, setAttributes, device }) => {
         title={__("Plan Hover Shadow Style", "b-blocks")}
         initialOpen={false}
       >
-        {/* <ShadowControl
-          label="Shadow"
-          value={hoverEffectShadow}
-          onChange={(shado) => setAttributes({ hoverEffectShadow: shado })}
-        /> */}
+        <ShadowControl
+          label="Hover Effect / Shadow"
+          value={shadow}
+          onChange={(newShadow) => setAttributes({ shadow: newShadow })}
+        />
+
       </PanelBody>
 
 

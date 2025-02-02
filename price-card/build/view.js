@@ -76,7 +76,8 @@ const Style = ({
   const {
     headerStyle,
     headerDecStyle,
-    planStyle
+    planStyle,
+    shadow
   } = attributes;
   const {
     titleColor,
@@ -142,6 +143,7 @@ const Style = ({
   const price = `${plan} .price`;
   const features = `${plan} .features`;
   const planPopular = `${pricing} .plan.popular `;
+  const planHover = `${pricing} .plan:hover `;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
@@ -222,6 +224,10 @@ const Style = ({
 		    font-size: ${badgeFontSize}px;
 		    border-radius: ${badgeRadius?.top} ${badgeRadius?.right} ${badgeRadius?.bottom} ${badgeRadius?.left};
 		}
+		${planHover}{
+		      box-shadow: ${shadow.map(s => `${s.hOffset} ${s.vOffset} ${s.blur} ${s.spreed} ${s.color}`).join(', ')};
+             transition: all 0.3s ease;
+			}
 
 	`
     }
