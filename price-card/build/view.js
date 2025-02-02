@@ -71,13 +71,15 @@ __webpack_require__.r(__webpack_exports__);
 
 const Style = ({
   attributes,
-  id
+  id,
+  device = "desktop"
 }) => {
   const {
     headerStyle,
     headerDecStyle,
     planStyle,
-    shadow
+    shadow,
+    columns
   } = attributes;
   const {
     titleColor,
@@ -163,11 +165,25 @@ const Style = ({
 			}
 
 		${pricing}{
-			display: flex;
-			flex-wrap: wrap;
+			display: grid;
+			grid-template-columns: repeat(${columns[device]}, 1fr);
+			align-items: stretch;
+			width: 100%; 
+            max-width: 100%;
+			padding: 0 20px;
 			justify-content: ${planAlign};
 			font-family: "Source Sans Pro", sans-serif;
 		}
+		@media only screen and (min-width:641px) and (max-width: 1024px){
+            ${pricing} {
+                grid-template-columns: repeat(${columns.tablet}, 1fr);
+            }
+       }
+		@media (max-width: 480px) {
+                ${pricing} {
+                grid-template-columns: ${columns.mobile};;
+            }
+         }
 
 		${plan}{
 			background: ${planBackgroundColor?.includes('gradient') ? planBackgroundColor : `${planBackgroundColor}`};

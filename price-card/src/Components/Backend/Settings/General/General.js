@@ -60,11 +60,11 @@ const General = ({ attributes, setAttributes }) => {
       title: 'New Plan',
       price: 'New Pricing',
       features: [
-        { text: "Unlimited Websites", iconType: "check" },
-        { text: "1 User", iconType: "check" },
-        { text: "100MB Space/website", iconType: "check" },
-        { text: "Continuous deployment", iconType: "check" },
-        { text: "No priority support", iconType: "times" }
+        { text: "Unlimited Websites", "iconType": "fa-solid fa-circle-check" },
+        { text: "1 User", "iconType": "fa-solid fa-circle-check" },
+        { text: "100MB Space/website", "iconType": "fa-solid fa-circle-check" },
+        { text: "Continuous deployment", "iconType": "fa-solid fa-circle-check" },
+        { text: "No priority support", "iconType": "fa fa-times-circle" }
       ],
       buttonLabel: 'New Button',
       isPopular: false,

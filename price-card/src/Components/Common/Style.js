@@ -1,7 +1,7 @@
 // import { getColorsCSS } from '../../../../bpl-tools/utils/getCSS';
 
-const Style = ({ attributes, id, }) => {
-	const { headerStyle, headerDecStyle, planStyle,shadow } = attributes;
+const Style = ({ attributes, id, device = "desktop"}) => {
+	const { headerStyle, headerDecStyle, planStyle,shadow,columns } = attributes;
 	const { titleColor, fontSize, titleMargin, titleAlign } = headerStyle;
 	const { decColor, decSize, decAlign, decMargin } = headerDecStyle;
 
@@ -47,11 +47,25 @@ const Style = ({ attributes, id, }) => {
 			}
 
 		${pricing}{
-			display: flex;
-			flex-wrap: wrap;
+			display: grid;
+			grid-template-columns: repeat(${columns[device]}, 1fr);
+			align-items: stretch;
+			width: 100%; 
+            max-width: 100%;
+			padding: 0 20px;
 			justify-content: ${planAlign};
 			font-family: "Source Sans Pro", sans-serif;
 		}
+		@media only screen and (min-width:641px) and (max-width: 1024px){
+            ${pricing} {
+                grid-template-columns: repeat(${columns.tablet}, 1fr);
+            }
+       }
+		@media (max-width: 480px) {
+                ${pricing} {
+                grid-template-columns: ${columns.mobile};;
+            }
+         }
 
 		${plan}{
 			background: ${planBackgroundColor?.includes('gradient') ? planBackgroundColor : `${planBackgroundColor}`};

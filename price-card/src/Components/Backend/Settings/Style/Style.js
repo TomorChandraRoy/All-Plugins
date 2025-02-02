@@ -22,7 +22,7 @@ const Style = ({ attributes, setAttributes, device }) => {
 
   const { headerStyle, headerDecStyle, planStyle, columns, shadow} = attributes;
 
-  console.log(planStyle?.popularStyle?.badgeFontSize);
+  console.log(columns);
 
 
   return (
