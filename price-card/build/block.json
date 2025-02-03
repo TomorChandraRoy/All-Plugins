@@ -11,14 +11,6 @@
   ],
   "textdomain": "b-blocks",
   "attributes": {
-    "columns": {
-      "type": "object",
-      "default": {
-        "desktop": 3,
-        "tablet": 2,
-        "mobile": 1
-      }
-    },
     "title": {
       "type": "string",
       "default": "Choose the plan that fits for your team"

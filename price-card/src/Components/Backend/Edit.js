@@ -3,17 +3,16 @@ import Settings from "./Settings/Settings";
 import Style from "../Common/Style";
 import PriceCard from "../Common/PriceCard";
 
-import { withSelect } from '@wordpress/data';
 
 const Edit = (props) => {
-  const { attributes, setAttributes, clientId, device} = props;
+  const { attributes, setAttributes, clientId, } = props;
 
   return (
     <>
-      <Settings {...{ attributes, setAttributes ,device }} />
+      <Settings {...{ attributes, setAttributes  }} />
 
       <div {...useBlockProps()}>
-        <Style attributes={attributes} device={device} id={`block-${clientId}`} />
+        <Style attributes={attributes} id={`block-${clientId}`} />
 
           <PriceCard attributes={attributes} setAttributes={setAttributes}/>
   
@@ -22,9 +21,4 @@ const Edit = (props) => {
   );
 };
 
-export default withSelect((select) => {
-  const { getDeviceType } = select('core/editor');
-  return {
-    device: getDeviceType()?.toLowerCase(),
-  };
-})(Edit);
+export default Edit;

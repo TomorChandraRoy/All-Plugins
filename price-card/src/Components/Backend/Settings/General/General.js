@@ -138,14 +138,10 @@ const General = ({ attributes, setAttributes }) => {
     updatedPlans.splice(planIndex + 1, 0, { ...plans[planIndex] });
     setAttributes({ plans: updatedPlans });
   };
-
-
-
   //# Price All Card END
 
 
   //# Feature Start
-
   // Update plan's feature 1
   // const updateFeature = (planIndex, featureIndex, value) => {
   //   const newPlans = [...plans];

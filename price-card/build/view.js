@@ -163,15 +163,13 @@ __webpack_require__.r(__webpack_exports__);
 
 const Style = ({
   attributes,
-  id,
-  device = "desktop"
+  id
 }) => {
   const {
     headerStyle,
     headerDecStyle,
     planStyle,
-    shadow,
-    columns
+    shadow
   } = attributes;
   const {
     titleColor,
@@ -238,11 +236,20 @@ const Style = ({
   const features = `${plan} .features`;
   const planPopular = `${pricing} .plan.popular `;
   const planHover = `${pricing} .plan:hover `;
+
+  //priceing width: 282px;
+
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
-		${mainCardContener}{
+		${mainCardContener}{ 
+           padding: 35px;
 		}
+		@media only screen and (min-width:641px) and (max-width: 1024px){
+            ${mainCardContener} {
+                padding: 0px;
+            }
+       }
 		${mainCardContener} h1{
 			color: ${titleColor};
 			font-size: ${fontSize}px;
@@ -258,7 +265,7 @@ const Style = ({
 
 		${pricing}{
 			display: grid;
-			grid-template-columns: repeat(${columns[device]}, 1fr);
+			grid-template-columns: repeat(3, 1fr);
 			align-items: stretch;
 			width: 100%; 
             max-width: 100%;
@@ -268,13 +275,13 @@ const Style = ({
 		}
 		@media only screen and (min-width:641px) and (max-width: 1024px){
             ${pricing} {
-                grid-template-columns: repeat(${columns.tablet}, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
        }
-		@media (max-width: 480px) {
+		@media (max-width: 425px) {
                 ${pricing} {
-                grid-template-columns: ${columns.mobile};
-				
+				grid-template-columns: repeat(1, 1fr);
+
             }
          }
 
@@ -285,8 +292,13 @@ const Style = ({
 			margin: ${planMargin?.top} ${planMargin?.right} ${planMargin?.bottom} ${planMargin?.left};
             border-radius: ${planRadius?.top} ${planRadius?.right} ${planRadius?.bottom} ${planRadius?.left};
 			max-height: max-content;
-			
 		}
+		@media (max-width: 480px) {
+                ${plan} {
+                width:282px;
+				
+            }
+         }
 
 		${plan} h2{
 			color: ${planTitleColor};

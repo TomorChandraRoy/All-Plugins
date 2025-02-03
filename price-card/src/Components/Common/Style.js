@@ -1,7 +1,7 @@
 // import { getColorsCSS } from '../../../../bpl-tools/utils/getCSS';
 
-const Style = ({ attributes, id, device = "desktop"}) => {
-	const { headerStyle, headerDecStyle, planStyle,shadow,columns } = attributes;
+const Style = ({ attributes, id,}) => {
+	const { headerStyle, headerDecStyle, planStyle,shadow, } = attributes;
 	const { titleColor, fontSize, titleMargin, titleAlign } = headerStyle;
 	const { decColor, decSize, decAlign, decMargin } = headerDecStyle;
 
@@ -28,11 +28,18 @@ const Style = ({ attributes, id, device = "desktop"}) => {
 	const planPopular = `${pricing} .plan.popular `;
 	const planHover = `${pricing} .plan:hover `;
 
+    //priceing width: 282px;
 
 	return <style dangerouslySetInnerHTML={{
 		__html: `
-		${mainCardContener}{
+		${mainCardContener}{ 
+           padding: 35px;
 		}
+		@media only screen and (min-width:641px) and (max-width: 1024px){
+            ${mainCardContener} {
+                padding: 0px;
+            }
+       }
 		${mainCardContener} h1{
 			color: ${titleColor};
 			font-size: ${fontSize}px;
@@ -48,7 +55,7 @@ const Style = ({ attributes, id, device = "desktop"}) => {
 
 		${pricing}{
 			display: grid;
-			grid-template-columns: repeat(${columns[device]}, 1fr);
+			grid-template-columns: repeat(3, 1fr);
 			align-items: stretch;
 			width: 100%; 
             max-width: 100%;
@@ -58,13 +65,13 @@ const Style = ({ attributes, id, device = "desktop"}) => {
 		}
 		@media only screen and (min-width:641px) and (max-width: 1024px){
             ${pricing} {
-                grid-template-columns: repeat(${columns.tablet}, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
        }
-		@media (max-width: 480px) {
+		@media (max-width: 425px) {
                 ${pricing} {
-                grid-template-columns: ${columns.mobile};
-				
+				grid-template-columns: repeat(1, 1fr);
+
             }
          }
 
@@ -75,8 +82,13 @@ const Style = ({ attributes, id, device = "desktop"}) => {
 			margin: ${planMargin?.top} ${planMargin?.right} ${planMargin?.bottom} ${planMargin?.left};
             border-radius: ${planRadius?.top} ${planRadius?.right} ${planRadius?.bottom} ${planRadius?.left};
 			max-height: max-content;
-			
 		}
+		@media (max-width: 480px) {
+                ${plan} {
+                width:282px;
+				
+            }
+         }
 
 		${plan} h2{
 			color: ${planTitleColor};

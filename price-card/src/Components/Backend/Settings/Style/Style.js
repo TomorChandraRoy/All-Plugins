@@ -3,42 +3,23 @@ import {
   PanelBody,
   __experimentalBoxControl as BoxControl,
   __experimentalSpacer as Spacer,
-  PanelRow,
+
   RangeControl,
 
 } from "@wordpress/components";
 
-import { ColorControl, Label, ShadowControl, SolidBackground } from "../../../../../../bpl-tools/Components";
+import { ColorControl, ShadowControl, SolidBackground } from "../../../../../../bpl-tools/Components";
 import { AlignmentToolbar } from "@wordpress/block-editor";
-import { BDevice } from "../../../../../../bpl-tools/Components/Deprecated";
-import { useState } from 'react';
 
 
 
+const Style = ({ attributes, setAttributes,  }) => {
 
-const Style = ({ attributes, setAttributes, device }) => {
-
-  const [devicee, setDevice] = useState('desktop');
-
-  const { headerStyle, headerDecStyle, planStyle, columns, shadow} = attributes;
-
-  // console.log(columns);
+  const { headerStyle, headerDecStyle, planStyle,  shadow} = attributes;
 
 
   return (
     <>
-      <PanelBody
-        className="bPlPanelBody"
-        title={__("Responsive Components", "b-blocks")}
-        initialOpen={false}
-      >
-        {/* BDevice */}
-        <PanelRow>
-          <Label className='mb5'>{__('Columns:', 'b-blocks')}</Label>
-          <BDevice device={devicee} onChange={val => setDevice(val)} />
-        </PanelRow>
-        <RangeControl value={columns[device]} onChange={val => setAttributes({ columns: { ...columns, [device]: val } })} min={1} max={6} step={1} beforeIcon='grid-view' />
-      </PanelBody>
 
       <PanelBody
 
