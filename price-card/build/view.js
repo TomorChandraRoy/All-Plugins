@@ -75,8 +75,14 @@ const PriceCard = ({
     className: "pricing"
   }, plans.map((plan, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, plan.isVisible && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: index,
-    className: `plan ${plan.title === plan.title && plan.isPopular ? "popular" : ""}`
-  }, plan.title === plan.title ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, plan.isPopular === true ? plan?.PopularText : "") : "", isEditor ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    className: `plan ${plan.isPopular ? "popular" : ""}`
+  }, plan.isPopular && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, isEditor ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    value: plan.PopularText,
+    onChange: v => setAttributes({
+      plans: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(plans, v, index, 'PopularText')
+    }),
+    placeholder: "Popular Text"
+  }) : plan.PopularText), isEditor ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     className: "h2",
     value: plan.title,
     onChange: v => setAttributes({

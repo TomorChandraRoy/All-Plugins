@@ -48,16 +48,23 @@ const PriceCard = ({ attributes, setAttributes }) => {
                     <>
                         {plan.isVisible && (
 
-                            <div key={index} className={`plan ${plan.title === plan.title && plan.isPopular ? "popular" : ""}`}>
+                            <div key={index} className={`plan ${plan.isPopular ? "popular" : ""}`}>
 
-                                {plan.title === plan.title ?
-                                    <span  >
-                                        {
-                                            plan.isPopular === true
-                                                ? plan?.PopularText : ""
-                                        }
-                                    </span> : ""
-                                }
+
+                                {plan.isPopular && (
+                                    <span>
+                                        {isEditor ? (
+                                            <RichText
+                                                value={plan.PopularText}
+                                                onChange={(v) => setAttributes({ plans: updateData(plans, v, index, 'PopularText') })}
+                                                placeholder="Popular Text"
+                                            />
+                                        ) : (
+                                            plan.PopularText
+                                        )}
+                                    </span>
+                                )}
+
 
                                 {isEditor ?
                                     <RichText className='h2' value={plan.title} onChange={(v) => setAttributes({ plans: updateData(plans, v, index, 'title') })} /> : <div className='h2' value={plan.title} />
@@ -96,9 +103,9 @@ const PriceCard = ({ attributes, setAttributes }) => {
                                     :
                                     <a
                                         href={plan.buttonUrl}
-                                        target={isEditor ? "_self" : "_blank"} 
+                                        target={isEditor ? "_self" : "_blank"}
                                         rel="noopener noreferrer"
-                                        onClick={(e) => isEditor && e.preventDefault()} 
+                                        onClick={(e) => isEditor && e.preventDefault()}
                                     >
                                         <button >{plan.buttonLabel}</button>
                                     </a>

@@ -79,6 +79,7 @@ const General = ({ attributes, setAttributes }) => {
       buttonLabel: 'New Button',
       buttonUrl:'https://wp-gb.com/',
       isPopular: false,
+      PopularText: 'Most Popular',
       isVisible: true
     };
 

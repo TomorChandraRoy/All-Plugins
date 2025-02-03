@@ -55,6 +55,7 @@
           "buttonLabel": "Signup",
           "buttonUrl":"https://wp-gb.com/",
           "isPopular": false,
+          "PopularText": "Most Popular",
           "isVisible": true
         },
         {
@@ -79,6 +80,7 @@
           "buttonLabel": "Buy Now",
           "buttonUrl":"https://wp-gb.com/",
           "isPopular": true,
+          "PopularText": "Most Popular",
           "isVisible": true
         },
         {
