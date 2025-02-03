@@ -95,9 +95,15 @@ body {
   font-size: 18px;
   border-radius: 5px;
 }
-.wp-block-b-blocks-price-card .main-card-contener h1 {
+.wp-block-b-blocks-price-card .main-card-contener .h1 {
   text-align: center;
   margin-bottom: 0px;
+  font-size: 32px;
+  font-weight: 500;
+}
+.wp-block-b-blocks-price-card .main-card-contener .p {
+  margin-bottom: 4rem !important;
+  text-align: center;
 }
 .wp-block-b-blocks-price-card .main-card-contener p {
   margin-bottom: 4rem !important;

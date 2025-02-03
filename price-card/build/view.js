@@ -38,6 +38,19 @@ const PriceCard = ({
     showUpdateDelete
   } = attributes;
 
+  // Update title
+  const updateTitle = newTitle => {
+    setAttributes({
+      title: newTitle
+    });
+  };
+  // Update description
+  const updateDescription = newDescription => {
+    setAttributes({
+      description: newDescription
+    });
+  };
+
   // Upodate Feature
   const updateFeature = (planIndex, featureIndex, value, type) => {
     setAttributes({
@@ -48,7 +61,17 @@ const PriceCard = ({
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "main-card-contener"
-  }, showUpdateDelete ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, description)) : "", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, showUpdateDelete ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, isEditor ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    className: "h1",
+    value: title,
+    onChange: updateTitle
+  }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "h1"
+  }, title), isEditor ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    className: "p",
+    value: description,
+    onChange: updateDescription
+  }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, description)) : "", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pricing"
   }, plans.map((plan, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, plan.isVisible && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: index,
@@ -61,7 +84,7 @@ const PriceCard = ({
     onChange: v => setAttributes({
       plans: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(plans, v, index, 'title')
     })
-  }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "h2",
     value: plan.title
   }), isEditor ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
@@ -93,7 +116,18 @@ const PriceCard = ({
       color: feature.iconType === "fa-solid fa-circle-check" ? " #6ab04c" : feature.iconType === "fa fa-times-circle" ? "#eb4d4b" : "rgba(39, 154, 67, 0.86)",
       marginRight: "10px"
     }
-  }), feature.text)))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  }), feature.text)))), isEditor ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: plan.buttonUrl,
+    target: isEditor ? "_self" : "_blank" // Editor Mode হলে লিংক Disable থাকবে
+    ,
+    rel: "noopener noreferrer",
+    onClick: e => isEditor && e.preventDefault() // Backend এ লিংক কাজ করবে না
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", null, " ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    value: plan.buttonLabel,
+    onChange: v => setAttributes({
+      plans: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(plans, v, index, 'buttonLabel')
+    })
+  }))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: plan.buttonUrl,
     target: isEditor ? "_self" : "_blank" // Editor Mode হলে লিংক Disable থাকবে
     ,
