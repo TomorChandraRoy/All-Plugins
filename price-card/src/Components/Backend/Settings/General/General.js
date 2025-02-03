@@ -191,18 +191,21 @@ const General = ({ attributes, setAttributes }) => {
     <>
       <PanelBody
         className="bPlPanelBody"
-        title={__("Plan Card Customization", "b-blocks")}
+        title={__("Plans Card Customization", "b-blocks")}
         initialOpen={false}
       >
-        {/* Header ToggleControl */}
+        {/* Header ToggleControl On/Off*/}
         <ToggleControl
           label="Show Update/Delete Options"
           checked={showUpdateDelete}
           onChange={toggleUpdateDelete}
         />
-        {/* Header ToggleControl On/Off */}
+
+        {/* Header ToggleControl Text On/Off */}
         {showUpdateDelete && (
           <div style={{ marginTop: "30px", marginBottom: "30px" }}>
+
+            {/* Header Title */}
             <TextControl
               label="Title"
               placeholder='Please Your Titile Add '
@@ -210,6 +213,7 @@ const General = ({ attributes, setAttributes }) => {
               onChange={updateTitle}
             />
 
+            {/* Header Remove Title */}
             <IconButton style={{ color: "red" }}
               label="Remove Title"
               icon="trash"
@@ -217,12 +221,15 @@ const General = ({ attributes, setAttributes }) => {
             >Delete
             </IconButton>
 
+            {/* Header Description */}
             <TextControl
               label="Description"
               placeholder='Please Your description Add'
               value={description}
               onChange={updateDescription}
             />
+
+            {/* Header Remove Description */}
             <IconButton
               style={{ color: "red" }}
               onClick={deleteDescription}
@@ -236,7 +243,7 @@ const General = ({ attributes, setAttributes }) => {
 
         <Spacer marginBottom="30px" />
 
-        {/* Plans Table*/}
+        {/* Plans Table Section Start*/}
         <h2 >Plans Table : </h2>
         {plans?.map((plan, planIndex) => (
           < div key={planIndex} className="plan" >
@@ -245,7 +252,7 @@ const General = ({ attributes, setAttributes }) => {
               title={`${__("Plan:", "b-blocks")} ${plan?.title}`}
               initialOpen={false}
             >
-              {/* Plan ToggleControl */}
+              {/* Plan ToggleControl On/Off*/}
               <ToggleControl
                 label={`Show ${plan.title} Plan`}
                 checked={plan.isVisible}
@@ -261,11 +268,21 @@ const General = ({ attributes, setAttributes }) => {
                 onChange={() => togglePopularVisibility(planIndex)}
               />
 
-              <Spacer marginBottom="20px" />
+              <Spacer marginBottom="15px" />
 
-              {/* Plan ToggleControl On/Off*/}
+              {/* Plan Most Popular text */}
+              <InputControl
+                label="Popular Button"
+                value={plan.PopularText}
+                onChange={(text) => setAttributes({ plans: updateData(plans, text, planIndex, 'PopularText') })}
+              />
+
+              <Spacer marginBottom="10px" />
+
+              {/* Plan ToggleControl Text On/Off*/}
               {plan.isVisible && (
                 <>
+                  {/*Plan  Title */}
                   <TextControl
                     label="Plan Title"
                     placeholder="Your Plan Title"
@@ -274,6 +291,7 @@ const General = ({ attributes, setAttributes }) => {
                     onChange={(v) => setAttributes({ plans: updateData(plans, v, planIndex, 'title') })}
                   />
 
+                  {/* Plan Price */}
                   <TextControl
                     label="Plan Price"
                     placeholder="Your Plan Price"
@@ -282,12 +300,9 @@ const General = ({ attributes, setAttributes }) => {
                     onChange={(v) => setAttributes({ plans: updateData(plans, v, planIndex, 'price') })}
                   />
 
-                  <InputControl
-                    label="Popular Button"
-                    value={plan.PopularText}
-                    onChange={(text) => setAttributes({ plans: updateData(plans, text, planIndex, 'PopularText') })}
-                  />
+                  <Spacer marginBottom="10px" />
 
+                  {/* Button URL */}
                   <InputControl
                     label="Button URL"
                     value={plan?.buttonUrl}
@@ -296,6 +311,7 @@ const General = ({ attributes, setAttributes }) => {
 
                   <Spacer marginBottom="10px" />
 
+                  {/* Plan Button Text */}
                   <TextControl
                     label="Plan button"
                     placeholder="Added Button Name"
@@ -306,7 +322,7 @@ const General = ({ attributes, setAttributes }) => {
 
                   <Spacer marginBottom="20px" />
 
-                  {/* Features Start */}
+                  {/* Features Section Start */}
                   <PanelBody
                     className="bPlPanelBody"
                     title={__("Features", "b-blocks")}
@@ -316,6 +332,7 @@ const General = ({ attributes, setAttributes }) => {
                       {plan.features.map((feature, featureIndex) => (
                         <li key={featureIndex}>
 
+                          {/* Feature iconType */}
                           <TextControl
                             label={__("Icon", "b-blocks")}
                             placeholder="fontAwesome iconType Name"
@@ -324,21 +341,24 @@ const General = ({ attributes, setAttributes }) => {
                             onChange={(value) => updateFeature(planIndex, featureIndex, value, "iconType")}
                           />
 
+                          {/* Features Name */}
                           <TextControl
-                            label={`${__("Feature", "b-blocks")} ${featureIndex + 1}`}   //title={`${__("Plan:", "b-blocks")} ${plan?.title}`}
+                            label={`${__("Feature", "b-blocks")} ${featureIndex + 1}`}
                             placeholder="Your Feature"
                             value={feature.text}
 
                             // onChange={(value) => updateFeature(planIndex, featureIndex, value,)}
-
                             onChange={(value) => updateFeature(planIndex, featureIndex, value, 'text')}
                           />
 
-                          <IconButton
+                          {/* Features Remove Button */}
+                          <IconButton style={{ color: "red", }}
                             icon="trash"
                             onClick={() => removeFeature(planIndex, featureIndex)}
                             label="Remove Feature"
                           />
+
+                          {/* Features Duplicate Button */}
                           <IconButton
                             icon="admin-page"
                             onClick={() => duplicateFeature(planIndex, featureIndex)}
@@ -346,16 +366,18 @@ const General = ({ attributes, setAttributes }) => {
                           />
                         </li>
                       ))}
+
+                      {/* New Features Added */}
                       <Button isPrimary onClick={() => addFeature(planIndex)}>
                         Add Feature
                       </Button>
                     </ul>
                   </PanelBody>
-                  {/* Features End */}
+                  {/* Features Section End */}
 
                   <Spacer marginBottom="20px" />
 
-                  {/* DuplicatePlan / RemovePlan Button Start*/}
+                  {/* Plan DuplicatePlan / RemovePlan Button Section Start*/}
                   <div style={{ display: "flex", justifyItems: "left", alignItems: "center" }}>
                     <div style={{ display: "flex", justifyContent: "start", alignItems: "center", gap: "5px", }}>
 
@@ -379,15 +401,15 @@ const General = ({ attributes, setAttributes }) => {
                     </div>
                   </div>
 
-                  {/* DuplicatePlan / RemovePlan button  End*/}
+                  {/* DuplicatePlan / RemovePlan button Section End*/}
                 </>
               )}
             </PanelBody>
           </div>
         ))}
+        {/* Plans Table Section End*/}
 
-        {/* Full Plan Card Button */}
-
+        {/* Full Plan Table Button */}
         <Button style={{ marginTop: "10px" }}
           onClick={addPlan}
           isPrimary
