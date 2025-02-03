@@ -75,10 +75,8 @@ const PriceCard = ({
     className: "pricing"
   }, plans.map((plan, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, plan.isVisible && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: index,
-    className: `plan ${plan.title === "Pro" && plan.isPopular ? "popular" : ""}`
-  }, plan.title === "Pro" ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: ""
-  }, plan.isPopular === true ? "Most Popular" : "") : "", isEditor ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    className: `plan ${plan.title === plan.title && plan.isPopular ? "popular" : ""}`
+  }, plan.title === plan.title ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, plan.isPopular === true ? plan?.PopularText : "") : "", isEditor ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     className: "h2",
     value: plan.title,
     onChange: v => setAttributes({
@@ -129,10 +127,9 @@ const PriceCard = ({
     })
   }))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: plan.buttonUrl,
-    target: isEditor ? "_self" : "_blank" // Editor Mode হলে লিংক Disable থাকবে
-    ,
+    target: isEditor ? "_self" : "_blank",
     rel: "noopener noreferrer",
-    onClick: e => isEditor && e.preventDefault() // Backend এ লিংক কাজ করবে না
+    onClick: e => isEditor && e.preventDefault()
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", null, plan.buttonLabel)))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PriceCard);

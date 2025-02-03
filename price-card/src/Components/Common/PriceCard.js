@@ -48,12 +48,13 @@ const PriceCard = ({ attributes, setAttributes }) => {
                     <>
                         {plan.isVisible && (
 
-                            <div key={index} className={`plan ${plan.title === "Pro" && plan.isPopular ? "popular" : ""}`}>
-                                {plan.title === "Pro" ?
-                                    <span className='' >
+                            <div key={index} className={`plan ${plan.title === plan.title && plan.isPopular ? "popular" : ""}`}>
+
+                                {plan.title === plan.title ?
+                                    <span  >
                                         {
                                             plan.isPopular === true
-                                                ? "Most Popular" : ""
+                                                ? plan?.PopularText : ""
                                         }
                                     </span> : ""
                                 }
@@ -95,9 +96,9 @@ const PriceCard = ({ attributes, setAttributes }) => {
                                     :
                                     <a
                                         href={plan.buttonUrl}
-                                        target={isEditor ? "_self" : "_blank"} // Editor Mode হলে লিংক Disable থাকবে
+                                        target={isEditor ? "_self" : "_blank"} 
                                         rel="noopener noreferrer"
-                                        onClick={(e) => isEditor && e.preventDefault()} // Backend এ লিংক কাজ করবে না
+                                        onClick={(e) => isEditor && e.preventDefault()} 
                                     >
                                         <button >{plan.buttonLabel}</button>
                                     </a>

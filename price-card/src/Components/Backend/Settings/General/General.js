@@ -55,6 +55,15 @@ const General = ({ attributes, setAttributes }) => {
     });
   };
 
+  // Plan toggle visibility of a specific Most Popular (Immutable )
+  const togglePopularVisibility = (planIndex) => {
+    setAttributes({
+      plans: plans.map((plan, index) =>
+        index === planIndex ? { ...plan, isPopular: !plan.isPopular } : plan
+      )
+    });
+  };
+
   // Add new plan (Immutable)
   const addPlan = () => {
     const newPlan = {
@@ -226,7 +235,7 @@ const General = ({ attributes, setAttributes }) => {
 
         <Spacer marginBottom="30px" />
 
-        {/* Plans */}
+        {/* Plans Table*/}
         <h2 >Plans Table : </h2>
         {plans.map((plan, planIndex) => (
           < div key={planIndex} className="plan" >
@@ -240,6 +249,15 @@ const General = ({ attributes, setAttributes }) => {
                 label={`Show ${plan.title} Plan`}
                 checked={plan.isVisible}
                 onChange={() => togglePlanVisibility(planIndex)}
+              />
+
+              <Spacer marginBottom="20px" />
+
+              {/* Plan Most Popular ToggleControl */}
+              <ToggleControl
+                label="Show Popular"
+                checked={plan.isPopular}
+                onChange={() => togglePopularVisibility(planIndex)}
               />
 
               <Spacer marginBottom="20px" />
