@@ -44,9 +44,10 @@ body {
   transition: 0.3s;
   cursor: pointer;
 }
-.wp-block-b-blocks-price-card .main-card-contener .pricing .plan h2 {
-  font-size: 22px;
+.wp-block-b-blocks-price-card .main-card-contener .pricing .plan .h2 {
+  font-size: 23px;
   margin-bottom: 12px;
+  font-weight: bold;
 }
 .wp-block-b-blocks-price-card .main-card-contener .pricing .plan .price {
   margin-bottom: 1rem;
@@ -55,6 +56,11 @@ body {
 .wp-block-b-blocks-price-card .main-card-contener .pricing .plan .features {
   list-style-type: none;
   text-align: left;
+}
+.wp-block-b-blocks-price-card .main-card-contener .pricing .plan .features .li {
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
 .wp-block-b-blocks-price-card .main-card-contener .pricing .plan .features li {
   margin: 8px;

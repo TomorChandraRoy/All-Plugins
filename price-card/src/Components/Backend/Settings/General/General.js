@@ -68,6 +68,7 @@ const General = ({ attributes, setAttributes }) => {
         { text: "No priority support", "iconType": "fa fa-times-circle" }
       ],
       buttonLabel: 'New Button',
+      buttonUrl:'https://wp-gb.com/',
       isPopular: false,
       isVisible: true
     };
@@ -83,7 +84,7 @@ const General = ({ attributes, setAttributes }) => {
   //     draft[index][type] = value;
   //   })})
   // };
-  
+
 
   //! method 1(Immutable)
 
@@ -135,14 +136,16 @@ const General = ({ attributes, setAttributes }) => {
 
   //# Feature Start
 
-  // Update plan's feature
+  // Update plan's feature 1
   // const updateFeature = (planIndex, featureIndex, value) => {
   //   const newPlans = [...plans];
   //   newPlans[planIndex].features[featureIndex].text = value;
   //   setAttributes({ plans: newPlans });
   //   console.log(newPlans);
-
   // };
+
+  // Update plan's feature 2
+
   const updateFeature = (planIndex, featureIndex, value, type) => {
     setAttributes({
       plans: produce(plans, draft => {
@@ -173,12 +176,6 @@ const General = ({ attributes, setAttributes }) => {
     setAttributes({ plans: newPlans });
   };
   //# Feature End
-
-  const updatePlan = (index, key, value) => {
-    const updatedPlans = [...plans];
-    updatedPlans[index][key] = value;
-    setAttributes({ plans: updatedPlans });
-  };
 
   return (
     <>
