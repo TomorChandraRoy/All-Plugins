@@ -34,10 +34,10 @@ const PriceCard = ({ attributes, setAttributes }) => {
                 showUpdateDelete ?
                     <>
                         {isEditor ?
-                            <RichText className='h1' value={title} onChange={updateTitle} /> : <div className='h1'>{title}</div>
+                            <RichText className='h1' value={title} onChange={updateTitle} placeholder='Header Title' /> : <div className='h1'>{title}</div>
                         }
                         {isEditor ?
-                            <RichText className='p' value={description} onChange={updateDescription} /> : <p>{description}</p>
+                            <RichText className='p' value={description} onChange={updateDescription} placeholder='Header description'/> : <p>{description}</p>
                         }
                     </>
                     : ""
@@ -57,7 +57,6 @@ const PriceCard = ({ attributes, setAttributes }) => {
                                             <RichText
                                                 value={plan.PopularText}
                                                 onChange={(v) => setAttributes({ plans: updateData(plans, v, index, 'PopularText') })}
-                                                placeholder="Popular Text"
                                             />
                                         ) : (
                                             plan.PopularText
@@ -67,11 +66,11 @@ const PriceCard = ({ attributes, setAttributes }) => {
 
 
                                 {isEditor ?
-                                    <RichText className='h2' value={plan.title} onChange={(v) => setAttributes({ plans: updateData(plans, v, index, 'title') })} /> : <div className='h2' value={plan.title} />
+                                    <RichText className='h2' value={plan.title} onChange={(v) => setAttributes({ plans: updateData(plans, v, index, 'title') })} placeholder='Plan Title' /> : <div className='h2'>{plan.title}</div>
                                 }
 
                                 {isEditor ?
-                                    <RichText className="price" value={plan.price} onChange={(v) => setAttributes({ plans: updateData(plans, v, index, 'price') })} /> : <div className="price">{plan.price}</div>
+                                    <RichText className="price" value={plan.price} onChange={(v) => setAttributes({ plans: updateData(plans, v, index, 'price') })} placeholder='Plan Price' /> : <div className="price">{plan.price}</div>
                                 }
 
                                 <ul className="features">
@@ -81,7 +80,7 @@ const PriceCard = ({ attributes, setAttributes }) => {
                                                 <li className='li'>
                                                     <i className={feature?.iconType} style={{ color: feature.iconType === "fa-solid fa-circle-check" ? " #6ab04c" : feature.iconType === "fa fa-times-circle" ? "#eb4d4b" : "rgba(39, 154, 67, 0.86)", marginRight: "10px" }}></i>
                                                     <RichText value={feature.text}
-                                                        onChange={(value) => updateFeature(index, featureIndex, value, "text")} />
+                                                        onChange={(value) => updateFeature(index, featureIndex, value, "text")} placeholder='Feature Added' />
                                                 </li>
 
                                                 : <li key={featureIndex}>
@@ -98,7 +97,7 @@ const PriceCard = ({ attributes, setAttributes }) => {
                                         href={plan.buttonUrl} target={isEditor ? "_self" : "_blank"} // Editor Mode হলে লিংক Disable থাকবে
                                         rel="noopener noreferrer" onClick={(e) => isEditor && e.preventDefault()} // Backend এ লিংক কাজ করবে না
                                     >
-                                        <button> <RichText value={plan.buttonLabel} onChange={(v) => setAttributes({ plans: updateData(plans, v, index, 'buttonLabel') })} /></button>
+                                        <button> <RichText value={plan.buttonLabel} onChange={(v) => setAttributes({ plans: updateData(plans, v, index, 'buttonLabel') })} placeholder='Plan Button Name ' /></button>
                                     </a>
                                     :
                                     <a

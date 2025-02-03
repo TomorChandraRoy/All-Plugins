@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { Button, IconButton, PanelBody, TextControl, ToggleControl, __experimentalSpacer as Spacer, __experimentalInputControl as InputControl} from '@wordpress/components';
+import { Button, IconButton, PanelBody, TextControl, ToggleControl, __experimentalSpacer as Spacer, __experimentalInputControl as InputControl } from '@wordpress/components';
 import { produce } from 'immer';
 import { updateData } from './../../../../utils/functions';
 
@@ -77,7 +77,7 @@ const General = ({ attributes, setAttributes }) => {
         { text: "No priority support", "iconType": "fa fa-times-circle" }
       ],
       buttonLabel: 'New Button',
-      buttonUrl:'https://wp-gb.com/',
+      buttonUrl: 'https://wp-gb.com/',
       isPopular: false,
       PopularText: 'Most Popular',
       isVisible: true
@@ -238,7 +238,7 @@ const General = ({ attributes, setAttributes }) => {
 
         {/* Plans Table*/}
         <h2 >Plans Table : </h2>
-        {plans.map((plan, planIndex) => (
+        {plans?.map((plan, planIndex) => (
           < div key={planIndex} className="plan" >
             <PanelBody
               className="bPlPanelBody"
@@ -283,12 +283,18 @@ const General = ({ attributes, setAttributes }) => {
                   />
 
                   <InputControl
+                    label="Popular Button"
+                    value={plan.PopularText}
+                    onChange={(text) => setAttributes({ plans: updateData(plans, text, planIndex, 'PopularText') })}
+                  />
+
+                  <InputControl
                     label="Button URL"
                     value={plan?.buttonUrl}
                     onChange={(url) => setAttributes({ plans: updateData(plans, url, planIndex, 'buttonUrl') })}
                   />
 
-                <Spacer marginBottom="10px" />
+                  <Spacer marginBottom="10px" />
 
                   <TextControl
                     label="Plan button"

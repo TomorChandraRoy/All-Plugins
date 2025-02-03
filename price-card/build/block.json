@@ -60,7 +60,7 @@
             }
           ],
           "buttonLabel": "Signup",
-          "buttonUrl": "https://wp-gb.com/",
+          "buttonUrl": "https://www.facebook.com/",
           "isPopular": false,
           "PopularText": "Most Popular",
           "isVisible": true
@@ -122,7 +122,7 @@
             }
           ],
           "buttonLabel": "Contact Us",
-          "buttonUrl": "https://wp-gb.com/",
+          "buttonUrl": "https://www.linkedin.com/",
           "isPopular": false,
           "PopularText": "Most Popular",
           "isVisible": true

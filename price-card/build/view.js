@@ -64,13 +64,15 @@ const PriceCard = ({
   }, showUpdateDelete ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, isEditor ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     className: "h1",
     value: title,
-    onChange: updateTitle
+    onChange: updateTitle,
+    placeholder: "Header Title"
   }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "h1"
   }, title), isEditor ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     className: "p",
     value: description,
-    onChange: updateDescription
+    onChange: updateDescription,
+    placeholder: "Header description"
   }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, description)) : "", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pricing"
   }, plans.map((plan, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, plan.isVisible && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -80,23 +82,23 @@ const PriceCard = ({
     value: plan.PopularText,
     onChange: v => setAttributes({
       plans: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(plans, v, index, 'PopularText')
-    }),
-    placeholder: "Popular Text"
+    })
   }) : plan.PopularText), isEditor ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     className: "h2",
     value: plan.title,
     onChange: v => setAttributes({
       plans: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(plans, v, index, 'title')
-    })
+    }),
+    placeholder: "Plan Title"
   }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "h2",
-    value: plan.title
-  }), isEditor ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    className: "h2"
+  }, plan.title), isEditor ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     className: "price",
     value: plan.price,
     onChange: v => setAttributes({
       plans: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(plans, v, index, 'price')
-    })
+    }),
+    placeholder: "Plan Price"
   }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "price"
   }, plan.price), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
@@ -111,7 +113,8 @@ const PriceCard = ({
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     value: feature.text,
-    onChange: value => updateFeature(index, featureIndex, value, "text")
+    onChange: value => updateFeature(index, featureIndex, value, "text"),
+    placeholder: "Feature Added"
   })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
     key: featureIndex
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
@@ -130,7 +133,8 @@ const PriceCard = ({
     value: plan.buttonLabel,
     onChange: v => setAttributes({
       plans: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(plans, v, index, 'buttonLabel')
-    })
+    }),
+    placeholder: "Plan Button Name "
   }))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: plan.buttonUrl,
     target: isEditor ? "_self" : "_blank",
