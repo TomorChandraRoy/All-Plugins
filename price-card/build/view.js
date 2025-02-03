@@ -14,13 +14,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__);
 
 
 const PriceCard = ({
   attributes
 }) => {
+  const isEditor = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useSelect)(select => select('core/editor')); // Editor Mode Detect
+
   const {
     plans,
     title,
@@ -48,7 +50,11 @@ const PriceCard = ({
       color: feature.iconType === "fa-solid fa-circle-check" ? " #6ab04c" : feature.iconType === "fa fa-times-circle" ? "#eb4d4b" : "rgba(39, 154, 67, 0.86)",
       marginRight: "10px"
     }
-  }), feature.text))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", null, plan.buttonLabel))))));
+  }), feature.text))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: plan?.buttonUrl,
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", null, plan.buttonLabel)))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PriceCard);
 
@@ -181,7 +187,8 @@ const Style = ({
        }
 		@media (max-width: 480px) {
                 ${pricing} {
-                grid-template-columns: ${columns.mobile};;
+                grid-template-columns: ${columns.mobile};
+				
             }
          }
 
@@ -191,6 +198,7 @@ const Style = ({
 			padding: ${planPadding?.top} ${planPadding?.right} ${planPadding?.bottom} ${planPadding?.left};
 			margin: ${planMargin?.top} ${planMargin?.right} ${planMargin?.bottom} ${planMargin?.left};
             border-radius: ${planRadius?.top} ${planRadius?.right} ${planRadius?.bottom} ${planRadius?.left};
+			max-height: max-content;
 			
 		}
 
@@ -317,13 +325,13 @@ module.exports = window["ReactDOM"];
 
 /***/ }),
 
-/***/ "@wordpress/components":
-/*!************************************!*\
-  !*** external ["wp","components"] ***!
-  \************************************/
+/***/ "@wordpress/data":
+/*!******************************!*\
+  !*** external ["wp","data"] ***!
+  \******************************/
 /***/ ((module) => {
 
-module.exports = window["wp"]["components"];
+module.exports = window["wp"]["data"];
 
 /***/ })
 

@@ -63,7 +63,8 @@ const Style = ({ attributes, id, device = "desktop"}) => {
        }
 		@media (max-width: 480px) {
                 ${pricing} {
-                grid-template-columns: ${columns.mobile};;
+                grid-template-columns: ${columns.mobile};
+				
             }
          }
 
@@ -73,6 +74,7 @@ const Style = ({ attributes, id, device = "desktop"}) => {
 			padding: ${planPadding?.top} ${planPadding?.right} ${planPadding?.bottom} ${planPadding?.left};
 			margin: ${planMargin?.top} ${planMargin?.right} ${planMargin?.bottom} ${planMargin?.left};
             border-radius: ${planRadius?.top} ${planRadius?.right} ${planRadius?.bottom} ${planRadius?.left};
+			max-height: max-content;
 			
 		}
 

@@ -1,7 +1,8 @@
 import { __ } from '@wordpress/i18n';
-import { Button, IconButton, PanelBody, TextControl, ToggleControl, __experimentalSpacer as Spacer, } from '@wordpress/components';
+import { Button, IconButton, PanelBody, TextControl, ToggleControl, __experimentalSpacer as Spacer, __experimentalInputControl as InputControl} from '@wordpress/components';
 import { produce } from 'immer';
 import { updateData } from './../../../../utils/functions';
+
 
 const General = ({ attributes, setAttributes }) => {
 
@@ -75,6 +76,15 @@ const General = ({ attributes, setAttributes }) => {
 
   };
 
+  //! Update plan Property (nijer custom code Update korar jonno ata )
+
+  // const updatePlanProperty = (index, value, type) => {
+  //   setAttributes({plans : produce(plans, draft => {
+  //     draft[index][type] = value;
+  //   })})
+  // };
+  
+
   //! method 1(Immutable)
 
   const removePlan = (planIndex) => {
@@ -118,13 +128,6 @@ const General = ({ attributes, setAttributes }) => {
     setAttributes({ plans: updatedPlans });
   };
 
-  //! Update plan Property (nijer custom code Update korar jonno ata )
-
-  // const updatePlanProperty = (index, value, type) => {
-  //   setAttributes({plans : produce(plans, draft => {
-  //     draft[index][type] = value;
-  //   })})
-  // };
 
 
   //# Price All Card END
@@ -151,7 +154,7 @@ const General = ({ attributes, setAttributes }) => {
   // Add new feature to a plan
   const addFeature = (planIndex) => {
     const newPlans = [...plans];
-    newPlans[planIndex].features.push({ text: 'New Feature', iconType: 'check' });
+    newPlans[planIndex].features.push({ text: 'New Feature', iconType: "fa-solid fa-circle-check" });
     setAttributes({ plans: newPlans });
   };
 
@@ -171,11 +174,17 @@ const General = ({ attributes, setAttributes }) => {
   };
   //# Feature End
 
+  const updatePlan = (index, key, value) => {
+    const updatedPlans = [...plans];
+    updatedPlans[index][key] = value;
+    setAttributes({ plans: updatedPlans });
+  };
+
   return (
     <>
       <PanelBody
         className="bPlPanelBody"
-        title={__("Price Card Customization", "b-blocks")}
+        title={__("Plan Card Customization", "b-blocks")}
         initialOpen={false}
       >
         {/* Header ToggleControl */}
@@ -221,12 +230,12 @@ const General = ({ attributes, setAttributes }) => {
         <Spacer marginBottom="30px" />
 
         {/* Plans */}
-        <h2 >Plans </h2>
+        <h2 >Plans Table : </h2>
         {plans.map((plan, planIndex) => (
           < div key={planIndex} className="plan" >
             <PanelBody
               className="bPlPanelBody"
-              title={`${__("", "b-blocks")} ${plan?.title}`}
+              title={`${__("Plan:", "b-blocks")} ${plan?.title}`}
               initialOpen={false}
             >
               {/* Plan ToggleControl */}
@@ -257,6 +266,14 @@ const General = ({ attributes, setAttributes }) => {
                     onChange={(v) => setAttributes({ plans: updateData(plans, v, planIndex, 'price') })}
                   />
 
+                  <InputControl
+                    label="Button URL"
+                    value={plan?.buttonUrl}
+                    onChange={(url) => setAttributes({ plans: updateData(plans, url, planIndex, 'buttonUrl') })}
+                  />
+
+                <Spacer marginBottom="10px" />
+
                   <TextControl
                     label="Plan button"
                     placeholder="Added Button Name"
@@ -278,21 +295,21 @@ const General = ({ attributes, setAttributes }) => {
                         <li key={featureIndex}>
 
                           <TextControl
-                            label={__("Features", "b-blocks")}
-                            placeholder="Your Feature"
-                            value={feature.text}
-
-                          // onChange={(value) => updateFeature(planIndex, featureIndex, value,)}
-
-                          onChange={(value) => updateFeature(planIndex,featureIndex, value, 'text')}
-                          />
-
-                          <TextControl
                             label={__("Icon", "b-blocks")}
                             placeholder="fontAwesome iconType Name"
                             value={feature.iconType}
                             // onChange={(value) => updateFeature(planIndex, featureIndex, value)}
-                            onChange={(value) => updateFeature(planIndex, featureIndex, value,"iconType")}
+                            onChange={(value) => updateFeature(planIndex, featureIndex, value, "iconType")}
+                          />
+
+                          <TextControl
+                            label={`${__("Feature", "b-blocks")} ${featureIndex + 1}`}   //title={`${__("Plan:", "b-blocks")} ${plan?.title}`}
+                            placeholder="Your Feature"
+                            value={feature.text}
+
+                            // onChange={(value) => updateFeature(planIndex, featureIndex, value,)}
+
+                            onChange={(value) => updateFeature(planIndex, featureIndex, value, 'text')}
                           />
 
                           <IconButton
@@ -317,20 +334,29 @@ const General = ({ attributes, setAttributes }) => {
                   <Spacer marginBottom="20px" />
 
                   {/* DuplicatePlan / RemovePlan Button Start*/}
-                  <div style={{ display: "flex", justifyContent: "start", alignItems: "center", gap: "5px", marginBottom: "10px" }}>
-                    <IconButton style={{ color: "red" }}
-                      label="Remove Plan"
-                      icon="trash"
-                      onClick={() => removePlan(planIndex)}
-                    >Plan
-                    </IconButton>
-                    <IconButton
-                      icon="admin-page"
-                      onClick={() => duplicatePlan(planIndex)}
-                      label="Duplicate Plan"
-                    > Duplicate
-                    </IconButton>
+                  <div style={{ display: "flex", justifyItems: "left", alignItems: "center" }}>
+                    <div style={{ display: "flex", justifyContent: "start", alignItems: "center", gap: "5px", }}>
+
+                      <IconButton style={{ color: "red", }}
+                        label="Remove Plan"
+                        icon="trash"
+                        onClick={() => removePlan(planIndex)}
+                      >
+                      </IconButton>
+                      <p style={{ margin: "0" }}>Plan Table</p>
+                    </div>
+                    <div style={{ display: "flex", justifyContent: "start", alignItems: "center", gap: "5px", }}>
+
+                      <IconButton style={{ color: "blue", }}
+                        label="Duplicate Plan"
+                        icon="admin-page"
+                        onClick={() => duplicatePlan(planIndex)}
+                      >
+                      </IconButton>
+                      <p style={{ margin: "0" }}>Duplicate Table</p>
+                    </div>
                   </div>
+
                   {/* DuplicatePlan / RemovePlan button  End*/}
                 </>
               )}
@@ -344,7 +370,7 @@ const General = ({ attributes, setAttributes }) => {
           onClick={addPlan}
           isPrimary
         >
-          Add New Plan
+          Add New Plan Table
         </Button>
       </PanelBody >
     </>

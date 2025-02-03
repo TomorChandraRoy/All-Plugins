@@ -1,7 +1,8 @@
-
-import { } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 
 const PriceCard = ({ attributes }) => {
+    
+    const isEditor = useSelect((select) => select('core/editor')); // Editor Mode Detect
 
     const { plans, title, description, showUpdateDelete } = attributes;
 
@@ -19,14 +20,13 @@ const PriceCard = ({ attributes }) => {
             }
 
             <div className="pricing">
-                {plans.map((plan, index) => (
-
+                {plans.map((plan, index) => (    
                     <>
                         {plan.isVisible && (
 
                             <div key={index} className={`plan ${plan.title === "Pro" && plan.isPopular ? "popular" : ""}`}>
                                 {plan.title === "Pro" ?
-                                    <span  className='' >
+                                    <span className='' >
                                         {
                                             plan.isPopular === true
                                                 ? "Most Popular" : ""
@@ -45,7 +45,9 @@ const PriceCard = ({ attributes }) => {
                                         </li>
                                     ))}
                                 </ul>
-                                <button>{plan.buttonLabel}</button>
+                                <a href={plan?.buttonUrl} target="_blank" rel="noopener noreferrer">
+                                    <button >{plan.buttonLabel}</button>
+                                </a>
                             </div >
                         )}
                     </>

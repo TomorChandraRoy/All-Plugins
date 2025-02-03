@@ -59,7 +59,7 @@ body {
 .wp-block-b-blocks-price-card .main-card-contener .pricing .plan .features li {
   margin: 8px;
 }
-.wp-block-b-blocks-price-card .main-card-contener .pricing .plan button {
+.wp-block-b-blocks-price-card .main-card-contener .pricing .plan Button {
   border: none;
   width: 100%;
   padding: 12px 35px;

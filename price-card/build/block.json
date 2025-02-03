@@ -3,11 +3,11 @@
   "apiVersion": 3,
   "name": "b-blocks/price-card",
   "version": "1.0.0",
-  "title": " Price Card",
+  "title": " Plan Card",
   "category": "widgets",
-  "description": "Short description of the Price Card Plugins",
+  "description": "Short description of the Plan Card Plugins",
   "keywords": [
-    "Price Card"
+    "Plan Card"
   ],
   "textdomain": "b-blocks",
   "attributes": {
@@ -60,6 +60,7 @@
             }
           ],
           "buttonLabel": "Signup",
+          "buttonUrl": "https://wp-gb.com/",
           "isPopular": false,
           "isVisible": true
         },
@@ -89,6 +90,7 @@
             }
           ],
           "buttonLabel": "Buy Now",
+          "buttonUrl": "https://wp-gb.com/",
           "isPopular": true,
           "isVisible": true
         },
@@ -118,6 +120,7 @@
             }
           ],
           "buttonLabel": "Contact Us",
+          "buttonUrl": "https://wp-gb.com/",
           "isPopular": false,
           "isVisible": true
         }
