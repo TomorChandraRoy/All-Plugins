@@ -13,9 +13,9 @@ import { AlignmentToolbar } from "@wordpress/block-editor";
 
 
 
-const Style = ({ attributes, setAttributes,  }) => {
+const Style = ({ attributes, setAttributes, }) => {
 
-  const { headerStyle, headerDecStyle, planStyle,  shadow} = attributes;
+  const { headerStyle, headerDecStyle, planStyle, shadow } = attributes;
 
 
   return (
@@ -162,7 +162,7 @@ const Style = ({ attributes, setAttributes,  }) => {
         <Spacer marginBottom="20px" />
 
         {/*BorderControl  */}
-        <BoxControl label="Plan Border" values={planStyle?.planRadius}
+        <BoxControl label="Plan Radius" values={planStyle?.planRadius}
           onChange={(newValues) => {
             setAttributes({ planStyle: { ...planStyle, planRadius: newValues } });
           }}
@@ -172,9 +172,9 @@ const Style = ({ attributes, setAttributes,  }) => {
 
         <h3>Plan Align Content</h3>
         <AlignmentToolbar label="Plan Content" value={planStyle.planAlign} onChange={val => { setAttributes({ planStyle: { ...planStyle, planAlign: val }, }) }} describedBy={__('Block Name Alignment')} alignmentControls={[
-          { title: __(' Plan in left', 'textdomain'), align: 'left', icon: 'align-left' },
-          { title: __(' Plan in center', 'textdomain'), align: 'center', icon: 'align-center' },
-          { title: __(' Plan in right', 'textdomain'), align: 'right', icon: 'align-right' }
+          { title: __(' Plan in left', 'b-blocks'), align: 'left', icon: 'align-left' },
+          { title: __(' Plan in center', 'b-blocks'), align: 'center', icon: 'align-center' },
+          { title: __(' Plan in right', 'b-blocks'), align: 'right', icon: 'align-right' }
         ]} />
 
       </PanelBody>
@@ -241,7 +241,29 @@ const Style = ({ attributes, setAttributes,  }) => {
             });
           }}
         />
+        
+        <Spacer marginBottom="20px" />
+
+        <h3>Plan Title Content</h3>
+        <AlignmentToolbar value={planStyle?.planTitleStyle?.planTitleAlign}
+          onChange={(val) => {
+            setAttributes({
+              planStyle: {
+                ...planStyle,
+                planTitleStyle: {
+                  ...planStyle.planTitleStyle,
+                  planTitleAlign: val,
+                }
+              }
+            });
+          }} describedBy={__('Block Name Alignment')} alignmentControls={[
+            { title: __(' Price in left', 'textdomain'), align: 'left', icon: 'align-left' },
+            { title: __(' Price in center', 'textdomain'), align: 'center', icon: 'align-center' },
+            { title: __(' Price in right', 'textdomain'), align: 'right', icon: 'align-right' }
+          ]} />
       </PanelBody>
+
+
 
       <PanelBody
         className="bPlPanelBody"

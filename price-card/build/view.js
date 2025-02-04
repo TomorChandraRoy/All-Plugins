@@ -199,7 +199,8 @@ const Style = ({
   const {
     planTitleColor,
     planTitleSize,
-    planTitleMargin
+    planTitleMargin,
+    planTitleAlign
   } = planTitleStyle;
   const {
     priceColor,
@@ -250,13 +251,13 @@ const Style = ({
                 padding: 0px;
             }
        }
-		${mainCardContener} h1{
+		${mainCardContener} .h1{
 			color: ${titleColor};
 			font-size: ${fontSize}px;
 			margin: ${titleMargin?.top} ${titleMargin?.right} ${titleMargin?.bottom} ${titleMargin?.left};
 			text-align:${titleAlign};
 			}
-		${mainCardContener} p{
+		${mainCardContener} .p{
 			color: ${decColor};
             font-size: ${decSize}px;
 			margin: ${decMargin?.top} ${decMargin?.right} ${decMargin?.bottom} ${decMargin?.left};
@@ -266,11 +267,10 @@ const Style = ({
 		${pricing}{
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
-			align-items: stretch;
 			width: 100%; 
             max-width: 100%;
-			padding: 0 20px;
-			justify-content: ${planAlign};
+			padding: 0px 20px;
+			justify-items: ${planAlign};
 			font-family: "Source Sans Pro", sans-serif;
 		}
 		@media only screen and (min-width:641px) and (max-width: 1024px){
@@ -300,19 +300,20 @@ const Style = ({
             }
          }
 
-		${plan} h2{
+		${plan} .h2{
 			color: ${planTitleColor};
             font-size: ${planTitleSize}px;
 			margin: ${planTitleMargin?.top} ${planTitleMargin?.right} ${planTitleMargin?.bottom} ${planTitleMargin?.left};
+			text-align: ${planTitleAlign};
 		}
 		${price} {
 			color: ${priceColor};
             font-size: ${priceSize}px;
 			margin: ${priceMargin?.top} ${priceMargin?.right} ${priceMargin?.bottom} ${priceMargin?.left};
-			text-align:${priceAlign};
+			text-align: ${priceAlign};
 		}
 		${features} {
-			text-align:${featureAlign};
+			text-align: ${featureAlign};
 		}
 		${features} li{
 			margin: ${featureliMagin?.top} ${featureliMagin?.right} ${featureliMagin?.bottom} ${featureliMagin?.left};

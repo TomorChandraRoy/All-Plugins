@@ -49,7 +49,7 @@ $primaryColor: #4527a4;
         }
         .features {
           list-style-type: none;
-          text-align: left;
+          // text-align: left;
           .li {
             display: flex;
             justify-content: start;
@@ -99,7 +99,7 @@ $primaryColor: #4527a4;
 	  font-weight: 500;
     }
     .p {
-      margin-bottom: 4rem !important ;
+      margin-bottom: 4rem  ;
       text-align: center;
     }
     // h1 {
@@ -107,7 +107,7 @@ $primaryColor: #4527a4;
     //   margin-bottom: 0px;
     // }
     p {
-      margin-bottom: 4rem !important ;
+      // margin-bottom: 4rem !important ;
       text-align: center;
     }
   }

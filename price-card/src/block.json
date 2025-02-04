@@ -118,7 +118,7 @@
         "fontSize": 32,
         "titleAlign": "center",
         "titleMargin": {
-          "top": "2rem",
+          "top": "0px",
           "right": "0px",
           "bottom": "0px",
           "left": "0px"
@@ -170,6 +170,7 @@
         "planTitleStyle": {
           "planTitleColor": "black",
           "planTitleSize": 22,
+          "planTitleAlign": "center",
           "planTitleMargin": {
             "top": "0px",
             "right": "0px",

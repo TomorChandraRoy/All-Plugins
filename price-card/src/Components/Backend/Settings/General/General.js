@@ -197,9 +197,11 @@ const General = ({ attributes, setAttributes }) => {
           onChange={toggleUpdateDelete}
         />
 
+        <Spacer marginBottom="20px" />
+
         {/* Header ToggleControl Text On/Off */}
         {showUpdateDelete && (
-          <div style={{ marginTop: "30px", marginBottom: "30px" }}>
+          <div>
 
             {/* Header Title */}
             <TextControl
@@ -216,6 +218,8 @@ const General = ({ attributes, setAttributes }) => {
               onClick={deleteTitle}
             >Delete
             </IconButton>
+
+            <Spacer marginBottom="20px" />
 
             {/* Header Description */}
             <TextControl
@@ -237,7 +241,7 @@ const General = ({ attributes, setAttributes }) => {
           </div>
         )}
 
-        <Spacer marginBottom="30px" />
+        <Spacer marginBottom="20px" />
 
         {/* Plans Table Section Start*/}
         <h2 >Plans Table : </h2>

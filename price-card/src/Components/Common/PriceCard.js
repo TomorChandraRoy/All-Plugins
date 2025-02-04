@@ -77,9 +77,9 @@ const PriceCard = ({ attributes, setAttributes }) => {
                                     {plan.features.map((feature, featureIndex) => (
                                         <>
                                             {isEditor ?
-                                                <li className='li'>
+                                                <li className='li' >
                                                     <i className={feature?.iconType} style={{ color: feature.iconType === "fa-solid fa-circle-check" ? " #6ab04c" : feature.iconType === "fa fa-times-circle" ? "#eb4d4b" : "rgba(39, 154, 67, 0.86)", marginRight: "10px" }}></i>
-                                                    <RichText value={feature.text}
+                                                    <RichText value={feature.text}  
                                                         onChange={(value) => updateFeature(index, featureIndex, value, "text")} placeholder='Feature Added' />
                                                 </li>
 
