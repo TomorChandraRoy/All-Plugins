@@ -161,26 +161,58 @@ const General = ({ attributes, setAttributes }) => {
   };
 
   // Add new feature to a plan
+  // const addFeature = (planIndex) => {
+  //   const newPlans = [...plans];
+  //   newPlans[planIndex].features.push({ text: 'New Feature', iconType: "fa-solid fa-circle-check" });
+  //   setAttributes({ plans: newPlans });
+  // };
+
   const addFeature = (planIndex) => {
-    const newPlans = [...plans];
-    newPlans[planIndex].features.push({ text: 'New Feature', iconType: "fa-solid fa-circle-check" });
+    const newPlans = JSON.parse(JSON.stringify(plans)); 
+    newPlans[planIndex].features.push({
+      text: 'New Feature',
+      iconType: "fa-solid fa-circle-check",
+      id: Date.now(), 
+    });
     setAttributes({ plans: newPlans });
   };
+  
 
   // Remove feature from a plan
+  // const removeFeature = (planIndex, featureIndex) => {
+  //   const newPlans = [...plans];
+  //   newPlans[planIndex].features.splice(featureIndex, 1);
+  //   setAttributes({ plans: newPlans });
+  // };
+
   const removeFeature = (planIndex, featureIndex) => {
-    const newPlans = [...plans];
+    const newPlans = JSON.parse(JSON.stringify(plans)); 
     newPlans[planIndex].features.splice(featureIndex, 1);
     setAttributes({ plans: newPlans });
   };
+  
 
   // Duplicate feature and insert it below the original feature
+  // const duplicateFeature = (planIndex, featureIndex) => {
+  //   const newPlans = [...plans];
+  //   const duplicatedFeature = newPlans[planIndex].features[featureIndex];
+  //   newPlans[planIndex].features.splice(featureIndex + 1, 0, duplicatedFeature);
+  //   setAttributes({ plans: newPlans });
+  // };
+
   const duplicateFeature = (planIndex, featureIndex) => {
-    const newPlans = [...plans];
-    const duplicatedFeature = newPlans[planIndex].features[featureIndex];
-    newPlans[planIndex].features.splice(featureIndex + 1, 0, duplicatedFeature);
-    setAttributes({ plans: newPlans });
+    setAttributes({
+      plans: produce(plans, draft => {
+        const duplicatedFeature = {
+          ...draft[planIndex].features[featureIndex],
+          id: Date.now(), 
+        };
+        draft[planIndex].features.splice(featureIndex + 1, 0, duplicatedFeature);
+      }),
+    });
   };
+  
+  
   //# Feature End
 
   return (
@@ -371,6 +403,7 @@ const General = ({ attributes, setAttributes }) => {
                       <Button isPrimary onClick={() => addFeature(planIndex)}>
                         Add Feature
                       </Button>
+                      
                     </ul>
                   </PanelBody>
                   {/* Features Section End */}
