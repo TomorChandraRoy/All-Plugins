@@ -22,29 +22,29 @@ if( !class_exists( 'PREFIXPlugin' ) ){
 	class PREFIXPlugin{
 		function __construct(){
 			add_action( 'init', [ $this, 'onInit' ] );
-			add_action('enqueue_block_assets', [ $this, 'bootstrap_enqueue_styles' ]);
+			// add_action('enqueue_block_assets', [ $this, 'bootstrap_enqueue_styles' ]);
 		}
 
 		function onInit(){
 			register_block_type( __DIR__ . '/build' );
 		}
 
-        function bootstrap_enqueue_styles() {
-            wp_enqueue_style(
-               'bootstrap-styles', 
-               'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css', 
-               [], 
-               null
-            );
+      //   function bootstrap_enqueue_styles() {
+      //       wp_enqueue_style(
+      //          'bootstrap-styles', 
+      //          'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css', 
+      //          [], 
+      //          null
+      //       );
 
-            wp_enqueue_script(
-               'bootstrap-scripts', 
-               'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js', 
-               ['jquery'], 
-               null, 
-               true
-            );
-        }
+      //       wp_enqueue_script(
+      //          'bootstrap-scripts', 
+      //          'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js', 
+      //          ['jquery'], 
+      //          null, 
+      //          true
+      //       );
+      //   }
 
 
 	}

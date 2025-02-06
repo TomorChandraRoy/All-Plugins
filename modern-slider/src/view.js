@@ -4,7 +4,7 @@ import Style from './Components/Common/Style';
 import ModernSlider from './Components/Common/ModernSlider';
 
 document.addEventListener('DOMContentLoaded', () => {
-	const blockNameEls = document.querySelectorAll('.wp-block-b-blocks-modern-slider');  //aey name ta block.json file ar "name": "b-blocks/basic-plugins",  dite  hobe na hole a kaj korbe na 
+	const blockNameEls = document.querySelectorAll('.wp-block-b-blocks-modern-slider'); 
 	blockNameEls.forEach(blockNameEl => {
 		const attributes = JSON.parse(blockNameEl.dataset.attributes);
 

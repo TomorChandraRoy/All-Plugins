@@ -1,45 +1,88 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { useSelect } from '@wordpress/data';
+import { RichText } from "@wordpress/block-editor";
 
-const ModernSlider = ({ attributes }) => {
+const ModernSlider = ({ attributes, setAttributes }) => {
 
-    const { modernSlides } = attributes;
+    const isEditor = useSelect((select) => select('core/editor'));
+
+    const { items } = attributes;
+
+    const updateItem = (index, key, value) => {
+        const newItems = [...items];
+        newItems[index] = { ...newItems[index], [key]: value };
+        setAttributes({ items: newItems });
+    };
 
     return (
-        <div >
-            <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
-                <div className="carousel-indicators">
-                    {modernSlides?.map((_, index) => (
-                        <button
-                            key={index}
-                            type="button"
-                            data-bs-target="#carouselExampleCaptions"
-                            data-bs-slide-to={index}
-                            className={index === 0 ? "active" : ""}
-                            aria-current={index === 0 ? "true" : "false"}
-                            aria-label={`Slide ${index + 1}`}
-                        />
-                    ))}
-                </div>
-                <div className="carousel-inner">
-                    {modernSlides?.map((slide, index) => (
-                        <div key={index} className={`carousel-item ${index === 0 ? "active" : ""}`}>
-                            <img src={slide.image} className="d-block w-100" alt={slide.label || `Slide ${index + 1}`} />
-                            <div className="carousel-caption d-none d-md-block">
-                                <h5>{slide.title || `Slide ${index + 1}`}</h5>
-                                <p>{slide.description || "Your description here."}</p>
+        <>
+            <Swiper
+                spaceBetween={30}
+                centeredSlides={true}
+                // autoplay={{
+                //     delay: 2500,
+                //     disableOnInteraction: false,
+                // }}
+                pagination={{
+                    clickable: true,
+                }}
+                navigation={true}
+                modules={[Autoplay, Pagination, Navigation]}
+                className="mySwiper"
+            >
+                {items.map((item, index) => (
+                    console.log(item.image),
+                    
+                    <>
+                        <SwiperSlide key={index} className='slide-image'
+                            style={{
+                                backgroundImage: item.image ? `url(${item.image})` : "",
+                                backgroundColor: item.image ? "" : "#595e5a"
+                            }}>
+
+                            <div className='slider-content'>
+
+                                {isEditor ?
+                                    <RichText className='h3' value={item.title || "Heading..."} onChange={(value) => updateItem(index, "title", value)} placeholder=' Slider Title' /> : <div className='h1'>{item.title}</div>
+                                }
+                                {isEditor ?
+                                    <RichText className='p' value={item.description || "Description.."} onChange={(value) => updateItem(index, "description", value)} placeholder='Slider description' /> : <p>{item.description}</p>
+                                }
+
+                                {isEditor ? (
+                                    item.buttonName && (
+                                        <a
+                                            href={item.buttonUrl || "#"}
+                                            target={isEditor ? "_self" : "_blank"} onClick={(e) => isEditor && e.preventDefault()}
+                                            rel="noopener noreferrer"
+                                        >
+                                            <button className='button'> <RichText className='p' value={item.buttonName} onChange={(value) => updateItem(index, "buttonName", value)} placeholder='button name' /></button>
+                                        </a>
+                                    )
+                                ) : (
+                                    item.buttonName && (
+                                        <a
+                                            href={item.buttonUrl || "#"}
+                                            target={item.buttonNewTab ? "_blank" : "_self"}
+                                            rel="noopener noreferrer"
+                                        >
+                                            <button className='button'>{item.buttonName}</button>
+                                        </a>
+                                    )
+                                )
+                                }
+
                             </div>
-                        </div>
-                    ))}
-                </div>
-                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                    <span className="carousel-control-prev-icon" aria-hidden="true" />
-                    <span className="visually-hidden">Previous</span>
-                </button>
-                <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                    <span className="carousel-control-next-icon" aria-hidden="true" />
-                    <span className="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
+
+                        </SwiperSlide>
+                    </>
+                ))}
+            </Swiper>
+        </>
     );
 };
 

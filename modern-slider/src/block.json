@@ -1,54 +1,65 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 3,
-	"name": "b-blocks/modern-slider", 
-	"version": "1.0.0",
-	"title": "Modern Slider",
-	"category": "widgets",
-	"description": "Short description of the Modern Slider",
-	"keywords": [
-		"Modern Slider"
-	],
-	"textdomain": "b-blocks",
-	"attributes": {
-		"alignment": {
-			"type": "string",
-			"default": "center"
-		},
-        "modernSlides": {
-            "type": "array",
-            "default": [
-                { "image": "https://images.pexels.com/photos/259637/pexels-photo-259637.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-				  "title":"First slide One", 
-				  "description":"Some representative placeholder content for the first slide."
-				},
-                { "image": "https://images.pexels.com/photos/247597/pexels-photo-247597.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 
-				  "title":"First slide Two", 
-				  "description":"Some representative placeholder content for the Two slide."
-			    },
-                { "image": "https://cdn.pixabay.com/photo/2019/08/06/02/16/mountains-4387209_1280.jpg", 				  
-				  "title":"First slide Three", 
-				  "description":"Some representative placeholder content for the Three slide."  
-				}
-            ]
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "b-blocks/modern-slider",
+  "version": "1.0.0",
+  "title": "Modern Slider",
+  "category": "widgets",
+  "description": "Short description of the Modern Slider",
+  "keywords": ["Modern Slider"],
+  "textdomain": "b-blocks",
+  "attributes": {
+    "alignment": {
+      "type": "string",
+      "default": "center"
+    },
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "title": "First slide One",
+          "description": "Some representative placeholder content for the first slide.",
+          "image": "https://images.pexels.com/photos/247597/pexels-photo-247597.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		  "buttonName":"",
+		  "buttonUrl":"https://pixabay.com/",
+		  "buttonNewTab":false
+        },
+
+        {
+          "title": "Second slide Two",
+          "description": "Description of feature 2",
+          "image": "https://images.pexels.com/photos/259637/pexels-photo-259637.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		   "buttonName":"",
+		   "buttonUrl":"https://tastewp.com/",
+		   "buttonNewTab":false
+        },
+
+        {
+          "title": "Third slide Three",
+          "description": "Some representative placeholder content for the Three slide.",
+		  "image": "https://cdn.pixabay.com/photo/2019/08/06/02/16/mountains-4387209_1280.jpg",
+		  "buttonName":"",
+		  "buttonUrl":"https://www.facebook.com/",
+		  "buttonNewTab":false
         }
-	},
-	"supports": {
-		"align": [
-			"wide",
-			"full"
-		],
-		"html": false
-	},
-	"example": {
-		"attributes": {}
-	},
-	"editorScript": "file:./index.js",
-	"editorStyle": "file:./index.css",
-	"style": "file:./view.css",
-	"render": "file:./render.php",
-	"viewScript": "file:./view.js"
+      ]
+    },
+    "activeIndex": {
+      "type": "number",
+      "default": 0
+    }
+  },
+
+  "supports": {
+    "align": ["wide", "full"],
+    "html": false
+  },
+  "example": {
+    "attributes": {}
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./view.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
 }
-
-
-
