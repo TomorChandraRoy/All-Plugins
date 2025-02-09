@@ -60,7 +60,6 @@
   margin-top: 10px;
 }
 .wp-block-b-blocks-modern-slider .mySwiper .slide-image .button {
-  background-color: transparent;
   border: 2px solid #f5f3f3;
   color: #f5f0f0;
   padding: 10px 20px;
@@ -69,8 +68,7 @@
   transition: all 0.3s ease-in-out;
 }
 .wp-block-b-blocks-modern-slider .mySwiper .slide-image .button:hover {
-  background-color: #f5efef;
-  color: #110f0f;
+  border: 2px solid #f5f3f3;
   border: none;
 }
 @keyframes slideFromLeft {

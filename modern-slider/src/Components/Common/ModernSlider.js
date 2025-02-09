@@ -10,7 +10,7 @@ const ModernSlider = ({ attributes, setAttributes }) => {
 
     const isEditor = useSelect((select) => select('core/editor'));
 
-    const { items, tagName,selectedAnimation,animationDelay, animationDuration } = attributes;
+    const { items, tagName,selectedAnimation,animationDelay, animationDuration,decAnimationDuration,decAnimationDelay,decAnimation } = attributes;
 
     const updateItem = (index, key, value) => {
         const newItems = [...items];
@@ -59,7 +59,11 @@ const ModernSlider = ({ attributes, setAttributes }) => {
                                 }
 
                                 {isEditor ?
-                                    <RichText className='dec' value={item.description || "Description.."} onChange={(value) => updateItem(index, "description", value)} placeholder='Slider description' /> : <p className='dec'>{item.description}</p>
+                                    <RichText className={`dec animate-slide ${decAnimation}`} style={{
+                                        animationDelay: `${decAnimationDelay}s`,
+                                        animationDuration: `${decAnimationDuration}s`}} value={item.description || "Description.."} onChange={(value) => updateItem(index, "description", value)} placeholder='Slider description' /> : <p className={`dec animate-slide ${decAnimation}`} style={{
+                                            animationDelay: `${decAnimationDelay}s`,
+                                            animationDuration: `${decAnimationDuration}s`}}>{item.description}</p>
                                 }
                                 <div className='buttonSection'>
                                     {isEditor ? (

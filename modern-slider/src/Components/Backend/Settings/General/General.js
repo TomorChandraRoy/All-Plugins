@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { PanelBody,  __experimentalSpacer as Spacer,  ToolbarGroup, DropdownMenu, __experimentalUnitControl as UnitControl, SelectControl } from '@wordpress/components';
+import { PanelBody,   ToolbarGroup, DropdownMenu, __experimentalUnitControl as UnitControl, SelectControl } from '@wordpress/components';
 import ItemsPanel from './../../../../../../bpl-tools/Components/ItemsPanel/ItemsPanel';
 import {  useState } from 'react';
 import { Device } from '../../../../../../bpl-tools/Components';

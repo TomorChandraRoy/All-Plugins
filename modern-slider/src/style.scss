@@ -50,7 +50,7 @@ $primaryColor: #4527a4;
       }
       
       .button {
-        background-color: transparent;
+        // background-color: transparent;
         border: 2px solid #f5f3f3;
         color: #f5f0f0;
         padding: 10px 20px;
@@ -60,8 +60,9 @@ $primaryColor: #4527a4;
       }
 
       .button:hover {
-        background-color: #f5efef;
-        color: #110f0f;
+        // background-color: #f5efef;
+        border: 2px solid #f5f3f3;
+        // color: #110f0f;
         border: none;
       }
     }

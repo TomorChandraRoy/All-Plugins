@@ -440,7 +440,10 @@ const ModernSlider = ({
     tagName,
     selectedAnimation,
     animationDelay,
-    animationDuration
+    animationDuration,
+    decAnimationDuration,
+    decAnimationDelay,
+    decAnimation
   } = attributes;
   const updateItem = (index, key, value) => {
     const newItems = [...items];
@@ -494,12 +497,20 @@ const ModernSlider = ({
       animationDuration: `${animationDuration}s`
     }
   }, item.title), isEditor ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__.RichText, {
-    className: "dec",
+    className: `dec animate-slide ${decAnimation}`,
+    style: {
+      animationDelay: `${decAnimationDelay}s`,
+      animationDuration: `${decAnimationDuration}s`
+    },
     value: item.description || "Description..",
     onChange: value => updateItem(index, "description", value),
     placeholder: "Slider description"
   }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "dec"
+    className: `dec animate-slide ${decAnimation}`,
+    style: {
+      animationDelay: `${decAnimationDelay}s`,
+      animationDuration: `${decAnimationDuration}s`
+    }
   }, item.description), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "buttonSection"
   }, isEditor ? item.buttonName && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
@@ -551,16 +562,18 @@ const Style = ({
     radiusValues,
     typography,
     headeingColor,
-    headeingMarginValues,
-    animationDelay,
-    animationDuration,
+    headeingPaddingValues,
+    decMarginValues,
+    decColor,
+    decTypography,
+    colors,
+    buttonHoverColor,
     device = "desktop"
   } = attributes;
   const {
     fontFamily,
     fontCategory,
     fontSize,
-    fontVariant,
     fontWeight,
     textDecoration,
     textTransform,
@@ -568,18 +581,31 @@ const Style = ({
     letterSpace,
     lineHeight
   } = typography;
+  // DecTypography attributes
+  const {
+    fontFamily: decFontFamily,
+    fontCategory: decfontCategory,
+    fontWeight: decFontWeight,
+    fontSize: decFontSize,
+    fontStyle: decFontStyle,
+    textTransform: decTextTransform,
+    textDecoration: decTextDecoration,
+    lineHeight: decLineHeight,
+    letterSpace: decLetterSpace
+  } = decTypography;
   const mainSl = `#${id}`;
   // const swiper = `${mainSl} .swiper`;
   const mySwiper = `${mainSl} .mySwiper`;
   const slideImage = `${mySwiper} .slide-image`;
   const sliderContent = `${mySwiper} .slide-image .slider-content`;
-  // const sliderContent = `${slideImage} .slider-content`;
-
+  const buttonSection = `${mySwiper} .slide-image `;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
 		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", typography)?.googleFontLink}
 	    ${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("typogra", typography)?.styles}   
+		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", decTypography)?.googleFontLink}
+	    ${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("typogra", decTypography)?.styles}   
 		${mySwiper}{
 		    border-radius: ${radiusValues.top} ${radiusValues.right} ${radiusValues.bottom} ${radiusValues.left};
 			margin: ${marginValues.top} ${marginValues.right} ${marginValues.bottom} ${marginValues.left};
@@ -595,33 +621,54 @@ const Style = ({
                text-transform: ${textTransform};
                text-decoration: ${textDecoration};
                letter-spacing: ${letterSpace};
-               font-variant: ${fontVariant};
                line-height: ${lineHeight};
 			   color:${headeingColor};
-			   padding: ${headeingMarginValues.top} ${headeingMarginValues.right} ${headeingMarginValues.bottom} ${headeingMarginValues.left};
+			   padding: ${headeingPaddingValues?.top} ${headeingPaddingValues?.right} ${headeingPaddingValues?.bottom} ${headeingPaddingValues?.left};
 
 	   }
-	    @media only screen and (min-width: 641px) and (max-width: 1024px) {
+
+      ${sliderContent} .dec{
+	           font-family:${decFontFamily},${decfontCategory};        
+               font-size:${decFontSize[device]}px;
+               font-style:${decFontStyle};
+               font-weight: ${decFontWeight};
+               text-transform: ${decTextTransform};
+               text-decoration: ${decTextDecoration};
+               letter-spacing: ${decLetterSpace};
+               line-height: ${decLineHeight};
+			   color:${decColor};
+			   margin: ${decMarginValues?.top} ${decMarginValues?.right} ${decMarginValues?.bottom} ${decMarginValues?.left};
+	  }
+	   @media only screen and (min-width: 641px) and (max-width: 1024px) {
              ${sliderContent} .h3{
                 font-size: ${fontSize.tablet}px;
-              }
             }
-           @media only screen and (max-width: 641px) {
+             ${sliderContent} .dec{
+                font-size: ${decFontSize.tablet}px;
+            }
+        }
+        @media only screen and (max-width: 641px) {
              ${sliderContent} .h3{
                font-size: ${fontSize.mobile}px;
-             }
+            }
+             ${sliderContent} .dec{
+               font-size: ${decFontSize.mobile}px;
+            }
         }
-
-
+		${buttonSection} .button{
+         color: ${colors?.color}; 
+         background: ${colors?.bgType === "gradient" ? colors?.gradient : colors?.bg};
+		}
+		${buttonSection} .button:hover {
+			color: ${buttonHoverColor?.color};
+			background: ${buttonHoverColor?.bgType === "gradient" ? buttonHoverColor?.gradient : buttonHoverColor?.bg}; 
+			 
+		}
 	`
     }
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Style);
-// ${sliderContent} .animate-slide{
-// 	animationDelay: ${animationDelay}s;
-// 	animationDuration: ${animationDuration}s;
-//    }
 
 /***/ }),
 
