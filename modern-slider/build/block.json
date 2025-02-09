@@ -177,9 +177,9 @@
         "letterSpace": "0px"
       }
     },
-    "debuttonAnimation": {
+    "buttonAnimation": {
       "type": "string",
-      "default": "side-in-right"
+      "default": "zoom-in"
     },
     "buttonAnimationDelay": {
       "type": "number",

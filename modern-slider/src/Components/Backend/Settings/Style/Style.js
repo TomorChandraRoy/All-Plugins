@@ -10,16 +10,14 @@ import { resetValues } from "../../../../utils/options";
 
 const Style = ({ attributes, setAttributes }) => {
 
-  const { color, marginValues, radiusValues, typography, headeingColor, headeingMarginValues, selectedAnimation, animationDelay, animationDuration, decColor, decMarginValues, decTypography, decAnimation, decAnimationDelay, decAnimationDuration,colors,buttonHoverColor } = attributes;
-
-console.log(colors);
+  const { color, marginValues, radiusValues, typography, headeingColor, headeingMarginValues, selectedAnimation, animationDelay, animationDuration, decColor, decMarginValues, decTypography, decAnimation, decAnimationDelay, decAnimationDuration,colors,buttonHoverColor,buttonTypography,buttonAnimation,buttonAnimationDelay,buttonAnimationDuration } = attributes;
 
 
+
+//title
   const handleSelectChange = (newAnimation) => {
     setAttributes({ selectedAnimation: newAnimation });
   };
-
-
   const handleDelayChange = (newDelay) => {
     setAttributes({ animationDelay: parseFloat(newDelay) });
   };
@@ -27,6 +25,8 @@ console.log(colors);
   const handleDurationChange = (newDuration) => {
     setAttributes({ animationDuration: parseFloat(newDuration) });
   };
+
+  // dec
   const handledecChange = (newAnimation) => {
     setAttributes({ decAnimation: newAnimation });
   };
@@ -37,6 +37,19 @@ console.log(colors);
   const handleDecDurationChange = (newDuration) => {
     setAttributes({ decAnimationDuration: parseFloat(newDuration) });
   };
+  
+  // dec
+  const handleButtonChange = (newAnimation) => {
+    setAttributes({ buttonAnimation: newAnimation });
+  };
+  const handleButtonDelayChange = (newDelay) => {
+    setAttributes({ buttonAnimationDelay: parseFloat(newDelay) });
+  };
+
+  const handleButtonDurationChange = (newDuration) => {
+    setAttributes({ buttonAnimationDuration: parseFloat(newDuration) });
+  };
+
   return (
     <>
       <PanelBody
@@ -207,25 +220,19 @@ console.log(colors);
         title={__("Button", "b-blocks")}
         initialOpen={false}
       >
-        <Typography label={__('Typography:', 'b-blocks')} value={decTypography} onChange={val => setAttributes({ decTypography: val })} />
+        <Typography label={__('Typography:', 'b-blocks')} value={buttonTypography} onChange={val => setAttributes({ buttonTypography: val })} />
         <Spacer />
 
         <ColorsControl value={colors} onChange={val => setAttributes({ colors: val })} defaults={{ color: '#FAFAFA', bg: '#610A0A00' }} />
+
         <Spacer />
+
         <ColorsControl label="Hover Colors"
           value={buttonHoverColor} onChange={val => setAttributes({ buttonHoverColor: val })} defaults={{ color: '##000000', bg: '#ffffff' }}
         />
 
         <Spacer />
 
-        <ColorControl
-          label="Color"
-          defaultColor="#ffffff"
-          value={decColor}
-          onChange={(Clo) => {
-            setAttributes({ decColor: Clo });
-          }}
-        />
 
         <Spacer />
 
@@ -242,7 +249,7 @@ console.log(colors);
 
         <SelectControl
           label="Select Animation"
-          value={decAnimation}
+          value={buttonAnimation}
           options={[
             { label: 'Side In Left', value: 'side-in-left' },
             { label: 'Side In Right', value: 'side-in-right' },
@@ -255,7 +262,7 @@ console.log(colors);
             { label: 'Zoom In', value: 'zoom-in' },
             { label: 'Fade In', value: 'fade-in' }
           ]}
-          onChange={handledecChange}
+          onChange={handleButtonChange}
         />
 
         <Spacer />
@@ -263,8 +270,8 @@ console.log(colors);
         <TextControl
           label="Animation Delay (seconds)"
           type="number"
-          value={decAnimationDelay}
-          onChange={handleDecDelayChange}
+          value={buttonAnimationDelay}
+          onChange={handleButtonDelayChange}
           min="0"
         />
 
@@ -273,8 +280,8 @@ console.log(colors);
         <TextControl
           label="Animation Duration (seconds)"
           type="number"
-          value={decAnimationDuration}
-          onChange={handleDecDurationChange}
+          value={buttonAnimationDuration}
+          onChange={handleButtonDurationChange}
           min="0"
         />
       </PanelBody>

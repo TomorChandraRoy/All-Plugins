@@ -10,7 +10,7 @@ const ModernSlider = ({ attributes, setAttributes }) => {
 
     const isEditor = useSelect((select) => select('core/editor'));
 
-    const { items, tagName,selectedAnimation,animationDelay, animationDuration,decAnimationDuration,decAnimationDelay,decAnimation } = attributes;
+    const { items, tagName,selectedAnimation,animationDelay, animationDuration,decAnimationDuration,decAnimationDelay,decAnimation,buttonAnimation,buttonAnimationDelay,buttonAnimationDuration } = attributes;
 
     const updateItem = (index, key, value) => {
         const newItems = [...items];
@@ -73,7 +73,10 @@ const ModernSlider = ({ attributes, setAttributes }) => {
                                                 target={isEditor ? "_self" : "_blank"} onClick={(e) => isEditor && e.preventDefault()}
                                                 rel="noopener noreferrer"
                                             >
-                                                <button className='button'> <RichText value={item.buttonName} onChange={(value) => updateItem(index, "buttonName", value)} placeholder='button name' /></button>
+                                                <button  className={`button animate-slide ${buttonAnimation}`} style={{
+                                        animationDelay: `${buttonAnimationDelay}s`,
+                                        animationDuration: `${buttonAnimationDuration}s`
+                                      }}> <RichText value={item.buttonName} onChange={(value) => updateItem(index, "buttonName", value)} placeholder='button name' /></button>
                                             </a>
                                         )
                                     ) : (
@@ -83,7 +86,10 @@ const ModernSlider = ({ attributes, setAttributes }) => {
                                                 target={item.buttonNewTab ? "_blank" : "_self"}
                                                 rel="noopener noreferrer"
                                             >
-                                                <button className='button'>{item.buttonName}</button>
+                                                <button className={`button animate-slide ${buttonAnimation}`} style={{
+                                        animationDelay: `${buttonAnimationDelay}s`,
+                                        animationDuration: `${buttonAnimationDuration}s`
+                                      }}>{item.buttonName}</button>
                                             </a>
                                         )
                                     )

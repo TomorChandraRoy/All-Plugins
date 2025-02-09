@@ -443,7 +443,10 @@ const ModernSlider = ({
     animationDuration,
     decAnimationDuration,
     decAnimationDelay,
-    decAnimation
+    decAnimation,
+    buttonAnimation,
+    buttonAnimationDelay,
+    buttonAnimationDuration
   } = attributes;
   const updateItem = (index, key, value) => {
     const newItems = [...items];
@@ -519,7 +522,11 @@ const ModernSlider = ({
     onClick: e => isEditor && e.preventDefault(),
     rel: "noopener noreferrer"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    className: "button"
+    className: `button animate-slide ${buttonAnimation}`,
+    style: {
+      animationDelay: `${buttonAnimationDelay}s`,
+      animationDuration: `${buttonAnimationDuration}s`
+    }
   }, " ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__.RichText, {
     value: item.buttonName,
     onChange: value => updateItem(index, "buttonName", value),
@@ -529,7 +536,11 @@ const ModernSlider = ({
     target: item.buttonNewTab ? "_blank" : "_self",
     rel: "noopener noreferrer"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    className: "button"
+    className: `button animate-slide ${buttonAnimation}`,
+    style: {
+      animationDelay: `${buttonAnimationDelay}s`,
+      animationDuration: `${buttonAnimationDuration}s`
+    }
   }, item.buttonName))))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ModernSlider);
@@ -568,6 +579,7 @@ const Style = ({
     decTypography,
     colors,
     buttonHoverColor,
+    buttonTypography,
     device = "desktop"
   } = attributes;
   const {
@@ -581,6 +593,7 @@ const Style = ({
     letterSpace,
     lineHeight
   } = typography;
+
   // DecTypography attributes
   const {
     fontFamily: decFontFamily,
@@ -593,6 +606,20 @@ const Style = ({
     lineHeight: decLineHeight,
     letterSpace: decLetterSpace
   } = decTypography;
+
+  //buttonTypography
+
+  const {
+    fontFamily: buttonFontFamily,
+    fontCategory: buttonfontCategory,
+    fontWeight: buttonFontWeight,
+    fontSize: buttonFontSize,
+    fontStyle: buttonFontStyle,
+    textTransform: buttonTextTransform,
+    textDecoration: buttonTextDecoration,
+    lineHeight: buttonLineHeight,
+    letterSpace: buttonLetterSpace
+  } = buttonTypography;
   const mainSl = `#${id}`;
   // const swiper = `${mainSl} .swiper`;
   const mySwiper = `${mainSl} .mySwiper`;
@@ -656,13 +683,30 @@ const Style = ({
             }
         }
 		${buttonSection} .button{
-         color: ${colors?.color}; 
-         background: ${colors?.bgType === "gradient" ? colors?.gradient : colors?.bg};
+			font-family:${buttonFontFamily},${buttonfontCategory};        
+            font-size:${buttonFontSize[device]}px;
+            font-style:${buttonFontStyle};
+            font-weight: ${buttonFontWeight};
+            text-transform: ${buttonTextTransform};
+            text-decoration: ${buttonTextDecoration};
+            letter-spacing: ${buttonLetterSpace};
+            line-height: ${buttonLineHeight};
+            color: ${colors?.color}; 
+            background: ${colors?.bgType === "gradient" ? colors?.gradient : colors?.bg};
 		}
+		@media only screen and (min-width: 641px) and (max-width: 1024px) {
+             ${buttonSection} .button{
+                font-size: ${buttonFontSize.tablet}px;
+            }
+        }
+		@media only screen and (max-width: 641px) {
+             ${buttonSection} .button{
+                font-size: ${buttonFontSize.mobile}px;
+            }
+        }
 		${buttonSection} .button:hover {
 			color: ${buttonHoverColor?.color};
-			background: ${buttonHoverColor?.bgType === "gradient" ? buttonHoverColor?.gradient : buttonHoverColor?.bg}; 
-			 
+			background: ${buttonHoverColor?.bgType === "gradient" ? buttonHoverColor?.gradient : buttonHoverColor?.bg}; 	 
 		}
 	`
     }

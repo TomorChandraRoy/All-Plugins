@@ -2,9 +2,10 @@
 import { getTypoCSS } from '../../../../bpl-tools/utils/getCSS';
 const Style = ({ attributes, id }) => {
 
-	const { color, marginValues, radiusValues, typography, headeingColor, headeingPaddingValues, decMarginValues, decColor, decTypography,colors,buttonHoverColor, device = "desktop" } = attributes;
+	const { color, marginValues, radiusValues, typography, headeingColor, headeingPaddingValues, decMarginValues, decColor, decTypography,colors,buttonHoverColor,buttonTypography, device = "desktop" } = attributes;
 
 	const { fontFamily, fontCategory, fontSize, fontWeight, textDecoration, textTransform, fontStyle, letterSpace, lineHeight } = typography;
+
 	// DecTypography attributes
 	const {
 		fontFamily: decFontFamily,
@@ -18,7 +19,19 @@ const Style = ({ attributes, id }) => {
 		letterSpace: decLetterSpace
 	} = decTypography;
 
+//buttonTypography
 
+const {
+	fontFamily: buttonFontFamily,
+	fontCategory: buttonfontCategory,
+	fontWeight: buttonFontWeight,
+	fontSize: buttonFontSize,
+	fontStyle: buttonFontStyle,
+	textTransform: buttonTextTransform,
+	textDecoration: buttonTextDecoration,
+	lineHeight: buttonLineHeight,
+	letterSpace: buttonLetterSpace
+} = buttonTypography;
 
 	const mainSl = `#${id}`;
 	// const swiper = `${mainSl} .swiper`;
@@ -84,13 +97,30 @@ const Style = ({ attributes, id }) => {
             }
         }
 		${buttonSection} .button{
-         color: ${colors?.color}; 
-         background: ${colors?.bgType === "gradient" ? colors?.gradient : colors?.bg};
+			font-family:${buttonFontFamily},${buttonfontCategory};        
+            font-size:${buttonFontSize[device]}px;
+            font-style:${buttonFontStyle};
+            font-weight: ${buttonFontWeight};
+            text-transform: ${buttonTextTransform};
+            text-decoration: ${buttonTextDecoration};
+            letter-spacing: ${buttonLetterSpace};
+            line-height: ${buttonLineHeight};
+            color: ${colors?.color}; 
+            background: ${colors?.bgType === "gradient" ? colors?.gradient : colors?.bg};
 		}
+		@media only screen and (min-width: 641px) and (max-width: 1024px) {
+             ${buttonSection} .button{
+                font-size: ${buttonFontSize.tablet}px;
+            }
+        }
+		@media only screen and (max-width: 641px) {
+             ${buttonSection} .button{
+                font-size: ${buttonFontSize.mobile}px;
+            }
+        }
 		${buttonSection} .button:hover {
 			color: ${buttonHoverColor?.color};
-			background: ${buttonHoverColor?.bgType === "gradient" ? buttonHoverColor?.gradient : buttonHoverColor?.bg}; 
-			 
+			background: ${buttonHoverColor?.bgType === "gradient" ? buttonHoverColor?.gradient : buttonHoverColor?.bg}; 	 
 		}
 	`}} />;
 }
