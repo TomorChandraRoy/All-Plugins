@@ -1,7 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import {
   PanelBody, SelectControl, __experimentalSpacer as Spacer,
-  TextControl,
+  TextControl, __experimentalBorderControl as BorderControl
 } from "@wordpress/components";
 import { BoxControl, ColorControl, ColorsControl, Typography } from "../../../../../../bpl-tools/Components";
 import { resetValues } from "../../../../utils/options";
@@ -10,11 +10,11 @@ import { resetValues } from "../../../../utils/options";
 
 const Style = ({ attributes, setAttributes }) => {
 
-  const { color, marginValues, radiusValues, typography, headeingColor, headeingMarginValues, selectedAnimation, animationDelay, animationDuration, decColor, decMarginValues, decTypography, decAnimation, decAnimationDelay, decAnimationDuration,colors,buttonHoverColor,buttonTypography,buttonAnimation,buttonAnimationDelay,buttonAnimationDuration } = attributes;
+  const { color, marginValues, radiusValues, typography, headeingColor, headeingMarginValues, selectedAnimation, animationDelay, animationDuration, decColor, decMarginValues, decTypography, decAnimation, decAnimationDelay, decAnimationDuration, colors, buttonHoverColor, buttonTypography, buttonAnimation, buttonAnimationDelay, buttonAnimationDuration, buttonPaddingValues, buttonBorder, buttonRadiusValues } = attributes;
 
 
 
-//title
+  //title
   const handleSelectChange = (newAnimation) => {
     setAttributes({ selectedAnimation: newAnimation });
   };
@@ -37,7 +37,7 @@ const Style = ({ attributes, setAttributes }) => {
   const handleDecDurationChange = (newDuration) => {
     setAttributes({ decAnimationDuration: parseFloat(newDuration) });
   };
-  
+
   // dec
   const handleButtonChange = (newAnimation) => {
     setAttributes({ buttonAnimation: newAnimation });
@@ -232,19 +232,28 @@ const Style = ({ attributes, setAttributes }) => {
         />
 
         <Spacer />
-
-
-        <Spacer />
-
-        <BoxControl
-          label="Margin"
-          values={decMarginValues}
+        <BorderControl
+          label="Border"
+          value={buttonBorder}
           resetValues={resetValues}
-          // sides={["horizontal","vertical"]}
-          // disableUnits={false}
-          onChange={(newValues) => setAttributes({ decMarginValues: newValues })}
+          onChange={(newValues) => setAttributes({ buttonBorder: newValues })}
         />
 
+        <Spacer />
+        <BoxControl
+          label="Radius"
+          values={buttonRadiusValues}
+          resetValues={resetValues}
+          onChange={(newValues) => setAttributes({ buttonRadiusValues: newValues })}
+        />
+        <Spacer />
+        
+        <BoxControl
+          label="Padding"
+          values={buttonPaddingValues}
+          resetValues={resetValues}
+          onChange={(newValues) => setAttributes({ buttonPaddingValues: newValues })}
+        />
         <Spacer />
 
         <SelectControl

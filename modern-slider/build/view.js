@@ -580,6 +580,9 @@ const Style = ({
     colors,
     buttonHoverColor,
     buttonTypography,
+    buttonPaddingValues,
+    buttonBorder,
+    buttonRadiusValues,
     device = "desktop"
   } = attributes;
   const {
@@ -651,7 +654,6 @@ const Style = ({
                line-height: ${lineHeight};
 			   color:${headeingColor};
 			   padding: ${headeingPaddingValues?.top} ${headeingPaddingValues?.right} ${headeingPaddingValues?.bottom} ${headeingPaddingValues?.left};
-
 	   }
 
       ${sliderContent} .dec{
@@ -693,6 +695,9 @@ const Style = ({
             line-height: ${buttonLineHeight};
             color: ${colors?.color}; 
             background: ${colors?.bgType === "gradient" ? colors?.gradient : colors?.bg};
+			padding: ${buttonPaddingValues?.top} ${buttonPaddingValues?.right} ${buttonPaddingValues?.bottom} ${buttonPaddingValues?.left};
+			border:${buttonBorder?.width} ${buttonBorder?.style} ${buttonBorder?.color};
+			border-radius:${buttonRadiusValues?.top} ${buttonRadiusValues?.right} ${buttonRadiusValues?.bottom} ${buttonRadiusValues?.left};
 		}
 		@media only screen and (min-width: 641px) and (max-width: 1024px) {
              ${buttonSection} .button{

@@ -2,7 +2,7 @@
 import { getTypoCSS } from '../../../../bpl-tools/utils/getCSS';
 const Style = ({ attributes, id }) => {
 
-	const { color, marginValues, radiusValues, typography, headeingColor, headeingPaddingValues, decMarginValues, decColor, decTypography,colors,buttonHoverColor,buttonTypography, device = "desktop" } = attributes;
+	const { color, marginValues, radiusValues, typography, headeingColor, headeingPaddingValues, decMarginValues, decColor, decTypography,colors,buttonHoverColor,buttonTypography,buttonPaddingValues,buttonBorder,buttonRadiusValues, device = "desktop" } = attributes;
 
 	const { fontFamily, fontCategory, fontSize, fontWeight, textDecoration, textTransform, fontStyle, letterSpace, lineHeight } = typography;
 
@@ -65,7 +65,6 @@ const {
                line-height: ${lineHeight};
 			   color:${headeingColor};
 			   padding: ${headeingPaddingValues?.top} ${headeingPaddingValues?.right} ${headeingPaddingValues?.bottom} ${headeingPaddingValues?.left};
-
 	   }
 
       ${sliderContent} .dec{
@@ -107,6 +106,9 @@ const {
             line-height: ${buttonLineHeight};
             color: ${colors?.color}; 
             background: ${colors?.bgType === "gradient" ? colors?.gradient : colors?.bg};
+			padding: ${buttonPaddingValues?.top} ${buttonPaddingValues?.right} ${buttonPaddingValues?.bottom} ${buttonPaddingValues?.left};
+			border:${buttonBorder?.width} ${buttonBorder?.style} ${buttonBorder?.color};
+			border-radius:${buttonRadiusValues?.top} ${buttonRadiusValues?.right} ${buttonRadiusValues?.bottom} ${buttonRadiusValues?.left};
 		}
 		@media only screen and (min-width: 641px) and (max-width: 1024px) {
              ${buttonSection} .button{
