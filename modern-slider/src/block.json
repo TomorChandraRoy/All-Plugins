@@ -65,9 +65,62 @@
       "type": "number",
       "default": 0
     },
-    "color":{
-      "type":"string",
-      "default":"#eb40344f"
+    "color": {
+      "type": "string",
+      "default": "#4429274f"
+    },
+    "headeingColor": {
+      "type": "string",
+      "default": "##ffffff"
+    },
+    "headeingMarginValues": {
+      "type": "object",
+      "default": {
+        "top": "5px",
+        "right": "0px",
+        "bottom": "5px",
+        "left": "0px"
+      }
+    },
+    "selectedAnimation": {
+      "type": "string",
+      "default": "side-in-left"
+    },
+    "animationDelay": {
+      "type": "number",
+      "default": 0
+    },
+    "animationDuration": {
+      "type": "number",
+      "default": 0.7
+    },
+    "marginValues": {
+      "type": "object",
+      "default": {
+        "top": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "left": "0px"
+      }
+    },
+    "radiusValues": {
+      "type": "object",
+      "default": {
+        "top": "2px",
+        "right": "2px",
+        "bottom": "2px",
+        "left": "2px"
+      }
+    },
+    "typography": {
+      "type": "object",
+      "default": {
+        "fontSize": {
+          "desktop": 35,
+          "tablet": 27,
+          "mobile": 19
+        }
+      }
     }
   },
 

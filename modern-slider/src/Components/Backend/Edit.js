@@ -7,14 +7,14 @@ import { withSelect } from '@wordpress/data';
 
 
 const Edit = (props) => {
-  const { attributes, setAttributes, clientId } = props;
+  const { attributes, setAttributes, clientId,device } = props;
 
   return (
     <>
-      <Settings {...{ attributes, setAttributes }} />
+      <Settings {...{ attributes, setAttributes }} device/>
 
       <div {...useBlockProps()}>
-        <Style attributes={attributes} id={`block-${clientId}`} />
+        <Style attributes={attributes} id={`block-${clientId}`} device={device} />
 
           <ModernSlider attributes={attributes} setAttributes={setAttributes}/>
   

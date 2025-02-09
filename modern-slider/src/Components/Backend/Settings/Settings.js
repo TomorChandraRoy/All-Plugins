@@ -8,7 +8,7 @@ import General from './General/General';
 import Style from './Style/Style';
 
 
-const Settings = ({ attributes, setAttributes }) => {
+const Settings = ({ attributes, setAttributes ,device}) => {
 	const { alignment,} = attributes;
 
 
@@ -24,7 +24,7 @@ const Settings = ({ attributes, setAttributes }) => {
 					tab => <>
 						{'general' === tab.name && <General attributes={attributes} setAttributes={setAttributes} />}
 
-						{'style' === tab.name && <Style attributes={attributes} setAttributes={setAttributes} />}
+						{'style' === tab.name && <Style attributes={attributes} setAttributes={setAttributes} device={device} />}
 					</>
 				}
 			</TabPanel>

@@ -20,3 +20,4 @@ export const tagOptions = [
     { label: "Heading 6 (H6)", value: "h6" },
   ];
   
+  export const resetValues = { top: 0, right: 0, bottom: 0, left: 0 };
