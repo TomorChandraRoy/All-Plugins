@@ -3,6 +3,7 @@ import './style.scss';
 import Style from './Components/Common/Style';
 import ModernSlider from './Components/Common/ModernSlider';
 
+
 document.addEventListener('DOMContentLoaded', () => {
 	const blockNameEls = document.querySelectorAll('.wp-block-b-blocks-modern-slider'); 
 	blockNameEls.forEach(blockNameEl => {
@@ -10,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		createRoot(blockNameEl).render(<>
 			<Style attributes={attributes} id={blockNameEl.id} />
-
 			<ModernSlider attributes={attributes}/>
 		</>);
 

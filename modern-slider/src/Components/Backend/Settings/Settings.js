@@ -7,8 +7,10 @@ import { generalStyleTabs } from '../../../utils/options';
 import General from './General/General';
 import Style from './Style/Style';
 
+
 const Settings = ({ attributes, setAttributes }) => {
-	const { alignment } = attributes;
+	const { alignment,} = attributes;
+
 
 	return <>
 		<InspectorControls>

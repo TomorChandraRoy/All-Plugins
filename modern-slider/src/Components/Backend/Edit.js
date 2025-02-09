@@ -2,6 +2,7 @@ import { useBlockProps } from "@wordpress/block-editor";
 import Settings from "./Settings/Settings";
 import Style from "../Common/Style";
 import ModernSlider from "../Common/ModernSlider";
+import { withSelect } from '@wordpress/data';
 
 
 
@@ -21,4 +22,9 @@ const Edit = (props) => {
     </>
   );
 };
-export default Edit;
+export default withSelect((select) => {
+  const { getDeviceType } = select("core/editor");
+  return {
+    device: getDeviceType()?.toLowerCase(),
+  };
+})(Edit);

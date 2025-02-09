@@ -10,7 +10,7 @@ const ModernSlider = ({ attributes, setAttributes }) => {
 
     const isEditor = useSelect((select) => select('core/editor'));
 
-    const { items } = attributes;
+    const { items, tagName } = attributes;
 
     const updateItem = (index, key, value) => {
         const newItems = [...items];
@@ -18,41 +18,45 @@ const ModernSlider = ({ attributes, setAttributes }) => {
         setAttributes({ items: newItems });
     };
 
+
+
     return (
-        <>
-            <Swiper
-                spaceBetween={30}
-                centeredSlides={true}
-                // autoplay={{
-                //     delay: 2500,
-                //     disableOnInteraction: false,
-                // }}
-                pagination={{
-                    clickable: true,
-                }}
-                navigation={true}
-                modules={[Autoplay, Pagination, Navigation]}
-                className="mySwiper"
-            >
-                {items.map((item, index) => (
-                    console.log(item.image),
-                    
-                    <>
-                        <SwiperSlide key={index} className='slide-image'
-                            style={{
-                                backgroundImage: item.image ? `url(${item.image})` : "",
-                                backgroundColor: item.image ? "" : "#595e5a"
-                            }}>
 
-                            <div className='slider-content'>
+        <Swiper
+            spaceBetween={30}
+            centeredSlides={true}
+            // autoplay={{
+            //     delay: 2500,
+            //     disableOnInteraction: false,
+            // }}
+            pagination={{
+                clickable: true,
+            }}
+            navigation={true}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="mySwiper"
+        >
+            {items.map((item, index) => (
 
-                                {isEditor ?
-                                    <RichText className='h3' value={item.title || "Heading..."} onChange={(value) => updateItem(index, "title", value)} placeholder=' Slider Title' /> : <div className='h1'>{item.title}</div>
-                                }
-                                {isEditor ?
-                                    <RichText className='p' value={item.description || "Description.."} onChange={(value) => updateItem(index, "description", value)} placeholder='Slider description' /> : <p>{item.description}</p>
-                                }
+                <>
+                    <SwiperSlide key={index} className='slide-image'
+                        style={{
+                            backgroundImage: item.image ? `url(${item.image})` : "",
+                            backgroundColor: item.image ? "" : "#595e5a",
+                        }}>
 
+                        <div className="overlay"></div>
+
+                        <div className='slider-content'>
+
+                            {isEditor ?
+                                <RichText tagName={tagName} className='h3' value={item.title || "Heading..."} onChange={(value) => updateItem(index, "title", value)} placeholder=' Slider Title' /> : <div className='h1'>{item.title}</div>
+                            }
+
+                            {isEditor ?
+                                <RichText className='dec' value={item.description || "Description.."} onChange={(value) => updateItem(index, "description", value)} placeholder='Slider description' /> : <p className='dec'>{item.description}</p>
+                            }
+                            <div className='buttonSection'>
                                 {isEditor ? (
                                     item.buttonName && (
                                         <a
@@ -60,7 +64,7 @@ const ModernSlider = ({ attributes, setAttributes }) => {
                                             target={isEditor ? "_self" : "_blank"} onClick={(e) => isEditor && e.preventDefault()}
                                             rel="noopener noreferrer"
                                         >
-                                            <button className='button'> <RichText className='p' value={item.buttonName} onChange={(value) => updateItem(index, "buttonName", value)} placeholder='button name' /></button>
+                                            <button className='button'> <RichText value={item.buttonName} onChange={(value) => updateItem(index, "buttonName", value)} placeholder='button name' /></button>
                                         </a>
                                     )
                                 ) : (
@@ -75,15 +79,17 @@ const ModernSlider = ({ attributes, setAttributes }) => {
                                     )
                                 )
                                 }
-
                             </div>
 
-                        </SwiperSlide>
-                    </>
-                ))}
-            </Swiper>
-        </>
+                        </div>
+
+                    </SwiperSlide>
+                </>
+            ))}
+        </Swiper>
     );
 };
 
 export default ModernSlider;
+
+

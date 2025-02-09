@@ -37,16 +37,36 @@
         {
           "title": "Third slide Three",
           "description": "Some representative placeholder content for the Three slide.",
-          "image": "https://cdn.pixabay.com/photo/2019/08/06/02/16/mountains-4387209_1280.jpg",
+          "image": "https://cdn.pixabay.com/photo/2024/11/19/12/30/whistling-wind-9208906_640.jpg",
           "buttonName": "",
           "buttonUrl": "https://www.facebook.com/",
           "buttonNewTab": false
         }
       ]
     },
+    "selectedDevice": {
+      "type": "string",
+      "default": "desktop"
+    },
+    "sliderHeight": {
+      "type": "string",
+      "default": "24rem"
+    },
+    "descriptionGap": {
+      "type": "string",
+      "default": "20px"
+    },
+    "tagName": {
+      "type": "string",
+      "default": "h2"
+    },
     "activeIndex": {
       "type": "number",
       "default": 0
+    },
+    "color": {
+      "type": "string",
+      "default": "#eb40344f"
     }
   },
   "supports": {
