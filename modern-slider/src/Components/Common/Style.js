@@ -2,8 +2,10 @@
 import { getTypoCSS } from '../../../../bpl-tools/utils/getCSS';
 const Style = ({ attributes, id }) => {
 
-	const { color, marginValues, radiusValues, typography, headeingColor, headeingPaddingValues, decMarginValues, decColor, decTypography,colors,buttonHoverColor,buttonTypography,buttonPaddingValues,buttonBorder,buttonRadiusValues, device = "desktop" } = attributes;
+	const { color, marginValues, radiusValues, typography, headeingColor, headeingMarginValues, decMarginValues, decColor, decTypography, colors, arrayBg, buttonHoverColor, buttonTypography, buttonPaddingValues, buttonBorder, buttonRadiusValues, arrayStyle, arrayHeight, arrayWidth, paginationColor, paginationActiveColor, paginationWidth, paginationHeight, paginationActiveBorder, paginationType,squareWidth,squareHeight, paginationRadiusValues, device = "desktop" } = attributes;
 
+	console.log(arrayBg.color);
+	
 	const { fontFamily, fontCategory, fontSize, fontWeight, textDecoration, textTransform, fontStyle, letterSpace, lineHeight } = typography;
 
 	// DecTypography attributes
@@ -19,28 +21,34 @@ const Style = ({ attributes, id }) => {
 		letterSpace: decLetterSpace
 	} = decTypography;
 
-//buttonTypography
+	//buttonTypography
 
-const {
-	fontFamily: buttonFontFamily,
-	fontCategory: buttonfontCategory,
-	fontWeight: buttonFontWeight,
-	fontSize: buttonFontSize,
-	fontStyle: buttonFontStyle,
-	textTransform: buttonTextTransform,
-	textDecoration: buttonTextDecoration,
-	lineHeight: buttonLineHeight,
-	letterSpace: buttonLetterSpace
-} = buttonTypography;
+	const {
+		fontFamily: buttonFontFamily,
+		fontCategory: buttonfontCategory,
+		fontWeight: buttonFontWeight,
+		fontSize: buttonFontSize,
+		fontStyle: buttonFontStyle,
+		textTransform: buttonTextTransform,
+		textDecoration: buttonTextDecoration,
+		lineHeight: buttonLineHeight,
+		letterSpace: buttonLetterSpace
+	} = buttonTypography;
 
 	const mainSl = `#${id}`;
-	// const swiper = `${mainSl} .swiper`;
+	// const pagination = `#${mainSl} .pagination-${paginationType}`;
 	const mySwiper = `${mainSl} .mySwiper`;
+	const swiperButton = `${mySwiper}`;
 	const slideImage = `${mySwiper} .slide-image`;
 	const sliderContent = `${mySwiper} .slide-image .slider-content`;
 	const buttonSection = `${mySwiper} .slide-image `;
+	const swiperPagination = `${mainSl} .swiper-pagination`;
 
 
+	const paginationWidths = paginationType === "bullets" ? paginationWidth : squareWidth;
+	const paginationHeights = paginationType === "bullets" ? paginationHeight : squareHeight;
+	
+  
 	return <style dangerouslySetInnerHTML={{
 		__html: `
 		${getTypoCSS("", typography)?.googleFontLink}
@@ -64,7 +72,7 @@ const {
                letter-spacing: ${letterSpace};
                line-height: ${lineHeight};
 			   color:${headeingColor};
-			   padding: ${headeingPaddingValues?.top} ${headeingPaddingValues?.right} ${headeingPaddingValues?.bottom} ${headeingPaddingValues?.left};
+			   margin: ${headeingMarginValues?.top} ${headeingMarginValues?.right} ${headeingMarginValues?.bottom} ${headeingMarginValues?.left};
 	   }
 
       ${sliderContent} .dec{
@@ -123,6 +131,60 @@ const {
 		${buttonSection} .button:hover {
 			color: ${buttonHoverColor?.color};
 			background: ${buttonHoverColor?.bgType === "gradient" ? buttonHoverColor?.gradient : buttonHoverColor?.bg}; 	 
+		}
+		${swiperButton} .swiper-button-next{
+           width: ${arrayWidth}; 
+           height: ${arrayHeight};
+           background: ${arrayBg?.bgType === "gradient" ? arrayBg?.gradient : arrayBg?.bg}; 
+           border-radius:${arrayStyle?.arrayRadius?.top} ${arrayStyle?.arrayRadius?.right} ${arrayStyle?.arrayRadius?.bottom} ${arrayStyle?.arrayRadius?.left};
+		   border: 2px solid ${arrayBg?.color};
+		   
+		}
+		${swiperButton} .swiper-button-prev{
+           width: ${arrayWidth}; 
+           height: ${arrayHeight};
+           background: ${arrayBg?.bgType === "gradient" ? arrayBg?.gradient : arrayBg?.bg}; 
+           border-radius:${arrayStyle?.arrayRadius?.top} ${arrayStyle?.arrayRadius?.right} ${arrayStyle?.arrayRadius?.bottom} ${arrayStyle?.arrayRadius?.left};
+		   border: 2px solid ${arrayBg?.color};
+		 
+		}
+		${swiperButton} .swiper-button-next::after{
+		   font-size: ${arrayStyle?.arraySize}px;
+		   color: ${arrayStyle?.arrayColor};
+		}
+		${swiperButton} .swiper-button-prev::after{
+          font-size: ${arrayStyle?.arraySize}px;
+		  color: ${arrayStyle?.arrayColor};
+		}
+
+		${mySwiper} .swiper-pagination{
+			display: flex;
+            justify-content: center;
+            align-items: center;
+		}
+
+		${mainSl}  .pagination-bullets  .swiper-pagination-bullet {
+		   cursor: pointer;
+           border-radius: 50%;
+		   width: ${paginationWidths};
+		   height: ${paginationHeights};
+		   background-color:${paginationColor};
+       }
+
+      ${mainSl}  .pagination-square .swiper-pagination-bullet {
+		cursor: pointer;
+         border-radius: 0;
+         transform: rotate(1deg);
+		 width: ${paginationWidths};
+		 height: ${paginationHeights};
+		 background-color:${paginationColor};
+		 border-radius:${paginationRadiusValues?.top} ${paginationRadiusValues?.right} ${paginationRadiusValues?.bottom} ${paginationRadiusValues?.left};
+        }
+
+		${swiperPagination} .swiper-pagination-bullet-active{
+		    cursor: pointer;
+			background:${paginationActiveColor};
+            border:${paginationActiveBorder?.width} ${paginationActiveBorder?.style} ${paginationActiveBorder?.color};
 		}
 	`}} />;
 }

@@ -1,7 +1,8 @@
 import { __ } from "@wordpress/i18n";
 import {
   PanelBody, SelectControl, __experimentalSpacer as Spacer,
-  TextControl, __experimentalBorderControl as BorderControl
+  TextControl, __experimentalBorderControl as BorderControl, __experimentalUnitControl as UnitControl,
+  RangeControl
 } from "@wordpress/components";
 import { BoxControl, ColorControl, ColorsControl, Typography } from "../../../../../../bpl-tools/Components";
 import { resetValues } from "../../../../utils/options";
@@ -10,7 +11,10 @@ import { resetValues } from "../../../../utils/options";
 
 const Style = ({ attributes, setAttributes }) => {
 
-  const { color, marginValues, radiusValues, typography, headeingColor, headeingMarginValues, selectedAnimation, animationDelay, animationDuration, decColor, decMarginValues, decTypography, decAnimation, decAnimationDelay, decAnimationDuration, colors, buttonHoverColor, buttonTypography, buttonAnimation, buttonAnimationDelay, buttonAnimationDuration, buttonPaddingValues, buttonBorder, buttonRadiusValues } = attributes;
+  const { color, marginValues, radiusValues, typography, headeingColor, headeingMarginValues, selectedAnimation, animationDelay, animationDuration, decColor, decMarginValues, decTypography, decAnimation, decAnimationDelay, decAnimationDuration, colors, buttonHoverColor, buttonTypography, buttonAnimation, buttonAnimationDelay, buttonAnimationDuration, buttonPaddingValues, buttonBorder, buttonRadiusValues, arrayStyle, arrayHeight, arrayWidth, arrayBg, paginationType, paginationActiveColor, paginationColor, paginationWidth, paginationHeight, paginationActiveBorder, squareWidth, squareHeight,paginationRadiusValues } = attributes;
+
+console.log(arrayBg);
+
 
 
 
@@ -38,7 +42,7 @@ const Style = ({ attributes, setAttributes }) => {
     setAttributes({ decAnimationDuration: parseFloat(newDuration) });
   };
 
-  // dec
+  // buttn
   const handleButtonChange = (newAnimation) => {
     setAttributes({ buttonAnimation: newAnimation });
   };
@@ -49,6 +53,8 @@ const Style = ({ attributes, setAttributes }) => {
   const handleButtonDurationChange = (newDuration) => {
     setAttributes({ buttonAnimationDuration: parseFloat(newDuration) });
   };
+
+
 
   return (
     <>
@@ -108,7 +114,7 @@ const Style = ({ attributes, setAttributes }) => {
         <Spacer />
 
         <BoxControl
-          label="Padding"
+          label="Margin"
           values={headeingMarginValues}
           resetValues={resetValues}
           // sides={["horizontal","vertical"]}
@@ -247,7 +253,7 @@ const Style = ({ attributes, setAttributes }) => {
           onChange={(newValues) => setAttributes({ buttonRadiusValues: newValues })}
         />
         <Spacer />
-        
+
         <BoxControl
           label="Padding"
           values={buttonPaddingValues}
@@ -292,6 +298,157 @@ const Style = ({ attributes, setAttributes }) => {
           value={buttonAnimationDuration}
           onChange={handleButtonDurationChange}
           min="0"
+        />
+      </PanelBody>
+
+      <PanelBody
+
+        className="bPlPanelBody"
+        title={__("Array", "b-blocks")}
+        initialOpen={false}
+      >
+
+        <RangeControl
+          label={__("Icon Size", "text-domain")}
+          value={arrayStyle?.arraySize}
+          onChange={(newSize) => setAttributes({
+            arrayStyle: { ...arrayStyle, arraySize: newSize }
+          })}
+          min={10}
+          max={100}
+        />
+        <Spacer />
+        <ColorControl
+          label="Color"
+          defaultColor="#0668f1"
+          value={arrayStyle?.arrayColor}
+          onChange={(newColor) => setAttributes({
+            arrayStyle: { ...arrayStyle, arrayColor: newColor }
+          })}
+        />
+        <Spacer />
+        <UnitControl
+          label="Width"
+          value={arrayWidth}
+          onChange={(newWidth) => setAttributes({ arrayWidth: newWidth })}
+        />
+        <Spacer />
+        <UnitControl
+          label="Height"
+          value={arrayHeight}
+          onChange={(newHeight) => setAttributes({ arrayHeight: newHeight })}
+        />
+        <Spacer />
+
+        <Spacer />
+
+        <ColorsControl label="Background" value={arrayBg} onChange={val => setAttributes({ arrayBg: val })} defaults={{ color: '#0568f200', bg: '#9D131300' }} />
+
+        <Spacer />
+
+        <BoxControl
+          label="Radius"
+          values={arrayStyle?.arrayRadius}
+          resetValues={resetValues}
+          // sides={["horizontal", "vertical"]}
+          // disableUnits={false}
+          onChange={(newValues) => setAttributes({
+            arrayStyle: { ...arrayStyle, arrayRadius: newValues }
+          })}
+        />
+
+      </PanelBody>
+
+      <PanelBody
+
+        className="bPlPanelBody"
+        title={__("Indicators", "b-blocks")}
+        initialOpen={false}
+      >
+        <SelectControl
+          label="Select Pagination"
+          value={paginationType}
+          options={[
+            { label: "Default", value: "bullets" },
+            { label: "Square", value: "square" }
+          ]}
+          onChange={(newType) => setAttributes({ paginationType: newType })}
+        />
+
+
+        <Spacer />
+
+        <ColorControl
+          label=" Color"
+          defaultColor="#ed0510"
+          value={paginationColor}
+          onChange={(Cl) => {
+            setAttributes({ paginationColor: Cl });
+          }}
+        />
+
+        <ColorControl
+          label="Active Color"
+          defaultColor="#0668f1"
+          value={paginationActiveColor}
+          onChange={(Cl) => {
+            setAttributes({ paginationActiveColor: Cl });
+          }}
+        />
+
+        <Spacer />
+
+        <Spacer />
+        <BorderControl
+          label="Active Border"
+          value={paginationActiveBorder}
+          resetValues={resetValues}
+          onChange={(newValues) => setAttributes({ paginationActiveBorder: newValues })}
+        />
+        <Spacer />
+        {paginationType === "square" ?
+          <>
+
+
+            <UnitControl
+              label="Width"
+              value={squareWidth}
+              onChange={(newWidth) => setAttributes({ squareWidth: newWidth })}
+            />
+
+            <Spacer />
+
+            <UnitControl
+              label="Height"
+              value={squareHeight}
+              onChange={(newHeight) => setAttributes({ squareHeight: newHeight })}
+            />
+          </>
+          :
+          <>
+            <UnitControl
+              label="Width"
+              value={paginationWidth}
+              onChange={(newWidth) => setAttributes({ paginationWidth: newWidth })}
+            />
+
+            <Spacer />
+
+            <UnitControl
+              label="Height"
+              value={paginationHeight}
+              onChange={(newHeight) => setAttributes({ paginationHeight: newHeight })}
+            />
+          </>
+        }
+
+        <Spacer />
+
+        <BoxControl
+          label="Radius"
+          values={paginationRadiusValues}
+          resetValues={resetValues}
+          onChange={(newValues) => setAttributes({ paginationRadiusValues: newValues })}
         />
       </PanelBody>
     </>

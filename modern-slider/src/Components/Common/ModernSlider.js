@@ -10,7 +10,9 @@ const ModernSlider = ({ attributes, setAttributes }) => {
 
     const isEditor = useSelect((select) => select('core/editor'));
 
-    const { items, tagName,selectedAnimation,animationDelay, animationDuration,decAnimationDuration,decAnimationDelay,decAnimation,buttonAnimation,buttonAnimationDelay,buttonAnimationDuration } = attributes;
+    const { items, tagName,selectedAnimation,animationDelay, animationDuration,decAnimationDuration,decAnimationDelay,decAnimation,buttonAnimation,buttonAnimationDelay,buttonAnimationDuration, paginationType} = attributes;  
+
+    // const paginationClass = paginationType === "square" ? "pagination-square" : "pagination-bullets";
 
     const updateItem = (index, key, value) => {
         const newItems = [...items];
@@ -29,11 +31,11 @@ const ModernSlider = ({ attributes, setAttributes }) => {
                 //     disableOnInteraction: false,
                 // }}
                 pagination={{
-                    clickable: true,
-                }}
+                    clickable: true
+                  }}
                 navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
-                className="mySwiper"
+                className={`mySwiper pagination-${paginationType}`}
             >
                 {items.map((item, index) => (
 

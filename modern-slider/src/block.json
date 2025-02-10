@@ -91,7 +91,7 @@
       "type": "string",
       "default": "#ffffff"
     },
-    "headeingPaddingValues": {
+    "headeingMarginValues": {
       "type": "object",
       "default": {
         "top": "5px",
@@ -150,19 +150,28 @@
         "letterSpace": "0px"
       }
     },
+    "decMarginValues": {
+      "type": "object",
+      "default": {
+        "top": "5px",
+        "right": "0px",
+        "bottom": "5px",
+        "left": "0px"
+      }
+    },
     "decAnimation": {
       "type": "string",
       "default": "side-in-right"
     },
     "decAnimationDelay": {
       "type": "number",
-      "default": 0
+      "default": 0.7
     },
     "decAnimationDuration": {
       "type": "number",
       "default": 0.7
     },
-  
+
     "buttonTypography": {
       "type": "object",
       "default": {
@@ -215,7 +224,7 @@
     "buttonBorder": {
       "type": "object",
       "default": {
-        "width": 3,
+        "width": "3px",
         "style": "solid",
         "color": "#fafafa"
       }
@@ -236,6 +245,95 @@
         "right": "20px",
         "bottom": "10px",
         "left": "20px"
+      }
+    },
+    "arrayStyle": {
+      "type": "object",
+      "default": {
+        "arraySize": 30,
+        "arrayColor": "#0668f1",
+        "width": 50,
+        "height": 50,
+        "arrayBgColor": "",
+        "arrayRadius": {
+          "top": "0px",
+          "right": "0px",
+          "bottom": "0px",
+          "left": "0px"
+        }
+      }
+    },
+    "arrayWidth": {
+      "type": "string",
+      "default": "50px"
+    },
+    "arrayHeight": {
+      "type": "string",
+      "default": "50px"
+    },
+    "arrayBg": {
+      "type": "object",
+      "default": {
+        "color": "#0568f200",
+        "bgType": "solid",
+        "bg": "#9D131300",
+        "gradient": "linear-gradient(135deg, #4527a4, #8344c5)"
+      }
+    },
+    "paginationType": {
+      "type": "string",
+      "default": "bullets"
+    },
+    "paginationColor": {
+      "type": "string",
+      "default": "#ed0510"
+    },
+    "paginationActiveColor": {
+      "type": "string",
+      "default": " #0668f1"
+    },
+    "paginationActiveBorder": {
+      "type": "object",
+      "default": {
+        "width": "8px",
+        "style": "solid",
+        "color": "#0668f1"
+      }
+    },
+    "paginationBorder": {
+      "type": "object",
+      "default": {
+        "top": "1px",
+        "right": "1px",
+        "bottom": "1px",
+        "left": "1px",
+        "style": "solid",
+        "color": "#000000"
+      }
+    },
+    "paginationWidth": {
+      "type": "string",
+      "default": "8px"
+    },
+    "paginationHeight": {
+      "type": "string",
+      "default": "8px"
+    },
+    "squareWidth": {
+      "type": "string",
+      "default": "30px"
+    },
+    "squareHeight": {
+      "type": "string",
+      "default": "10px"
+    },
+    "paginationRadiusValues": {
+      "type": "object",
+      "default": {
+        "top": "5px",
+        "right": "5px",
+        "bottom": "5px",
+        "left": "5px"
       }
     }
   },
