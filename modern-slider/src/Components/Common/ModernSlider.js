@@ -6,7 +6,9 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { useSelect } from '@wordpress/data';
 import { RichText } from "@wordpress/block-editor";
 
+
 const ModernSlider = ({ attributes, setAttributes }) => {
+    
 
     const isEditor = useSelect((select) => select('core/editor'));
 
@@ -26,10 +28,10 @@ const ModernSlider = ({ attributes, setAttributes }) => {
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
-                // autoplay={{
-                //     delay: 2500,
-                //     disableOnInteraction: false,
-                // }}
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }}
                 pagination={{
                     clickable: true
                   }}
@@ -108,5 +110,3 @@ const ModernSlider = ({ attributes, setAttributes }) => {
 };
 
 export default ModernSlider;
-
-

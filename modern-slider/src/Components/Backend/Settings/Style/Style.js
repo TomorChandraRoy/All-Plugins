@@ -13,10 +13,6 @@ const Style = ({ attributes, setAttributes }) => {
 
   const { color, marginValues, radiusValues, typography, headeingColor, headeingMarginValues, selectedAnimation, animationDelay, animationDuration, decColor, decMarginValues, decTypography, decAnimation, decAnimationDelay, decAnimationDuration, colors, buttonHoverColor, buttonTypography, buttonAnimation, buttonAnimationDelay, buttonAnimationDuration, buttonPaddingValues, buttonBorder, buttonRadiusValues, arrayStyle, arrayHeight, arrayWidth, arrayBg, paginationType, paginationActiveColor, paginationColor, paginationWidth, paginationHeight, paginationActiveBorder, squareWidth, squareHeight,paginationRadiusValues } = attributes;
 
-console.log(arrayBg);
-
-
-
 
   //title
   const handleSelectChange = (newAnimation) => {

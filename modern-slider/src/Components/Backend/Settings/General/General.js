@@ -1,18 +1,23 @@
 import { __ } from '@wordpress/i18n';
-import { PanelBody,   ToolbarGroup, DropdownMenu, __experimentalUnitControl as UnitControl, SelectControl } from '@wordpress/components';
+import { PanelBody, __experimentalUnitControl as UnitControl, SelectControl ,__experimentalSpacer as Spacer, AlignmentMatrixControl, ToggleControl } from '@wordpress/components';
 import ItemsPanel from './../../../../../../bpl-tools/Components/ItemsPanel/ItemsPanel';
-import {  useState } from 'react';
-import { Device } from '../../../../../../bpl-tools/Components';
-import { tagOptions } from '../../../../utils/options';
+import { useState } from 'react';
+import { Device, IconLibrary } from '../../../../../../bpl-tools/Components';
+// import { tagOptions } from '../../../../utils/options';
 import { pxUnit, remUnit, vhUnit } from '../../../../../../bpl-tools/utils/options';
 import Items from '../Panel/Items';
 
 
 
-const General = ({ attributes, setAttributes  }) => {
+const General = ({ attributes, setAttributes }) => {
+  // tagName
+  const { sliderHeight, descriptionRespon = {}, nextArrow, prevArrow,alignmentControl,autoplay } = attributes;
+  const [device, setDevice] = useState("desktop");
+  const currentGap = descriptionRespon[device];
 
-  const { tagName, descriptionGap, sliderHeight } = attributes
-  const [device, setDevice] = useState('desktop');
+console.log(autoplay);
+
+
 
   return (
     <>
@@ -39,7 +44,7 @@ const General = ({ attributes, setAttributes  }) => {
 
 
 
-      <PanelBody className='bPlPanelBody' title={__('Title', 'b-blocks')} initialOpen={false}>
+      {/* <PanelBody className='bPlPanelBody' title={__('Title', 'b-blocks')} initialOpen={false}>
         <div className='tag' style={{
           display: "flex",
           justifyContent: "left",
@@ -60,7 +65,7 @@ const General = ({ attributes, setAttributes  }) => {
             </ToolbarGroup>
           </div>
         </div>
-      </PanelBody>
+      </PanelBody> */}
 
       <PanelBody className='bPlPanelBody' title={__('Layout Settings', 'b-blocks')} initialOpen={false}>
 
@@ -68,22 +73,39 @@ const General = ({ attributes, setAttributes  }) => {
           <h2>Gap:</h2>
           <Device
             device={device}
-            setDevice={setDevice}
-            onChange={(selectedDevice) => {
-              setAttributes({ selectedDevice });
-            }}
+            onChange={(selectedDevice) => setDevice(selectedDevice)}
           />
+
         </div>
         <div className='' style={{ display: "flex", alignItems: "center", gap: "5px", }}>
           <span>Left/Right InnerGap</span>
           <UnitControl style={{ width: "111px" }}
-            value={descriptionGap}
+            value={currentGap}
             units={[remUnit(), pxUnit(), vhUnit()]}
             // units={units}
-            onChange={(newGap) => { setAttributes({ descriptionGap: newGap }) }}
+            onChange={(newGap) => {
+              setAttributes({
+                descriptionRespon: {
+                  ...descriptionRespon,
+                  [device]: newGap, // Update only the selected device
+                },
+              });
+            }}
           />
         </div>
-
+        <Spacer />
+        <IconLibrary
+          label="Select Previous Arrow Icon"
+          value={prevArrow}
+          onChange={(icon) => setAttributes({ prevArrow: icon })}
+        />
+        <Spacer />
+        <IconLibrary
+          label="Select Next Arrow Icon"
+          value={nextArrow}
+          onChange={(icon) => setAttributes({ nextArrow: icon })}
+        />
+        <Spacer />
 
         <div className='' style={{ display: "flex", alignItems: "center", gap: "5px", }}>
           <h2 style={{}}>Slide Direction</h2>
@@ -100,13 +122,15 @@ const General = ({ attributes, setAttributes  }) => {
         <div className='' style={{ display: "flex", alignItems: "center", gap: "7.6rem" }}>
           <h2>Height:</h2>
           <Device
-            device={device}
-            setDevice={setDevice}
+            device={descriptionRespon}
+            setDevice={descriptionRespon}
             onChange={(selectedDevice) => {
               setAttributes({ selectedDevice });
             }}
           />
         </div>
+        <Spacer />
+
         <div className='' style={{ display: "flex", alignItems: "center", gap: "75px", }}>
           <span>Slider Height</span>
           <UnitControl style={{ width: "77px" }}
@@ -115,11 +139,26 @@ const General = ({ attributes, setAttributes  }) => {
             onChange={(newGap) => { setAttributes({ sliderHeight: newGap }) }}
           />
         </div>
+
+        <Spacer />
+        <div className='' style={{ display: "flex", alignItems: "center", gap: "75px", }}>
+          <span> Position:</span> 
+
+          <AlignmentMatrixControl 
+            value={ alignmentControl }
+            onChange={(newAlignment) => setAttributes({ alignmentControl: newAlignment })}
+        />
+          
+        </div>
       </PanelBody>
 
 
       <PanelBody className='bPlPanelBody' title={__('Slider Option', 'b-blocks')} initialOpen={false}>
-
+      <ToggleControl
+            label="Enable Autoplay"
+            checked={autoplay}
+            onChange={(value) => setAttributes({ autoplay: value })}
+        />
       </PanelBody>
       <PanelBody className='bPlPanelBody' title={__('Indicator', 'b-blocks')} initialOpen={false}>
 

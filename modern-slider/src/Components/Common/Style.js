@@ -2,9 +2,12 @@
 import { getTypoCSS } from '../../../../bpl-tools/utils/getCSS';
 const Style = ({ attributes, id }) => {
 
-	const { color, marginValues, radiusValues, typography, headeingColor, headeingMarginValues, decMarginValues, decColor, decTypography, colors, arrayBg, buttonHoverColor, buttonTypography, buttonPaddingValues, buttonBorder, buttonRadiusValues, arrayStyle, arrayHeight, arrayWidth, paginationColor, paginationActiveColor, paginationWidth, paginationHeight, paginationActiveBorder, paginationType,squareWidth,squareHeight, paginationRadiusValues, device = "desktop" } = attributes;
+	const { color, marginValues, radiusValues, typography, headeingColor, headeingMarginValues, decMarginValues, decColor, decTypography, colors, arrayBg, buttonHoverColor, buttonTypography, buttonPaddingValues, buttonBorder, buttonRadiusValues, arrayStyle, arrayHeight, arrayWidth, paginationColor, paginationActiveColor, paginationWidth, paginationHeight, paginationActiveBorder, paginationType,squareWidth,squareHeight, paginationRadiusValues, descriptionRespon ,device = "desktop" } = attributes;
+	
+	const gap = descriptionRespon ;
 
-	console.log(arrayBg.color);
+	
+	
 	
 	const { fontFamily, fontCategory, fontSize, fontWeight, textDecoration, textTransform, fontStyle, letterSpace, lineHeight } = typography;
 
@@ -55,6 +58,7 @@ const Style = ({ attributes, id }) => {
 	    ${getTypoCSS("typogra", typography)?.styles}   
 		${getTypoCSS("", decTypography)?.googleFontLink}
 	    ${getTypoCSS("typogra", decTypography)?.styles}   
+
 		${mySwiper}{
 		    border-radius: ${radiusValues.top} ${radiusValues.right} ${radiusValues.bottom} ${radiusValues.left};
 			margin: ${marginValues.top} ${marginValues.right} ${marginValues.bottom} ${marginValues.left};
@@ -62,6 +66,23 @@ const Style = ({ attributes, id }) => {
        ${slideImage} .overlay{
            background-color:${color};
 	   }
+       ${sliderContent} {
+            width: calc(100% - ${gap[device]});
+			text-align:
+          }
+          
+        @media only screen and (min-width: 641px) and (max-width: 1024px) {
+            ${sliderContent} {
+              width: calc(100% - ${gap.tablet});
+            }
+        }
+
+        @media only screen and (max-width: 641px) {
+            ${sliderContent} {
+              width: calc(100% - ${gap.mobile});
+            }
+        }
+	
        ${sliderContent} .h3{
             font-family:${fontFamily},${fontCategory};
                font-size:${fontSize[device]}px;

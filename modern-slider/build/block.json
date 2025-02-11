@@ -44,6 +44,18 @@
         }
       ]
     },
+    "prevArrow": {
+      "type": "string",
+      "default": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path d='M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 73.4-73.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-128 128z'/></svg>"
+    },
+    "nextArrow": {
+      "type": "string",
+      "default": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path d='M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z'/></svg>"
+    },
+    "alignmentControl": {
+      "type": "string",
+      "default": "middle center"
+    },
     "marginValues": {
       "type": "object",
       "default": {
@@ -70,9 +82,13 @@
       "type": "string",
       "default": "24rem"
     },
-    "descriptionGap": {
+    "descriptionRespon": {
       "type": "string",
-      "default": "20px"
+      "default": {
+        "desktop": "192px",
+        "tablet": "138px",
+        "mobile": "100px"
+      }
     },
     "tagName": {
       "type": "string",
@@ -98,6 +114,10 @@
         "bottom": "5px",
         "left": "0px"
       }
+    },
+    "autoplay": {
+      "type": "boolean",
+      "default": true
     },
     "typography": {
       "type": "object",
@@ -146,6 +166,10 @@
         "lineHeight": "135%",
         "letterSpace": "0px"
       }
+    },
+    "decColor": {
+      "type": "string",
+      "default": "#ffffff"
     },
     "decMarginValues": {
       "type": "object",

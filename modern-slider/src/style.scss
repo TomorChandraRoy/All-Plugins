@@ -10,8 +10,8 @@ $primaryColor: #4527a4;
 
   .mySwiper {
     width: 100%;
-    max-width: 601px;
-    height: 400px;
+    max-width: 641px;
+    height: 428px;
     // border-radius: 5px;
     .slide-image {
       background-size: contain;
@@ -65,25 +65,39 @@ $primaryColor: #4527a4;
         border: none;
       }
     }
-  }
-// /* Default Bullet Pagination */
-// .pagination-bullets .swiper-pagination-bullet {
-//   cursor: pointer;
-//   width: 12px; 
-//   height: 12px;
-//   background: #333;
-//   border-radius: 50%; /* Bullet */
-// }
 
-// /* Square Pagination */
-// .pagination-square .swiper-pagination-bullet {
-//   cursor: pointer;
-//   width: 20px;
-//   height: 10px;
-//   background: #333;
-//   transform: rotate(1deg); /* Rotate to make it square */
-//   border-radius: 0; /* Remove border-radius for square */
-// }
+    
+  }
+
+  .slider-container {
+    position: relative;
+    width: 100%;
+}
+
+.custom-prev, .custom-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 10;
+}
+
+.custom-prev {
+    left: 10px;
+}
+
+.custom-next {
+    right: 10px;
+}
+
+.custom-prev:hover, .custom-next:hover {
+    background: black;
+}
 
   /* Slide from left */
   @keyframes slideFromLeft {

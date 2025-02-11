@@ -24,8 +24,8 @@
 }
 .wp-block-b-blocks-modern-slider .mySwiper {
   width: 100%;
-  max-width: 601px;
-  height: 400px;
+  max-width: 641px;
+  height: 428px;
 }
 .wp-block-b-blocks-modern-slider .mySwiper .slide-image {
   background-size: contain;
@@ -66,6 +66,31 @@
 .wp-block-b-blocks-modern-slider .mySwiper .slide-image .button:hover {
   border: 2px solid #f5f3f3;
   border: none;
+}
+.wp-block-b-blocks-modern-slider .slider-container {
+  position: relative;
+  width: 100%;
+}
+.wp-block-b-blocks-modern-slider .custom-prev, .wp-block-b-blocks-modern-slider .custom-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 10;
+}
+.wp-block-b-blocks-modern-slider .custom-prev {
+  left: 10px;
+}
+.wp-block-b-blocks-modern-slider .custom-next {
+  right: 10px;
+}
+.wp-block-b-blocks-modern-slider .custom-prev:hover, .wp-block-b-blocks-modern-slider .custom-next:hover {
+  background: black;
 }
 @keyframes slideFromLeft {
   0% {
