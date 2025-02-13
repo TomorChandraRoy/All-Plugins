@@ -2,10 +2,11 @@
 import { getTypoCSS } from '../../../../bpl-tools/utils/getCSS';
 const Style = ({ attributes, id, device = "desktop" }) => {
 
-	const { sliderHeightRespon, descriptionRespon, typography, decTypography,  color,marginValues,radiusValues } = attributes;
+	const { sliderHeightRespon, descriptionRespon, typography, decTypography,  color,marginValues,radiusValues,headeingMarginValues,headeingColor } = attributes;
 
-	// const { fontFamily, fontCategory, fontSize, fontWeight, textDecoration, textTransform, fontStyle, letterSpace, lineHeight } = typography;
+	const { fontFamily, fontCategory, fontSize, fontWeight, textDecoration, textTransform, fontStyle, letterSpace, lineHeight, } = typography;
 
+	
 	// // DecTypography attributes
 	// const {
 	// 	fontFamily: decFontFamily,
@@ -41,6 +42,7 @@ const Style = ({ attributes, id, device = "desktop" }) => {
 	// const buttonContent = `${mySwiper} .swiper-main-content `;
 	const ContentAlignment = `${mySwiper} .swiper-main-content `;
 	const mainContent = `${mySwiper} .swiper-main-content `;
+	const slideContent = `${mySwiper} .swiper-main-content .slide-content`;
 
 
 
@@ -90,6 +92,32 @@ const Style = ({ attributes, id, device = "desktop" }) => {
             ${mySwiper} .swiper-main-content .slide-content  {
               width: calc(100% - ${descriptionRespon.mobile});
             }
+        }
+
+		${slideContent} .slide-title{
+               font-family:${fontFamily},${fontCategory};
+               font-size:${fontSize[device]}px;
+               font-style:${fontStyle};
+               font-weight: ${fontWeight};
+               text-transform: ${textTransform};
+               text-decoration: ${textDecoration};
+               letter-spacing: ${letterSpace};
+               line-height: ${lineHeight};
+			   color: ${headeingColor};
+			   margin: ${headeingMarginValues?.top} ${headeingMarginValues?.right} ${headeingMarginValues?.bottom} ${headeingMarginValues?.left};
+	   }
+
+	   @media only screen and (min-width: 641px) and (max-width: 1024px) {
+             ${slideContent} .slide-title{
+                font-size: ${fontSize.tablet}px;
+            }
+
+        }
+        @media only screen and (max-width: 641px) {
+             ${slideContent} .slide-title{
+               font-size: ${fontSize.mobile}px;
+            }
+
         }
 
 		${ContentAlignment} .align-top-left{

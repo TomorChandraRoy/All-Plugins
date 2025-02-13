@@ -440,7 +440,10 @@ const ModernSliders = ({
     sliderMouseWheel,
     slidersimulateTouch,
     prevArrow,
-    nextArrow
+    nextArrow,
+    selectedAnimation,
+    animationDuration,
+    animationDelay
   } = attributes;
   const swiperRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const {
@@ -494,7 +497,11 @@ const ModernSliders = ({
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `slide-content align-${contentAlignment.replace(' ', '-')}`
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
-    className: "slide-title"
+    className: `slide-title animate-slide ${selectedAnimation}`,
+    style: {
+      animationDelay: `${animationDelay}s`,
+      animationDuration: `${animationDuration}s`
+    }
   }, item.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "slide-description"
   }, item.description), isEditor ? item.buttonName && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
@@ -549,10 +556,21 @@ const Style = ({
     decTypography,
     color,
     marginValues,
-    radiusValues
+    radiusValues,
+    headeingMarginValues,
+    headeingColor
   } = attributes;
-
-  // const { fontFamily, fontCategory, fontSize, fontWeight, textDecoration, textTransform, fontStyle, letterSpace, lineHeight } = typography;
+  const {
+    fontFamily,
+    fontCategory,
+    fontSize,
+    fontWeight,
+    textDecoration,
+    textTransform,
+    fontStyle,
+    letterSpace,
+    lineHeight
+  } = typography;
 
   // // DecTypography attributes
   // const {
@@ -588,6 +606,7 @@ const Style = ({
   // const buttonContent = `${mySwiper} .swiper-main-content `;
   const ContentAlignment = `${mySwiper} .swiper-main-content `;
   const mainContent = `${mySwiper} .swiper-main-content `;
+  const slideContent = `${mySwiper} .swiper-main-content .slide-content`;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
@@ -635,6 +654,32 @@ const Style = ({
             ${mySwiper} .swiper-main-content .slide-content  {
               width: calc(100% - ${descriptionRespon.mobile});
             }
+        }
+
+		${slideContent} .slide-title{
+               font-family:${fontFamily},${fontCategory};
+               font-size:${fontSize[device]}px;
+               font-style:${fontStyle};
+               font-weight: ${fontWeight};
+               text-transform: ${textTransform};
+               text-decoration: ${textDecoration};
+               letter-spacing: ${letterSpace};
+               line-height: ${lineHeight};
+			   color: ${headeingColor};
+			   margin: ${headeingMarginValues?.top} ${headeingMarginValues?.right} ${headeingMarginValues?.bottom} ${headeingMarginValues?.left};
+	   }
+
+	   @media only screen and (min-width: 641px) and (max-width: 1024px) {
+             ${slideContent} .slide-title{
+                font-size: ${fontSize.tablet}px;
+            }
+
+        }
+        @media only screen and (max-width: 641px) {
+             ${slideContent} .slide-title{
+               font-size: ${fontSize.mobile}px;
+            }
+
         }
 
 		${ContentAlignment} .align-top-left{

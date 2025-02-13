@@ -9,7 +9,7 @@ import { useSelect } from '@wordpress/data';
 
 
 const ModernSliders = ({ attributes, }) => {
-    const { items, contentAlignment, autoPlay, sliderNavigation, sliderPagination, sliderMouseWheel, slidersimulateTouch, prevArrow, nextArrow ,} = attributes;
+    const { items, contentAlignment, autoPlay, sliderNavigation, sliderPagination, sliderMouseWheel, slidersimulateTouch, prevArrow, nextArrow , selectedAnimation,animationDuration,animationDelay} = attributes;
     const swiperRef = useRef(null);
     const { status, delay } = autoPlay;
     const isEditor = useSelect((select) => select('core/editor'));
@@ -60,7 +60,9 @@ const ModernSliders = ({ attributes, }) => {
                         <div className="overlay"></div>
 
                         <div className={`slide-content align-${contentAlignment.replace(' ', '-')}`}>
-                            <h2 className="slide-title">{item.title}</h2>
+                            <h2  className={`slide-title animate-slide ${selectedAnimation}`} style={{
+                                    animationDelay: `${animationDelay}s`,
+                                    animationDuration: `${animationDuration}s`}} >{item.title}</h2>
                             <p className="slide-description">{item.description}</p>
 
                             {isEditor ? (

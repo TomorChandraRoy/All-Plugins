@@ -3,6 +3,19 @@
   \***************************************************************************************************************************************************************************************************************************************/
 .wp-block-b-blocks-modern-sliders {
   box-sizing: border-box;
+  /* Slide from left */
+  /* Slide from right */
+  /* Side in Left */
+  /* Side in Right */
+  /* Side in Up */
+  /* Side in Down */
+  /* Fade In Left */
+  /* Fade In Right */
+  /* Fade In Up */
+  /* Fade In Down */
+  /* Zoom In */
+  /* Fade In */
+  /* Apply the animation */
 }
 .wp-block-b-blocks-modern-sliders * {
   box-sizing: border-box;
@@ -46,6 +59,158 @@
 .wp-block-b-blocks-modern-sliders img {
   width: 100%;
   max-width: 100%;
+}
+@keyframes slideFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes sideInLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes sideInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes sideInUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes sideInDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fadeInLeft {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes fadeInRight {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fadeInDown {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.wp-block-b-blocks-modern-sliders .animate-slide {
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+.wp-block-b-blocks-modern-sliders .side-in-left {
+  animation-name: sideInLeft;
+}
+.wp-block-b-blocks-modern-sliders .side-in-right {
+  animation-name: sideInRight;
+}
+.wp-block-b-blocks-modern-sliders .side-in-up {
+  animation-name: sideInUp;
+}
+.wp-block-b-blocks-modern-sliders .side-in-down {
+  animation-name: sideInDown;
+}
+.wp-block-b-blocks-modern-sliders .fade-in-left {
+  animation-name: fadeInLeft;
+}
+.wp-block-b-blocks-modern-sliders .fade-in-right {
+  animation-name: fadeInRight;
+}
+.wp-block-b-blocks-modern-sliders .fade-in-up {
+  animation-name: fadeInUp;
+}
+.wp-block-b-blocks-modern-sliders .fade-in-down {
+  animation-name: fadeInDown;
+}
+.wp-block-b-blocks-modern-sliders .zoom-in {
+  animation-name: zoomIn;
+}
+.wp-block-b-blocks-modern-sliders .fade-in {
+  animation-name: fadeIn;
 }
 /*!************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./node_modules/swiper/swiper.css ***!
