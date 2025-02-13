@@ -190,6 +190,31 @@
         "letterSpace": "0px"
       }
     },
+    "decColor": {
+      "type": "string",
+      "default": "#ffffff"
+    },
+    "decMarginValues": {
+      "type": "object",
+      "default": {
+        "top": "5px",
+        "right": "0px",
+        "bottom": "5px",
+        "left": "0px"
+      }
+    },
+    "decAnimation": {
+      "type": "string",
+      "default": "side-in-right"
+    },
+    "decAnimationDelay": {
+      "type": "number",
+      "default": 0.7
+    },
+    "decAnimationDuration": {
+      "type": "number",
+      "default": 0.7
+    },
     "buttonTypography": {
       "type": "object",
       "default": {

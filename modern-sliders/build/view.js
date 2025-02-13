@@ -443,7 +443,10 @@ const ModernSliders = ({
     nextArrow,
     selectedAnimation,
     animationDuration,
-    animationDelay
+    animationDelay,
+    decAnimation,
+    decAnimationDelay,
+    decAnimationDuration
   } = attributes;
   const swiperRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const {
@@ -503,7 +506,11 @@ const ModernSliders = ({
       animationDuration: `${animationDuration}s`
     }
   }, item.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "slide-description"
+    className: `slide-description animate-slide ${decAnimation}`,
+    style: {
+      animationDelay: `${decAnimationDelay}s`,
+      animationDuration: `${decAnimationDuration}s`
+    }
   }, item.description), isEditor ? item.buttonName && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: item.buttonUrl || "#",
     target: isEditor ? "_self" : "_blank",
@@ -558,7 +565,9 @@ const Style = ({
     marginValues,
     radiusValues,
     headeingMarginValues,
-    headeingColor
+    headeingColor,
+    decColor,
+    decMarginValues
   } = attributes;
   const {
     fontFamily,
@@ -572,18 +581,18 @@ const Style = ({
     lineHeight
   } = typography;
 
-  // // DecTypography attributes
-  // const {
-  // 	fontFamily: decFontFamily,
-  // 	fontCategory: decfontCategory,
-  // 	fontWeight: decFontWeight,
-  // 	fontSize: decFontSize,
-  // 	fontStyle: decFontStyle,
-  // 	textTransform: decTextTransform,
-  // 	textDecoration: decTextDecoration,
-  // 	lineHeight: decLineHeight,
-  // 	letterSpace: decLetterSpace
-  // } = decTypography;
+  // DecTypography attributes
+  const {
+    fontFamily: decFontFamily,
+    fontCategory: decfontCategory,
+    fontWeight: decFontWeight,
+    fontSize: decFontSize,
+    fontStyle: decFontStyle,
+    textTransform: decTextTransform,
+    textDecoration: decTextDecoration,
+    lineHeight: decLineHeight,
+    letterSpace: decLetterSpace
+  } = decTypography;
 
   // //buttonTypography
 
@@ -668,16 +677,33 @@ const Style = ({
 			   color: ${headeingColor};
 			   margin: ${headeingMarginValues?.top} ${headeingMarginValues?.right} ${headeingMarginValues?.bottom} ${headeingMarginValues?.left};
 	   }
+      ${slideContent} .slide-description{
+	           font-family:${decFontFamily},${decfontCategory};        
+               font-size:${decFontSize[device]}px;
+               font-style:${decFontStyle};
+               font-weight: ${decFontWeight};
+               text-transform: ${decTextTransform};
+               text-decoration: ${decTextDecoration};
+               letter-spacing: ${decLetterSpace};
+               line-height: ${decLineHeight};
+			   color:${decColor};
+			   margin: ${decMarginValues?.top} ${decMarginValues?.right} ${decMarginValues?.bottom} ${decMarginValues?.left};
+	  }
 
 	   @media only screen and (min-width: 641px) and (max-width: 1024px) {
              ${slideContent} .slide-title{
                 font-size: ${fontSize.tablet}px;
             }
-
+             ${slideContent} .slide-description{
+                font-size: ${decFontSize.tablet}px;
+            }
         }
         @media only screen and (max-width: 641px) {
              ${slideContent} .slide-title{
                font-size: ${fontSize.mobile}px;
+            }
+		    ${slideContent} .slide-description{
+              font-size: ${decFontSize.mobile}px;
             }
 
         }

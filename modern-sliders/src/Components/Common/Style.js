@@ -2,23 +2,23 @@
 import { getTypoCSS } from '../../../../bpl-tools/utils/getCSS';
 const Style = ({ attributes, id, device = "desktop" }) => {
 
-	const { sliderHeightRespon, descriptionRespon, typography, decTypography,  color,marginValues,radiusValues,headeingMarginValues,headeingColor } = attributes;
+	const { sliderHeightRespon, descriptionRespon, typography, decTypography,  color,marginValues,radiusValues,headeingMarginValues,headeingColor,decColor, decMarginValues,} = attributes;
 
 	const { fontFamily, fontCategory, fontSize, fontWeight, textDecoration, textTransform, fontStyle, letterSpace, lineHeight, } = typography;
 
 	
-	// // DecTypography attributes
-	// const {
-	// 	fontFamily: decFontFamily,
-	// 	fontCategory: decfontCategory,
-	// 	fontWeight: decFontWeight,
-	// 	fontSize: decFontSize,
-	// 	fontStyle: decFontStyle,
-	// 	textTransform: decTextTransform,
-	// 	textDecoration: decTextDecoration,
-	// 	lineHeight: decLineHeight,
-	// 	letterSpace: decLetterSpace
-	// } = decTypography;
+	// DecTypography attributes
+	const {
+		fontFamily: decFontFamily,
+		fontCategory: decfontCategory,
+		fontWeight: decFontWeight,
+		fontSize: decFontSize,
+		fontStyle: decFontStyle,
+		textTransform: decTextTransform,
+		textDecoration: decTextDecoration,
+		lineHeight: decLineHeight,
+		letterSpace: decLetterSpace
+	} = decTypography;
 
 	// //buttonTypography
 
@@ -106,16 +106,33 @@ const Style = ({ attributes, id, device = "desktop" }) => {
 			   color: ${headeingColor};
 			   margin: ${headeingMarginValues?.top} ${headeingMarginValues?.right} ${headeingMarginValues?.bottom} ${headeingMarginValues?.left};
 	   }
+      ${slideContent} .slide-description{
+	           font-family:${decFontFamily},${decfontCategory};        
+               font-size:${decFontSize[device]}px;
+               font-style:${decFontStyle};
+               font-weight: ${decFontWeight};
+               text-transform: ${decTextTransform};
+               text-decoration: ${decTextDecoration};
+               letter-spacing: ${decLetterSpace};
+               line-height: ${decLineHeight};
+			   color:${decColor};
+			   margin: ${decMarginValues?.top} ${decMarginValues?.right} ${decMarginValues?.bottom} ${decMarginValues?.left};
+	  }
 
 	   @media only screen and (min-width: 641px) and (max-width: 1024px) {
              ${slideContent} .slide-title{
                 font-size: ${fontSize.tablet}px;
             }
-
+             ${slideContent} .slide-description{
+                font-size: ${decFontSize.tablet}px;
+            }
         }
         @media only screen and (max-width: 641px) {
              ${slideContent} .slide-title{
                font-size: ${fontSize.mobile}px;
+            }
+		    ${slideContent} .slide-description{
+              font-size: ${decFontSize.mobile}px;
             }
 
         }
