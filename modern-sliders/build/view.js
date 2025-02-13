@@ -446,7 +446,10 @@ const ModernSliders = ({
     animationDelay,
     decAnimation,
     decAnimationDelay,
-    decAnimationDuration
+    decAnimationDuration,
+    buttonAnimation,
+    buttonAnimationDelay,
+    buttonAnimationDuration
   } = attributes;
   const swiperRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const {
@@ -517,13 +520,21 @@ const ModernSliders = ({
     onClick: e => isEditor && e.preventDefault(),
     rel: "noopener noreferrer"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    className: "button"
+    className: `button animate-slide ${buttonAnimation}`,
+    style: {
+      animationDelay: `${buttonAnimationDelay}s`,
+      animationDuration: `${buttonAnimationDuration}s`
+    }
   }, item.buttonName)) : item.buttonName && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: item.buttonUrl || "#",
     target: item.buttonNewTab ? "_blank" : "_self",
     rel: "noopener noreferrer"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    className: "button"
+    className: `button animate-slide ${buttonAnimation}`,
+    style: {
+      animationDelay: `${buttonAnimationDelay}s`,
+      animationDuration: `${buttonAnimationDuration}s`
+    }
   }, item.buttonName))))), sliderNavigation && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "swiper-button-prev",
     onClick: () => swiperRef.current.slidePrev()
@@ -567,7 +578,13 @@ const Style = ({
     headeingMarginValues,
     headeingColor,
     decColor,
-    decMarginValues
+    decMarginValues,
+    buttonTypography,
+    buttonPaddingValues,
+    buttonBorder,
+    buttonRadiusValues,
+    colors,
+    buttonHoverColor
   } = attributes;
   const {
     fontFamily,
@@ -594,20 +611,19 @@ const Style = ({
     letterSpace: decLetterSpace
   } = decTypography;
 
-  // //buttonTypography
+  //buttonTypography
 
-  // const {
-  // 	fontFamily: buttonFontFamily,
-  // 	fontCategory: buttonfontCategory,
-  // 	fontWeight: buttonFontWeight,
-  // 	fontSize: buttonFontSize,
-  // 	fontStyle: buttonFontStyle,
-  // 	textTransform: buttonTextTransform,
-  // 	textDecoration: buttonTextDecoration,
-  // 	lineHeight: buttonLineHeight,
-  // 	letterSpace: buttonLetterSpace
-  // } = buttonTypography;
-
+  const {
+    fontFamily: buttonFontFamily,
+    fontCategory: buttonfontCategory,
+    fontWeight: buttonFontWeight,
+    fontSize: buttonFontSize,
+    fontStyle: buttonFontStyle,
+    textTransform: buttonTextTransform,
+    textDecoration: buttonTextDecoration,
+    lineHeight: buttonLineHeight,
+    letterSpace: buttonLetterSpace
+  } = buttonTypography;
   const mainSl = `#${id}`;
 
   // const blockSl = `${mainSl} .bBlocksModernSlides`;
@@ -707,6 +723,35 @@ const Style = ({
             }
 
         }
+		${slideContent} .button{
+			font-family:${buttonFontFamily},${buttonfontCategory};        
+            font-size:${buttonFontSize[device]}px;
+            font-style:${buttonFontStyle};
+            font-weight: ${buttonFontWeight};
+            text-transform: ${buttonTextTransform};
+            text-decoration: ${buttonTextDecoration};
+            letter-spacing: ${buttonLetterSpace};
+            line-height: ${buttonLineHeight};
+            color: ${colors?.color}; 
+            background: ${colors?.bgType === "gradient" ? colors?.gradient : colors?.bg};
+			padding: ${buttonPaddingValues?.top} ${buttonPaddingValues?.right} ${buttonPaddingValues?.bottom} ${buttonPaddingValues?.left};
+			border:${buttonBorder?.width} ${buttonBorder?.style} ${buttonBorder?.color};
+			border-radius:${buttonRadiusValues?.top} ${buttonRadiusValues?.right} ${buttonRadiusValues?.bottom} ${buttonRadiusValues?.left};
+		}
+		@media only screen and (min-width: 641px) and (max-width: 1024px) {
+            ${slideContent} .button{
+                font-size: ${buttonFontSize.tablet}px;
+            }
+        }
+		@media only screen and (max-width: 641px) {
+            ${slideContent} .button{
+                font-size: ${buttonFontSize.mobile}px;
+            }
+        }
+		${slideContent} .button:hover {
+			color: ${buttonHoverColor?.color};
+			background: ${buttonHoverColor?.bgType === "gradient" ? buttonHoverColor?.gradient : buttonHoverColor?.bg}; 	 
+		}
 
 		${ContentAlignment} .align-top-left{
 			text-align: left;

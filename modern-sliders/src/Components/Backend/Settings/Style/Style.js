@@ -2,17 +2,16 @@
 import { __ } from "@wordpress/i18n";
 import {
   PanelBody, SelectControl, __experimentalSpacer as Spacer,
-  TextControl,
+  TextControl,__experimentalBorderControl as BorderControl,
 } from "@wordpress/components";
-import { BoxControl, ColorControl, Typography } from "../../../../../../bpl-tools/Components";
+import { BoxControl, ColorControl, Typography ,ColorsControl,} from "../../../../../../bpl-tools/Components";
 import { resetValues } from "../../../../utils/options";
 
 const Style = ({ attributes, setAttributes }) => {
 
 
-  const { color, radiusValues, marginValues, typography, headeingColor, headeingMarginValues, animationDuration, animationDelay, selectedAnimation,decColor, decMarginValues, decTypography, decAnimation, decAnimationDelay, decAnimationDuration, } = attributes;
+  const { color, radiusValues, marginValues, typography, headeingColor, headeingMarginValues, animationDuration, animationDelay, selectedAnimation, decColor, decMarginValues, decTypography, decAnimation, decAnimationDelay, decAnimationDuration, colors, buttonHoverColor, buttonTypography, buttonAnimation, buttonAnimationDelay, buttonAnimationDuration, buttonPaddingValues, buttonBorder, buttonRadiusValues,} = attributes;
 
-  console.log(animationDuration, animationDelay, selectedAnimation);
 
   //title
   const handleSelectChange = (newAnimation) => {
@@ -26,17 +25,29 @@ const Style = ({ attributes, setAttributes }) => {
     setAttributes({ animationDuration: parseFloat(newDuration) });
   };
 
-    // dec
-    const handledecChange = (newAnimation) => {
-      setAttributes({ decAnimation: newAnimation });
-    };
-    const handleDecDelayChange = (newDelay) => {
-      setAttributes({ decAnimationDelay: parseFloat(newDelay) });
-    };
-  
-    const handleDecDurationChange = (newDuration) => {
-      setAttributes({ decAnimationDuration: parseFloat(newDuration) });
-    };
+  // dec
+  const handledecChange = (newAnimation) => {
+    setAttributes({ decAnimation: newAnimation });
+  };
+  const handleDecDelayChange = (newDelay) => {
+    setAttributes({ decAnimationDelay: parseFloat(newDelay) });
+  };
+
+  const handleDecDurationChange = (newDuration) => {
+    setAttributes({ decAnimationDuration: parseFloat(newDuration) });
+  };
+
+  // buttn
+  const handleButtonChange = (newAnimation) => {
+    setAttributes({ buttonAnimation: newAnimation });
+  };
+  const handleButtonDelayChange = (newDelay) => {
+    setAttributes({ buttonAnimationDelay: parseFloat(newDelay) });
+  };
+
+  const handleButtonDurationChange = (newDuration) => {
+    setAttributes({ buttonAnimationDuration: parseFloat(newDuration) });
+  };
 
   return (
     <>
@@ -196,6 +207,87 @@ const Style = ({ attributes, setAttributes }) => {
           type="number"
           value={decAnimationDuration}
           onChange={handleDecDurationChange}
+          min="0"
+        />
+      </PanelBody>
+
+      <PanelBody
+
+        className="bPlPanelBody"
+        title={__("Button", "b-blocks")}
+        initialOpen={false}
+      >
+        <Typography label={__('Typography:', 'b-blocks')} value={buttonTypography} onChange={val => setAttributes({ buttonTypography: val })} />
+        <Spacer />
+
+        <ColorsControl value={colors} onChange={val => setAttributes({ colors: val })} defaults={{ color: '#FAFAFA', bg: '#610A0A00' }} />
+
+        <Spacer />
+
+        <ColorsControl label="Hover Colors"
+          value={buttonHoverColor} onChange={val => setAttributes({ buttonHoverColor: val })} defaults={{ color: '##000000', bg: '#ffffff' }}
+        />
+
+        <Spacer />
+        <BorderControl
+          label="Border"
+          value={buttonBorder}
+          resetValues={resetValues}
+          onChange={(newValues) => setAttributes({ buttonBorder: newValues })}
+        />
+
+        <Spacer />
+        <BoxControl
+          label="Radius"
+          values={buttonRadiusValues}
+          resetValues={resetValues}
+          onChange={(newValues) => setAttributes({ buttonRadiusValues: newValues })}
+        />
+        <Spacer />
+
+        <BoxControl
+          label="Padding"
+          values={buttonPaddingValues}
+          resetValues={resetValues}
+          onChange={(newValues) => setAttributes({ buttonPaddingValues: newValues })}
+        />
+        <Spacer />
+
+        <SelectControl
+          label="Select Animation"
+          value={buttonAnimation}
+          options={[
+            { label: 'Side In Left', value: 'side-in-left' },
+            { label: 'Side In Right', value: 'side-in-right' },
+            { label: 'Side In Up', value: 'side-in-up' },
+            { label: 'Side In Down', value: 'side-in-down' },
+            { label: 'Fade In Left', value: 'fade-in-left' },
+            { label: 'Fade In Right', value: 'fade-in-right' },
+            { label: 'Fade In Up', value: 'fade-in-up' },
+            { label: 'Fade In Down', value: 'fade-in-down' },
+            { label: 'Zoom In', value: 'zoom-in' },
+            { label: 'Fade In', value: 'fade-in' }
+          ]}
+          onChange={handleButtonChange}
+        />
+
+        <Spacer />
+
+        <TextControl
+          label="Animation Delay (seconds)"
+          type="number"
+          value={buttonAnimationDelay}
+          onChange={handleButtonDelayChange}
+          min="0"
+        />
+
+        <Spacer />
+
+        <TextControl
+          label="Animation Duration (seconds)"
+          type="number"
+          value={buttonAnimationDuration}
+          onChange={handleButtonDurationChange}
           min="0"
         />
       </PanelBody>

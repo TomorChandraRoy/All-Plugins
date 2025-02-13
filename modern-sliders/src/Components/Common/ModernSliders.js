@@ -9,7 +9,7 @@ import { useSelect } from '@wordpress/data';
 
 
 const ModernSliders = ({ attributes, }) => {
-    const { items, contentAlignment, autoPlay, sliderNavigation, sliderPagination, sliderMouseWheel, slidersimulateTouch, prevArrow, nextArrow , selectedAnimation,animationDuration,animationDelay,decAnimation,decAnimationDelay,decAnimationDuration} = attributes;
+    const { items, contentAlignment, autoPlay, sliderNavigation, sliderPagination, sliderMouseWheel, slidersimulateTouch, prevArrow, nextArrow , selectedAnimation,animationDuration,animationDelay,decAnimation,decAnimationDelay,decAnimationDuration,buttonAnimation,buttonAnimationDelay,buttonAnimationDuration} = attributes;
     const swiperRef = useRef(null);
     const { status, delay } = autoPlay;
     const isEditor = useSelect((select) => select('core/editor'));
@@ -75,7 +75,10 @@ const ModernSliders = ({ attributes, }) => {
                                     target={isEditor ? "_self" : "_blank"} onClick={(e) => isEditor && e.preventDefault()}
                                     rel="noopener noreferrer"
                                 >
-                                    <button className='button'>
+                                    <button className={`button animate-slide ${buttonAnimation}`} style={{
+                                                animationDelay: `${buttonAnimationDelay}s`,
+                                                animationDuration: `${buttonAnimationDuration}s`
+                                            }}>
                                         {item.buttonName}</button>
                                 </a>
                                 )
@@ -86,7 +89,10 @@ const ModernSliders = ({ attributes, }) => {
                                             target={item.buttonNewTab ? "_blank" : "_self"}
                                             rel="noopener noreferrer"
                                         >
-                                            <button  className='button' 
+                                            <button  className={`button animate-slide ${buttonAnimation}`} style={{
+                                                animationDelay: `${buttonAnimationDelay}s`,
+                                                animationDuration: `${buttonAnimationDuration}s`
+                                            }} 
                                             >{item.buttonName}</button>
                                         </a>
                                     )
