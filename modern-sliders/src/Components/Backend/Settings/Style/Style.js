@@ -1,36 +1,51 @@
-import { useState } from "react";
+
 import { __ } from "@wordpress/i18n";
 import {
-  PanelBody,
-  __experimentalBoxControl as BoxControl,
+  PanelBody, __experimentalSpacer as Spacer,
 } from "@wordpress/components";
-import { ColorsControl } from "../../../../../../bpl-tools/Components";
+import {  BoxControl, ColorControl} from "../../../../../../bpl-tools/Components";
+import { resetValues } from "../../../../utils/options";
 
 const Style = ({ attributes, setAttributes }) => {
-  const { colors } = attributes;
-  const [values, setValues] = useState({
-    top: "50px",
-    left: "10px",
-    right: "10px",
-    bottom: "50px",
-  });
 
 
+const{color,radiusValues,marginValues}=attributes;
 
   return (
     <>
       <PanelBody
-      
+
         className="bPlPanelBody"
-        title={__("Purpose styles title", "b-blocks")}
+        title={__("Slider", "b-blocks")}
         initialOpen={false}
       >
-        <ColorsControl
-          value={colors}
-          onChange={(val) => setAttributes({ colors: val })}
-          defaults={{ color: "black", bg: "#B1C5A4" }}
+        <ColorControl
+          label="Overly Color"
+          defaultColor="#4429274f"
+          value={color}
+          onChange={(Cl) => {
+            setAttributes({ color: Cl });
+          }}
         />
-        <BoxControl values={values} onChange={setValues} />
+        <Spacer />
+        {/* BoxControl Padding/Margin korte parbo*/}
+        <BoxControl
+          label="Margin"
+          values={marginValues}
+          resetValues={resetValues}
+          onChange={(newValues) => setAttributes({ marginValues: newValues })}
+        />
+
+        <Spacer />
+        {/* BoxControl Padding/Margin korte parbo*/}
+        <BoxControl
+          label="Radius"
+          values={radiusValues}
+          resetValues={resetValues}
+          // sides={["horizontal","vertical"]}
+          // disableUnits={false}
+          onChange={(newValues) => setAttributes({ radiusValues: newValues })}
+        />
       </PanelBody>
     </>
   );

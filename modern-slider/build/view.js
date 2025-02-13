@@ -449,9 +449,6 @@ const ModernSlider = ({
     buttonAnimationDuration,
     paginationType
   } = attributes;
-
-  // const paginationClass = paginationType === "square" ? "pagination-square" : "pagination-bullets";
-
   const updateItem = (index, key, value) => {
     const newItems = [...items];
     newItems[index] = {
@@ -465,10 +462,12 @@ const ModernSlider = ({
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(swiper_react__WEBPACK_IMPORTED_MODULE_1__.Swiper, {
     spaceBetween: 30,
     centeredSlides: true,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false
-    },
+    simulateTouch: false
+    // autoplay={{
+    //     delay: 2500,
+    //     disableOnInteraction: false,
+    // }}
+    ,
     pagination: {
       clickable: true
     },
@@ -479,8 +478,11 @@ const ModernSlider = ({
     key: index,
     className: "slide-image",
     style: {
-      backgroundImage: item.image ? `url(${item.image})` : "",
-      backgroundColor: item.image ? "" : "#595e5a"
+      backgroundImage: item.image ? `url(${item.image})` : "none",
+      backgroundColor: item.image ? "transparent" : "#595e5a",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat"
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "overlay"

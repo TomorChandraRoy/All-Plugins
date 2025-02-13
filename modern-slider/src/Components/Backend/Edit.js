@@ -11,10 +11,10 @@ const Edit = (props) => {
 
   return (
     <>
-      <Settings {...{ attributes, setAttributes }} device/>
+      <Settings {...{ attributes, setAttributes ,device}} />
 
       <div {...useBlockProps()}>
-        <Style attributes={attributes} id={`block-${clientId}`} device={device} />
+        <Style attributes={attributes} device={device} id={`block-${clientId}`}  />
 
           <ModernSlider attributes={attributes} setAttributes={setAttributes}/>
   

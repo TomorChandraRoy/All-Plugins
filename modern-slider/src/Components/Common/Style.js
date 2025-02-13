@@ -6,9 +6,6 @@ const Style = ({ attributes, id }) => {
 	
 	const gap = descriptionRespon ;
 
-	
-	
-	
 	const { fontFamily, fontCategory, fontSize, fontWeight, textDecoration, textTransform, fontStyle, letterSpace, lineHeight } = typography;
 
 	// DecTypography attributes

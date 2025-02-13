@@ -9,3 +9,4 @@ export const purposeTypeOptions = [
 	{ label: 'Test', value: 'test' },
 	{ label: 'Final', value: 'final' }
 ]
+export const resetValues = { top: 0, right: 0, bottom: 0, left: 0 };

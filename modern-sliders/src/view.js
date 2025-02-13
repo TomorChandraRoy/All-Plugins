@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import './style.scss';
 import Style from './Components/Common/Style';
-import BlockName from './Components/Frontend/BlockName';
+import ModernSliders from './Components/Common/ModernSliders';
 
 document.addEventListener('DOMContentLoaded', () => {
 	const blockNameEls = document.querySelectorAll('.wp-block-b-blocks-modern-sliders');
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		createRoot(blockNameEl).render(<>
 			<Style attributes={attributes} id={blockNameEl.id} />
 
-			<BlockName attributes={attributes} />
+			<ModernSliders attributes={attributes} />
 		</>);
 
 		blockNameEl?.removeAttribute('data-attributes');
